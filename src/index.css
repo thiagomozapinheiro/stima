@@ -1,0 +1,128 @@
+/* Estilos globais. Os tokens de design (cores, temas claro/escuro) ficam em
+   src/styles/tokens.css e são importados abaixo. */
+@import './styles/tokens.css';
+@import './styles/responsive.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--page-bg);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: color 0.4s ease;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent-hi);
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input::placeholder {
+  color: var(--faint);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes growW {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------------------------------------------------------------------
+ * Estados de hover/focus "visuais apenas".
+ * O arquivo de design original (.dc.html) usa atributos proprietários
+ * `style-hover` / `style-focus` / `style-focus-within` que não existem em
+ * React/CSS puro. Para preservar fielmente a aparência (sem adicionar
+ * comportamento novo), essas poucas regras replicam exatamente o que o
+ * design descrevia, aplicadas via className nos componentes.
+ * ------------------------------------------------------------------- */
+
+.stima-theme-toggle:hover {
+  border-color: var(--accent);
+}
+
+.stima-home-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.stima-archive-banner:hover {
+  border-color: var(--border-strong);
+}
+
+.stima-back-btn:hover {
+  color: var(--accent);
+}
+
+.stima-input-wrap:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.stima-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.stima-outline-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.stima-archive-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+}

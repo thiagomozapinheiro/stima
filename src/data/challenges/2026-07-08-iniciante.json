@@ -1,0 +1,109 @@
+{
+  "id": "2026-07-08-iniciante",
+  "theme": "Saúde",
+  "level": "Iniciante",
+  "publishedAt": "2026-07-08",
+  "title": "Atendimentos diários nos postos de saúde de SP",
+  "teaser": "Quantas consultas as UBS de São Paulo realizam por dia?",
+  "prompt": "Quantos atendimentos (consultas, curativos, vacinas, etc.) as Unidades Básicas de Saúde (UBS) da cidade de São Paulo realizam, somadas, em um dia útil típico?",
+  "unit": "atendimentos/dia",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no número de UBS na cidade: são cerca de 470 unidades espalhadas pelos bairros."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Quantos atendimentos cada UBS faz por dia, em média?"
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique o número de UBS pela média de atendimentos por unidade."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Rede de unidades",
+        "steps": [
+          {
+            "question": "Quantas UBS (postos de saúde) existem na cidade de São Paulo?",
+            "explanation": "Pense na rede pública distribuída pelos bairros.",
+            "unit": "UBS",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 400, "magnitude": "unidades" },
+              "max": { "amount": 550, "magnitude": "unidades" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Atendimentos por unidade",
+        "steps": [
+          {
+            "question": "Quantos atendimentos cada UBS realiza, em média, por dia?",
+            "explanation": "Conte consultas, vacinas, curativos e outros procedimentos.",
+            "unit": "atendimentos/dia",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 80, "magnitude": "unidades" },
+              "max": { "amount": 150, "magnitude": "unidades" }
+            }
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Atendimentos por dia",
+      "lines": [
+        { "operator": "", "text": "número de UBS na cidade" },
+        { "operator": "×", "text": "atendimentos por UBS/dia" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 52, "magnitude": "mil" },
+    "referenceRange": {
+      "min": { "amount": 35, "magnitude": "mil" },
+      "max": { "amount": 70, "magnitude": "mil" }
+    },
+    "reasoning": [
+      {
+        "label": "UBS na cidade",
+        "value": "~470",
+        "note": "Rede municipal de atenção básica."
+      },
+      {
+        "label": "Atendimentos por UBS/dia",
+        "value": "~110",
+        "note": "Consultas, vacinas, curativos e outros procedimentos."
+      },
+      {
+        "label": "Atendimentos por dia",
+        "value": "470 × 110 ≈ 51.700"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "A atenção básica é a porta de entrada do sistema público de saúde e concentra grande parte dos atendimentos preventivos da cidade.",
+    "strategicQuestion": "Se a telemedicina absorvesse 20% das consultas de baixa complexidade, quantas horas de médico seriam liberadas por ano?",
+    "opportunities": [
+      "Prontuário eletrônico integrado entre unidades",
+      "Telemedicina para triagem inicial",
+      "Logística de insumos e medicamentos",
+      "Aplicativos de agendamento e controle de fila"
+    ],
+    "discussions": [
+      "Capacidade da atenção básica no SUS",
+      "Uso de tecnologia na saúde pública"
+    ],
+    "whatIf": {
+      "premise": "…cada UBS ganhasse um totem de triagem automatizada?",
+      "questions": [
+        "Quanto tempo médio de espera seria reduzido?",
+        "Como isso mudaria a alocação de enfermeiros e médicos?"
+      ]
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "id": "2026-07-05-interessado",
+  "theme": "Esportes",
+  "level": "Interessado",
+  "publishedAt": "2026-07-05",
+  "title": "Bolas de futebol vendidas por ano",
+  "teaser": "Quantas bolas de futebol são vendidas por ano na Grande São Paulo?",
+  "prompt": "Quantas bolas de futebol (oficiais e recreativas) são vendidas por ano na Região Metropolitana de São Paulo?",
+  "unit": "bolas/ano",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore na população da Grande São Paulo: cerca de 22 milhões de pessoas."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Quantas pessoas jogam futebol com regularidade e com que frequência compram bola nova?"
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Divida os praticantes regulares pelo tempo médio de vida útil de uma bola."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Praticantes de futebol",
+        "steps": [
+          {
+            "question": "Quantas pessoas na Grande São Paulo jogam futebol (society, várzea, escolinha) com regularidade?",
+            "unit": "pessoas",
+            "defaultMagnitude": "milhoes",
+            "acceptableRange": {
+              "min": { "amount": 1.5, "magnitude": "milhoes" },
+              "max": { "amount": 3.5, "magnitude": "milhoes" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Reposição de material",
+        "steps": [
+          {
+            "question": "A cada quantos anos, em média, um praticante compra uma bola nova?",
+            "explanation": "Pense em quanto tempo uma bola dura sendo usada regularmente.",
+            "unit": "anos",
+            "defaultMagnitude": "unidades",
+            "hint": "Bolas de várzea desgastam bem mais rápido que bolas oficiais guardadas com cuidado.",
+            "acceptableRange": {
+              "min": { "amount": 1, "magnitude": "unidades" },
+              "max": { "amount": 3, "magnitude": "unidades" }
+            }
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Bolas vendidas por ano",
+      "lines": [
+        { "operator": "", "text": "praticantes regulares" },
+        { "operator": "÷", "text": "anos entre compras (vida útil média da bola)" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 1.5, "magnitude": "milhoes" },
+    "referenceRange": {
+      "min": { "amount": 900, "magnitude": "mil" },
+      "max": { "amount": 2.2, "magnitude": "milhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Praticantes regulares de futebol",
+        "value": "~2.200.000",
+        "note": "Futebol amador, society, escolinhas e clubes de bairro."
+      },
+      {
+        "label": "Vida útil média de uma bola",
+        "value": "~1,5 ano",
+        "note": "Bolas de várzea desgastam rápido; bolas oficiais duram mais."
+      },
+      {
+        "label": "Bolas vendidas por ano",
+        "value": "2.200.000 ÷ 1,5 ≈ 1.470.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "O futebol amador movimenta uma cadeia grande de fabricantes, lojas esportivas e clubes de várzea, além de ser parte central da cultura da cidade.",
+    "strategicQuestion": "Se uma marca lançasse uma bola 30% mais durável por um preço 15% maior, o mercado a adotaria em massa?",
+    "opportunities": [
+      "Bolas com materiais de maior durabilidade",
+      "Marketplaces de material esportivo usado",
+      "Patrocínio de campeonatos de várzea",
+      "Aluguel de quadras society por app"
+    ],
+    "discussions": [
+      "Economia do futebol amador",
+      "Sustentabilidade na fabricação de artigos esportivos"
+    ],
+    "whatIf": {
+      "premise": "…toda bola vendida tivesse um chip de rastreamento de uso (gamificação)?",
+      "questions": [
+        "Que dados isso geraria para fabricantes e ligas amadoras?",
+        "Como isso mudaria o preço e o modelo de negócio das marcas?"
+      ]
+    }
+  }
+}

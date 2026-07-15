@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;display=swap" rel="stylesheet">
+<style>
+  :root, [data-theme="dark"] {
+    --page-bg: radial-gradient(120% 42% at 50% 0%, rgba(255,106,69,0.16), transparent 55%), radial-gradient(120% 40% at 82% 4%, rgba(123,91,208,0.18), transparent 55%), linear-gradient(180deg, #0c1740 0%, #05091c 62%);
+    --bg:#070d24; --card:#101a3e; --card-2:#15214c;
+    --border:#293668; --border-faint:#1b2650; --border-2:#313f79; --border-strong:#45548f; --muted:#26305e;
+    --text:#f4f5fc; --text-bright:#ffffff; --text-2:#c4c9e8; --text-3:#cdd2ee; --dim:#9096c6; --faint:#6a719e; --faint2:#868dbc;
+    --accent:#ff6a45; --accent-hi:#ff8f72; --on-accent:#0b143a; --accent2:#6675f0;
+    --accent-chip:rgba(255,106,69,0.15); --accent-chip-bd:rgba(255,106,69,0.42); --accent-glow:rgba(255,106,69,0.28);
+    --band-bg:rgba(255,106,69,0.34); --band-bd:rgba(255,106,69,0.75);
+    --warn:#ff8f72; --warn-bg:rgba(255,143,114,0.12); --warn-bd:rgba(255,143,114,0.40);
+    --header-bg:rgba(7,13,36,0.85);
+  }
+  [data-theme="light"] {
+    --page-bg: radial-gradient(130% 46% at 50% 0%, rgba(255,106,69,0.22), transparent 55%), radial-gradient(120% 44% at 80% 0%, rgba(123,91,208,0.16), transparent 55%), linear-gradient(180deg, #fdf2ef 0%, #f3f3fb 100%);
+    --bg:#f5f4fc; --card:#ffffff; --card-2:#faf7fc;
+    --border:#e6e2f4; --border-faint:#ece9f6; --border-2:#e0dbf2; --border-strong:#bfc5ee; --muted:#e8e4f4;
+    --text:#0d1b45; --text-bright:#0a1638; --text-2:#454d78; --text-3:#484f7a; --dim:#6f77a3; --faint:#9aa0c2; --faint2:#8087ad;
+    --accent:#f0522f; --accent-hi:#d8431f; --on-accent:#ffffff; --accent2:#4b5ae6;
+    --accent-chip:rgba(240,82,47,0.14); --accent-chip-bd:rgba(240,82,47,0.45); --accent-glow:rgba(240,82,47,0.25);
+    --band-bg:rgba(240,82,47,0.30); --band-bd:rgba(240,82,47,0.70);
+    --warn:#c14a1f; --warn-bg:rgba(240,82,47,0.12); --warn-bd:rgba(240,82,47,0.42);
+    --header-bg:rgba(245,244,252,0.85);
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body { margin: 0; min-height: 100vh; background: var(--page-bg); background-attachment: fixed; color: var(--text); font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; transition: color .4s ease; }
+  h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; margin: 0; letter-spacing: -0.02em; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-hi); }
+  input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type=number] { -moz-appearance: textfield; }
+  input::placeholder { color: var(--faint); }
+  ::selection { background: var(--accent); color: var(--on-accent); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @keyframes growW { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+</style>
+</helmet>
+
+<div style="min-height:100vh;">
+
+  <!-- HEADER -->
+  <header style="position:sticky;top:0;z-index:30;background:var(--header-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border-faint);">
+    <div style="max-width:1120px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:11px;cursor:pointer;">
+        <span style="width:38px;height:38px;border-radius:10px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,0.25);">
+          <img src="assets/stima-icon.png" alt="Stima" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.01em;">Stima</span>
+      </div>
+      <nav style="display:flex;align-items:center;gap:8px;">
+        <button onClick="{{ goHome }}" style="background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;padding:9px 16px;border-radius:999px;color:{{ navHomeColor }};background:{{ navHomeBg }};transition:color .15s;">Desafio do Dia</button>
+        <button onClick="{{ goArchive }}" style="background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;padding:9px 16px;border-radius:999px;color:{{ navArchiveColor }};background:{{ navArchiveBg }};transition:color .15s;">Outros Desafios</button>
+        <button onClick="{{ toggleTheme }}" title="Alternar modo claro / escuro" style="margin-left:4px;background:var(--accent-chip);border:1px solid var(--border);cursor:pointer;width:40px;height:40px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--accent);transition:background .15s,border-color .15s;" style-hover="border-color:var(--accent);">{{ themeIcon }}</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HOME ============ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main style="max-width:1120px;margin:0 auto;padding:56px 28px 90px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px;">
+      <span style="display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:7px 15px;font-size:13px;font-weight:600;color:var(--accent);letter-spacing:0.02em;">
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-glow);"></span>
+        <span style="white-space:nowrap;">DESAFIO DO DIA</span>
+      </span>
+      <span style="font-size:14px;color:var(--dim);">{{ todayDate }}</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:end;margin-bottom:52px;">
+      <div>
+        <div style="font-size:15px;color:var(--dim);margin-bottom:10px;">Tema de hoje</div>
+        <h1 style="font-size:64px;line-height:0.98;font-weight:700;">{{ todayTheme }}</h1>
+        <p style="font-size:17px;line-height:1.6;color:var(--text-2);max-width:460px;margin:20px 0 0;">Três problemas de estimativa, um para cada nível. Estime primeiro, use as dicas se precisar, e compare seu chute com a faixa esperada.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px 28px;">
+        <div style="font-size:13px;color:var(--dim);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px;">Seu progresso hoje</div>
+        <div style="display:flex;align-items:baseline;gap:8px;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:700;color:var(--accent);">{{ solvedTodayCount }}</span>
+          <span style="font-size:20px;color:var(--dim);">/ 3 resolvidos</span>
+        </div>
+        <div style="display:flex;gap:7px;margin-top:18px;">
+          <sc-for list="{{ todayProgress }}" as="p" hint-placeholder-count="3">
+            <span style="height:6px;flex:1;border-radius:99px;background:{{ p.color }};"></span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <sc-for list="{{ todayCards }}" as="c" hint-placeholder-count="3">
+        <div onClick="{{ c.open }}" style="position:relative;background:var(--card);border:1px solid {{ c.border }};border-radius:20px;padding:28px 26px 26px;cursor:pointer;transition:transform .18s,border-color .18s;overflow:hidden;" style-hover="transform:translateY(-4px);border-color:var(--accent);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;">
+            <div style="display:flex;gap:5px;">
+              <sc-for list="{{ c.dots }}" as="d" hint-placeholder-count="3">
+                <sc-if value="{{ d.on }}" hint-placeholder-val="{{ true }}"><span style="width:9px;height:9px;border-radius:50%;background:var(--accent);"></span></sc-if>
+                <sc-if value="{{ d.off }}" hint-placeholder-val="{{ true }}"><span style="width:9px;height:9px;border-radius:50%;background:var(--muted);"></span></sc-if>
+              </sc-for>
+            </div>
+            <sc-if value="{{ c.solved }}" hint-placeholder-val="{{ true }}">
+              <span style="display:inline-flex;align-items:center;gap:6px;background:var(--accent-chip);color:var(--accent);font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;">✓ Resolvido</span>
+            </sc-if>
+          </div>
+          <div style="font-size:13px;color:var(--dim);font-weight:600;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px;">{{ c.level }}</div>
+          <h3 style="font-size:22px;font-weight:600;line-height:1.15;margin-bottom:14px;">{{ c.title }}</h3>
+          <p style="font-size:14.5px;line-height:1.55;color:var(--dim);margin:0 0 26px;">{{ c.teaser }}</p>
+          <span style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--accent);">{{ c.cta }} <span style="font-size:16px;">→</span></span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div onClick="{{ goArchive }}" style="margin-top:22px;background:linear-gradient(100deg,var(--card),var(--card-2));border:1px solid var(--border);border-radius:18px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;" style-hover="border-color:var(--border-strong);">
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;">Perdeu algum desafio?</div>
+        <div style="font-size:14.5px;color:var(--dim);margin-top:4px;">Explore os outros desafios anteriores por tema, nível e o que você ainda não resolveu.</div>
+      </div>
+      <span style="display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--on-accent);font-size:14px;font-weight:600;padding:11px 20px;border-radius:999px;white-space:nowrap;">Ver desafios →</span>
+    </div>
+  </main>
+  </sc-if>
+
+  <!-- ============ CHALLENGE ============ -->
+  <sc-if value="{{ isChallenge }}" hint-placeholder-val="{{ true }}">
+  <main style="max-width:760px;margin:0 auto;padding:36px 28px 100px;">
+    <button onClick="{{ goBack }}" style="background:none;border:none;color:var(--dim);font-family:'DM Sans',sans-serif;font-size:14.5px;cursor:pointer;padding:0;margin-bottom:26px;display:inline-flex;align-items:center;gap:7px;" style-hover="color:var(--accent);">← Voltar</button>
+
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+      <span style="background:var(--card);border:1px solid var(--border);border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:var(--accent);">{{ ch.theme }}</span>
+      <span style="background:var(--card);border:1px solid var(--border);border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:var(--text-2);">{{ ch.level }}</span>
+      <span style="font-size:13px;color:var(--faint);">{{ ch.dateShort }}</span>
+    </div>
+
+    <h1 style="font-size:34px;line-height:1.12;font-weight:700;margin-bottom:18px;">{{ ch.title }}</h1>
+    <p style="font-size:19px;line-height:1.6;color:var(--text-bright);background:var(--card);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:20px 24px;margin:0 0 34px;">{{ ch.prompt }}</p>
+
+    <!-- HINTS -->
+    <div style="font-size:13px;text-transform:uppercase;letter-spacing:0.06em;color:var(--dim);font-weight:600;margin-bottom:14px;">Dicas <span style="color:var(--faint);font-weight:500;text-transform:none;letter-spacing:0;">— abra só se precisar (nunca entregam a resposta)</span></div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:36px;">
+      <sc-for list="{{ ch.hints }}" as="h" hint-placeholder-count="3">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:13px;overflow:hidden;">
+          <button onClick="{{ h.toggle }}" style="width:100%;background:none;border:none;cursor:pointer;padding:15px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;text-align:left;">
+            <span style="display:flex;align-items:center;gap:12px;"><span style="width:24px;height:24px;border-radius:7px;background:var(--accent-chip);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;font-family:'Space Grotesk',sans-serif;flex-shrink:0;">{{ h.n }}</span>{{ h.label }}</span>
+            <span style="color:var(--accent);font-size:20px;transform:{{ h.rotate }};transition:transform .2s;">+</span>
+          </button>
+          <sc-if value="{{ h.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 18px 16px 54px;font-size:15px;line-height:1.6;color:var(--text-2);">{{ h.text }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- INPUT / CHECK -->
+    <sc-if value="{{ notChecked }}" hint-placeholder-val="{{ true }}">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;">
+
+        <!-- MODE SELECTOR -->
+        <div style="display:inline-flex;background:var(--bg);border:1px solid var(--muted);border-radius:12px;padding:4px;gap:4px;margin-bottom:12px;">
+          <button onClick="{{ setModeGuided }}" style="background:{{ modeGuidedBg }};color:{{ modeGuidedColor }};border:none;border-radius:9px;padding:9px 18px;font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:600;cursor:pointer;transition:background .15s,color .15s;">Raciocínio guiado</button>
+          <button onClick="{{ setModeFree }}" style="background:{{ modeFreeBg }};color:{{ modeFreeColor }};border:none;border-radius:9px;padding:9px 18px;font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:600;cursor:pointer;transition:background .15s,color .15s;">Raciocínio livre</button>
+        </div>
+        <div style="font-size:13.5px;line-height:1.55;color:var(--faint2);margin-bottom:6px;max-width:640px;">{{ modeExplain }}</div>
+        <div style="font-size:12.5px;color:var(--faint);margin-bottom:22px;">↺ Trocar de modo pode reorganizar a área de resposta.</div>
+
+        <!-- GUIDED SCAFFOLD -->
+        <sc-if value="{{ showGuided }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-bottom:24px;">
+            <!-- progress -->
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+              <div style="flex:1;height:6px;background:var(--bg);border-radius:99px;overflow:hidden;">
+                <div style="height:100%;width:{{ guidedPct }}%;background:var(--accent);border-radius:99px;transition:width .3s;"></div>
+              </div>
+              <span style="font-size:12.5px;color:var(--dim);white-space:nowrap;font-weight:600;">{{ guidedFilled }}/{{ guidedTotal }} premissas</span>
+            </div>
+
+            <sc-for list="{{ guidedStages }}" as="stage" hint-placeholder-count="2">
+              <div style="margin-bottom:18px;">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                  <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.04em;color:var(--accent);text-transform:uppercase;">{{ stage.title }}</span>
+                  <div style="flex:1;height:1px;background:var(--border-faint);"></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                  <sc-for list="{{ stage.steps }}" as="st" hint-placeholder-count="2">
+                    <div style="background:var(--bg);border:1px solid var(--border-faint);border-radius:13px;padding:16px 18px;">
+                      <div style="font-size:14.5px;font-weight:600;line-height:1.35;margin-bottom:4px;">{{ st.q }}</div>
+                      <sc-if value="{{ st.hasExplain }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:var(--faint2);line-height:1.5;margin-bottom:12px;">{{ st.explain }}</div></sc-if>
+                      <div style="display:flex;gap:9px;align-items:center;background:var(--card);border:1px solid var(--muted);border-radius:10px;padding:5px 8px 5px 12px;max-width:420px;" style-focus-within="border-color:var(--accent);">
+                        <input type="text" inputmode="decimal" value="{{ st.num }}" onInput="{{ st.onNum }}" placeholder="0,0" style="flex:1;min-width:56px;background:transparent;border:none;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;outline:none;padding:6px 0;">
+                        <select value="{{ st.mag }}" onChange="{{ st.onMag }}" style="flex-shrink:0;background:var(--bg);border:1px solid var(--muted);border-radius:7px;padding:8px 9px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:600;outline:none;cursor:pointer;">
+                          <sc-for list="{{ st.magOptions }}" as="m" hint-placeholder-count="5">
+                            <option value="{{ m.value }}" selected="{{ m.selected }}">{{ m.label }}</option>
+                          </sc-for>
+                        </select>
+                        <sc-if value="{{ st.hasUnit }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink:0;font-size:13px;font-weight:600;color:var(--dim);white-space:nowrap;padding-right:4px;">{{ st.unit }}</span></sc-if>
+                      </div>
+                      <sc-if value="{{ st.hasFeedback }}" hint-placeholder-val="{{ false }}">
+                        <div style="display:flex;align-items:center;gap:8px;margin-top:10px;background:{{ st.fbBg }};border:1px solid {{ st.fbBd }};border-radius:9px;padding:8px 12px;max-width:420px;">
+                          <span style="font-size:14px;font-weight:700;color:{{ st.fbColor }};line-height:1;">{{ st.fbIcon }}</span>
+                          <span style="font-size:12.5px;font-weight:500;color:{{ st.fbColor }};line-height:1.4;">{{ st.fbText }}</span>
+                        </div>
+                      </sc-if>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+
+            <!-- formula visual -->
+            <sc-if value="{{ hasFormula }}" hint-placeholder-val="{{ false }}">
+              <div style="background:var(--accent-chip);border:1px solid var(--accent-chip-bd);border-radius:13px;padding:18px 20px;">
+                <div style="font-size:11.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Estrutura construída</div>
+                <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;line-height:1.7;">
+                  <div style="margin-bottom:2px;">{{ formulaTitle }}</div>
+                  <sc-for list="{{ formulaLines }}" as="fl" hint-placeholder-count="3">
+                    <div style="display:flex;gap:10px;padding-left:6px;"><span style="color:var(--accent);width:16px;flex-shrink:0;">{{ fl.op }}</span><span style="color:var(--text-2);font-weight:500;">{{ fl.text }}</span></div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <!-- FINAL ESTIMATE (both modes) -->
+        <label style="display:block;font-size:15px;font-weight:600;margin-bottom:6px;">{{ finalLabel }}</label>
+        <div style="font-size:13.5px;color:var(--dim);margin-bottom:16px;">Digite um número (0 a 999,9, uma casa decimal), escolha a ordem de grandeza e confira.</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:stretch;">
+          <div style="display:flex;gap:10px;flex:1;min-width:280px;align-items:center;background:var(--bg);border:1px solid var(--muted);border-radius:11px;padding:6px 8px 6px 14px;" style-focus-within="border-color:var(--accent);">
+            <input type="text" inputmode="decimal" value="{{ guessNum }}" onInput="{{ onGuessNum }}" placeholder="125,5" style="flex:1;min-width:80px;background:transparent;border:none;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;outline:none;padding:8px 0;">
+            <select value="{{ guessMag }}" onChange="{{ onGuessMag }}" style="flex-shrink:0;background:var(--card);border:1px solid var(--muted);border-radius:8px;padding:10px 12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;outline:none;cursor:pointer;" style-focus="border-color:var(--accent);">
+              <sc-for list="{{ magOptions }}" as="m" hint-placeholder-count="5">
+                <option value="{{ m.value }}" selected="{{ m.selected }}">{{ m.label }}</option>
+              </sc-for>
+            </select>
+            <span style="flex-shrink:0;font-size:15px;font-weight:600;color:var(--dim);white-space:nowrap;padding-right:6px;">{{ ch.unit }}</span>
+          </div>
+          <button onClick="{{ checkAnswer }}" disabled="{{ checkDisabled }}" style="background:{{ checkBtnBg }};color:{{ checkBtnColor }};border:none;border-radius:11px;padding:14px 26px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;cursor:{{ checkBtnCursor }};white-space:nowrap;transition:background .15s;">Checar resposta</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- RESULTS -->
+    <sc-if value="{{ checked }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:fadeUp .45s ease both;">
+        <!-- comparison -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:24px;">
+          <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;margin-bottom:26px;">
+            <div>
+              <div style="font-size:13px;color:var(--dim);margin-bottom:5px;">Seu chute</div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;">{{ guessDisplay }}</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:13px;color:var(--dim);margin-bottom:5px;">Faixa esperada</div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--accent);">{{ rangeDisplay }}</div>
+            </div>
+          </div>
+          <!-- bar -->
+          <div style="position:relative;height:12px;background:var(--bg);border-radius:99px;margin:34px 0 8px;">
+            <div style="position:absolute;top:0;bottom:0;left:{{ bandLeft }}%;width:{{ bandWidth }}%;background:var(--band-bg);border:1px solid var(--band-bd);border-radius:99px;"></div>
+            <div style="position:absolute;top:50%;left:{{ pointPos }}%;width:2px;height:20px;transform:translate(-50%,-50%);background:var(--accent2);border-radius:2px;"></div>
+            <div style="position:absolute;top:50%;left:{{ guessPos }}%;transform:translate(-50%,-50%);width:20px;height:20px;border-radius:50%;background:{{ guessColor }};border:3px solid var(--card);box-shadow:0 0 0 1px {{ guessColor }};"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--faint);margin-top:6px;">
+            <span>menor</span><span>maior</span>
+          </div>
+          <div style="margin-top:20px;background:{{ verdictBg }};border:1px solid {{ verdictBorder }};border-radius:11px;padding:14px 18px;display:flex;align-items:center;gap:12px;">
+            <span style="font-size:22px;">{{ verdictIcon }}</span>
+            <span style="font-size:15.5px;font-weight:600;color:{{ verdictColor }};">{{ verdictText }}</span>
+          </div>
+        </div>
+
+        <!-- reasoning -->
+        <div style="font-size:13px;text-transform:uppercase;letter-spacing:0.06em;color:var(--dim);font-weight:600;margin-bottom:16px;">Raciocínio passo a passo</div>
+        <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:28px;">
+          <sc-for list="{{ ch.steps }}" as="s" hint-placeholder-count="4">
+            <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border-faint);">
+              <span style="flex-shrink:0;width:28px;height:28px;border-radius:8px;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;">{{ s.n }}</span>
+              <div style="flex:1;min-width:0;">
+                <div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;">
+                  <span style="font-size:15.5px;font-weight:600;flex:1;min-width:0;">{{ s.label }}</span>
+                  <span style="font-family:'Space Grotesk',sans-serif;font-size:15.5px;font-weight:600;color:var(--accent);white-space:nowrap;flex-shrink:0;text-align:right;">{{ s.value }}</span>
+                </div>
+                <sc-if value="{{ s.hasNote }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px;color:var(--faint2);margin-top:5px;">{{ s.note }}</div></sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="background:var(--card-2);border:1px solid var(--border-2);border-radius:14px;padding:22px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+          <div>
+            <div style="font-size:13px;color:var(--dim);margin-bottom:4px;">Estimativa de referência</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--accent);">{{ pointDisplay }} <span style="font-size:15px;color:var(--dim);font-weight:500;">{{ ch.unit }}</span></div>
+          </div>
+          <button onClick="{{ goBack }}" style="background:none;border:1px solid var(--border-strong);color:var(--text);border-radius:999px;padding:11px 22px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;" style-hover="border-color:var(--accent);color:var(--accent);">Voltar aos desafios</button>
+        </div>
+
+        <!-- VÁ ALÉM -->
+        <div style="margin-top:28px;background:var(--card-2);border:1px dashed var(--border-strong);border-radius:18px;padding:28px 28px 30px;">
+          <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">↗ Vá além</div>
+          <div style="font-size:14px;color:var(--faint2);margin-bottom:26px;">Da estimativa ao pensamento estratégico — pense por conta própria.</div>
+
+          <!-- Impactos -->
+          <div style="margin-bottom:26px;">
+            <h4 style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px;">Impactos</h4>
+            <p style="font-size:15.5px;line-height:1.62;color:var(--text-3);margin:0;">{{ ch.impact }}</p>
+          </div>
+
+          <!-- Pergunta estratégica -->
+          <div style="margin-bottom:26px;background:var(--card);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:16px 20px;">
+            <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.05em;color:var(--dim);font-weight:600;margin-bottom:8px;">Pergunta estratégica</div>
+            <p style="font-size:16.5px;line-height:1.55;color:var(--text);font-family:'Space Grotesk',sans-serif;font-weight:500;margin:0;">{{ ch.strategicQuestion }}</p>
+          </div>
+
+          <!-- Oportunidades -->
+          <div style="margin-bottom:26px;">
+            <h4 style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:12px;">Oportunidades</h4>
+            <div style="display:flex;flex-direction:column;gap:9px;">
+              <sc-for list="{{ ch.opportunities }}" as="o" hint-placeholder-count="4">
+                <div style="display:flex;gap:11px;align-items:flex-start;">
+                  <span style="flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px;"></span>
+                  <span style="font-size:15.5px;line-height:1.5;color:var(--text-3);">{{ o }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- Discussões -->
+          <div style="margin-bottom:26px;border-top:1px solid var(--border-2);padding-top:24px;">
+            <h4 style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:10px;">Discussões que este desafio provoca</h4>
+            <p style="font-size:15.5px;line-height:1.55;color:var(--text-3);margin:0 0 14px;">Se você gostou desse tema e quer saber mais, vale a pena ler sobre:</p>
+            <div style="display:flex;flex-wrap:wrap;gap:9px;">
+              <sc-for list="{{ ch.discussions }}" as="t" hint-placeholder-count="3">
+                <span style="background:var(--card);border:1px solid var(--border-2);border-radius:999px;padding:8px 15px;font-size:14px;color:var(--text-bright);">{{ t }}</span>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- E se -->
+          <div style="border-top:1px solid var(--border-2);padding-top:24px;">
+            <h4 style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:10px;">E se...</h4>
+            <p style="font-size:16px;line-height:1.55;color:var(--text);font-weight:600;margin:0 0 12px;">{{ ch.whatIfPremise }}</p>
+            <div style="display:flex;flex-direction:column;gap:9px;">
+              <sc-for list="{{ ch.whatIfQuestions }}" as="q" hint-placeholder-count="2">
+                <div style="display:flex;gap:11px;align-items:flex-start;">
+                  <span style="flex-shrink:0;color:var(--accent);font-size:15px;margin-top:1px;">→</span>
+                  <span style="font-size:15.5px;line-height:1.5;color:var(--text-3);">{{ q }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+  </main>
+  </sc-if>
+
+  <!-- ============ ARCHIVE ============ -->
+  <sc-if value="{{ isArchive }}" hint-placeholder-val="{{ true }}">
+  <main style="max-width:1120px;margin:0 auto;padding:48px 28px 90px;">
+    <h1 style="font-size:44px;font-weight:700;margin-bottom:10px;">Outros Desafios</h1>
+    <p style="font-size:16.5px;color:var(--text-2);max-width:560px;margin:0 0 34px;">Todos os desafios anteriores. Filtre por tema, nível ou pelo que você ainda não resolveu.</p>
+
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:32px;">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <span style="font-size:13px;color:var(--dim);font-weight:600;width:58px;">Status</span>
+        <sc-for list="{{ statusPills }}" as="p" hint-placeholder-count="3">
+          <button onClick="{{ p.select }}" style="border:1px solid {{ p.border }};background:{{ p.bg }};color:{{ p.color }};border-radius:999px;padding:8px 15px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .15s;">{{ p.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <span style="font-size:13px;color:var(--dim);font-weight:600;width:58px;">Tema</span>
+        <sc-for list="{{ themePills }}" as="p" hint-placeholder-count="7">
+          <button onClick="{{ p.select }}" style="border:1px solid {{ p.border }};background:{{ p.bg }};color:{{ p.color }};border-radius:999px;padding:8px 15px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .15s;">{{ p.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <span style="font-size:13px;color:var(--dim);font-weight:600;width:58px;">Nível</span>
+        <sc-for list="{{ levelPills }}" as="p" hint-placeholder-count="4">
+          <button onClick="{{ p.select }}" style="border:1px solid {{ p.border }};background:{{ p.bg }};color:{{ p.color }};border-radius:999px;padding:8px 15px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .15s;">{{ p.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+      <sc-for list="{{ archiveList }}" as="c" hint-placeholder-count="6">
+        <div onClick="{{ c.open }}" style="background:var(--card);border:1px solid {{ c.border }};border-radius:16px;padding:22px;cursor:pointer;transition:transform .18s,border-color .18s;" style-hover="transform:translateY(-3px);border-color:var(--border-strong);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <span style="font-size:12px;color:var(--faint);">{{ c.dateShort }}</span>
+            <sc-if value="{{ c.solved }}" hint-placeholder-val="{{ false }}">
+              <span style="display:inline-flex;align-items:center;gap:5px;color:var(--accent);font-size:12px;font-weight:600;">✓ Resolvido</span>
+            </sc-if>
+          </div>
+          <h3 style="font-size:18px;font-weight:600;line-height:1.2;margin-bottom:14px;min-height:44px;">{{ c.title }}</h3>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="background:var(--accent-chip);color:var(--accent);font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;">{{ c.theme }}</span>
+            <span style="background:var(--bg);color:var(--dim);font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;">{{ c.level }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ archiveEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="text-align:center;padding:60px 0;color:var(--faint);font-size:16px;">Nenhum desafio encontrado com esses filtros.</div>
+    </sc-if>
+  </main>
+  </sc-if>
+
+  <footer style="border-top:1px solid var(--border-faint);padding:24px 28px;text-align:center;color:var(--faint);font-size:13px;">Stima · Desafios diários de estimativa de mercado · Seu progresso é salvo neste navegador.</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      screen: 'home',
+      currentId: null,
+      guessNum: '',
+      guessMag: 'milhões',
+      mode: 'guided',
+      guidedVals: {},
+      checked: false,
+      openHints: {},
+      archiveTheme: 'Todos',
+      archiveLevel: 'Todos',
+      archiveStatus: 'Todos',
+      theme: this.loadTheme(),
+      solved: this.loadSolved(),
+    };
+  }
+
+  loadSolved() {
+    try { return JSON.parse(localStorage.getItem('ms_solved_v1') || '{}'); }
+    catch (e) { return {}; }
+  }
+  persist(solved) {
+    try { localStorage.setItem('ms_solved_v1', JSON.stringify(solved)); } catch (e) {}
+  }
+
+  loadTheme() {
+    try { return localStorage.getItem('ms_theme') || 'dark'; } catch (e) { return 'dark'; }
+  }
+  applyTheme(t) {
+    try { document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+  }
+  componentDidMount() { this.applyTheme(this.state.theme); }
+  toggleTheme = () => {
+    const t = this.state.theme === 'light' ? 'dark' : 'light';
+    try { localStorage.setItem('ms_theme', t); } catch (e) {}
+    this.applyTheme(t);
+    this.setState({ theme: t });
+  };
+
+  // ---- data ----
+  get DATA() {
+    const dots = (lvl) => { const n = {Iniciante:1, Interessado:2, Expert:3}[lvl]; return [1,2,3].map(i => ({on:i<=n, off:i>n})); };
+    const mk = (o) => ({ ...o, dots: dots(o.level) });
+    return [
+      // ---- TODAY: Mobilidade e Infra ----
+      mk({ id:'t1', today:true, theme:'Mobilidade e Infra', level:'Iniciante', dateShort:'13 jul 2026',
+        title:'Corridas de aplicativo em São Paulo',
+        teaser:'Quantas corridas de Uber/99 acontecem num dia útil na cidade?',
+        prompt:'Quantas corridas de transporte por aplicativo (Uber, 99, etc.) são realizadas na cidade de São Paulo em um dia útil típico?',
+        unit:'corridas/dia', low:800000, high:1600000, point:1200000,
+        guided:{stages:[
+          {title:'Etapa 1 — Universo de usuários', steps:[
+            {q:'Quantas pessoas vivem na cidade de São Paulo?', explain:'Ancore num número que você já conhece de cabeça.', unit:'pessoas', mag:'milhões', ref:{low:8e6, high:20e6}},
+            {q:'Que fração da população usa apps de transporte com frequência?', explain:'Nem todo mundo usa; pense em uma porcentagem.', unit:'%', mag:'unidades', ref:{low:10, high:50}},
+          ]},
+          {title:'Etapa 2 — Frequência de uso', steps:[
+            {q:'Quantas corridas um usuário ativo faz, em média, por dia?', explain:'Pode ser um número menor que 1.', unit:'corridas/dia', mag:'unidades', ref:{low:0.1, high:1.5}},
+          ]},
+        ], formula:{title:'Corridas por dia', lines:[
+          {op:'', text:'população da cidade'},
+          {op:'×', text:'% de usuários ativos'},
+          {op:'×', text:'corridas por usuário/dia'},
+        ]},
+        },
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore no tamanho da cidade: São Paulo tem cerca de 12 milhões de habitantes. Essa é uma ordem de grandeza que você já conhece de cabeça e serve de base para tudo.'},
+          {label:'Decomponha o problema', text:'Nem todo mundo usa apps. Quebre em partes: da população, quantos são usuários ativos de transporte por app? E, desses, quantas corridas cada um costuma fazer num dia?'},
+          {label:'Transforme em estimativa', text:'Multiplique o número de usuários ativos pela frequência diária média de corridas por usuário. O produto dá o total de corridas por dia na cidade.'},
+        ],
+        steps:[
+          {label:'População da cidade', value:'12.000.000', note:'São Paulo tem ~12 milhões de habitantes.'},
+          {label:'Usuários ativos de apps', value:'~25% → 3.000.000', note:'Cerca de 1 em cada 4 pessoas usa apps com frequência.'},
+          {label:'Corridas por dia', value:'3.000.000 × 0,4 ≈ 1.200.000', note:'Cada usuário pede ~0,4 corrida por dia.'},
+        ],
+        impact:'As corridas por app são hoje uma fatia central da mobilidade urbana: sustentam a renda de centenas de milhares de motoristas e disputam espaço com o transporte público e o carro próprio.',
+        strategicQuestion:'Se a demanda cresce 15% ao ano, qual seria o ponto de equilíbrio de uma frota própria de veículos elétricos operada pela plataforma na cidade?',
+        opportunities:[
+          'Frotas de veículos elétricos dedicadas a apps, reduzindo o custo por km',
+          'Crédito, seguro e serviços financeiros sob medida para motoristas',
+          'Integração com o transporte público (primeira e última milha)',
+          'Publicidade e serviços ao passageiro durante a corrida',
+        ],
+        discussions:['Economia de plataformas e regulação do trabalho por app','Planejamento urbano e mobilidade compartilhada','Precificação dinâmica e algoritmos de oferta e demanda'],
+        whatIfPremise:'E se metade das corridas passasse a ser feita em veículos autônomos?',
+        whatIfQuestions:['Como isso mudaria o custo por corrida e a receita dos motoristas atuais?','Quais seriam os efeitos sociais e econômicos sobre o emprego na cidade?'] }),
+      mk({ id:'t2', today:true, theme:'Mobilidade e Infra', level:'Interessado', dateShort:'13 jul 2026',
+        title:'Diesel consumido pelos ônibus',
+        teaser:'Quantos litros a frota municipal de ônibus queima por dia?',
+        prompt:'Quantos litros de óleo diesel são consumidos pela frota de ônibus urbanos da cidade de São Paulo em um dia?',
+        unit:'litros/dia', low:700000, high:1500000, point:1120000,
+        guided:{stages:[
+          {title:'Etapa 1 — Tamanho da frota', steps:[
+            {q:'Quantos ônibus municipais a cidade opera?', explain:'Ordem de milhares.', unit:'ônibus', mag:'mil', ref:{low:8e3, high:20e3}},
+          ]},
+          {title:'Etapa 2 — Uso diário e consumo', steps:[
+            {q:'Quantos km cada ônibus roda por dia?', unit:'km/dia', mag:'unidades', ref:{low:100, high:350}},
+            {q:'Quantos km o ônibus faz por litro de diesel?', explain:'Veículo pesado, parando muito no trânsito.', unit:'km/litro', mag:'unidades', ref:{low:1.5, high:4}},
+          ]},
+        ], formula:{title:'Litros por dia', lines:[
+          {op:'', text:'frota de ônibus'},
+          {op:'×', text:'km por ônibus/dia'},
+          {op:'÷', text:'km por litro'},
+        ]},
+        },
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore no tamanho da frota. Uma grande capital opera algo na casa de 10 a 15 mil ônibus municipais — parta desse número conhecido.'},
+          {label:'Decomponha o problema', text:'Separe em três grandezas: quantos ônibus há na frota, quantos km cada um roda por dia, e quantos km ele consegue fazer por litro de diesel.'},
+          {label:'Transforme em estimativa', text:'Calcule o total de km rodados (frota × km por ônibus) e divida pela eficiência (km por litro). O resultado são os litros consumidos por dia.'},
+        ],
+        steps:[
+          {label:'Frota de ônibus', value:'~14.000', note:'Frota municipal aproximada.'},
+          {label:'Km por ônibus/dia', value:'~200 km', note:'~40 km/h × ~5 h efetivas de operação.'},
+          {label:'Consumo', value:'~2,5 km/litro', note:'Veículo pesado, parando o tempo todo no trânsito.'},
+          {label:'Litros por dia', value:'14.000 × 200 ÷ 2,5 ≈ 1.120.000', note:''},
+        ],
+        impact:'O diesel da frota é um dos maiores custos do sistema e uma grande fonte de emissões urbanas. Cada real no preço do combustível pressiona a tarifa e os subsídios pagos pela prefeitura.',
+        strategicQuestion:'Qual é o payback de eletrificar a frota, considerando o custo do ônibus elétrico frente à economia de diesel e manutenção ao longo de 10 anos?',
+        opportunities:[
+          'Fabricação e financiamento de ônibus elétricos',
+          'Infraestrutura de recarga em garagens e corredores',
+          'Softwares de otimização de rotas e consumo de combustível',
+          'Créditos de carbono a partir da redução de emissões',
+          'Manutenção especializada em frotas elétricas',
+        ],
+        discussions:['Transição energética no transporte público','Subsídios tarifários e financiamento da mobilidade','Qualidade do ar e saúde pública nas grandes cidades'],
+        whatIfPremise:'E se o preço do diesel dobrasse em um ano?',
+        whatIfQuestions:['Quanto isso adicionaria ao custo anual do sistema?','Como afetaria a tarifa, os subsídios e o ritmo de eletrificação da frota?'] }),
+      mk({ id:'t3', today:true, theme:'Mobilidade e Infra', level:'Expert', dateShort:'13 jul 2026',
+        title:'Mercado anual da Zona Azul',
+        teaser:'Qual o faturamento anual do estacionamento rotativo pago?',
+        prompt:'Qual é o faturamento anual (em R$) do estacionamento rotativo pago em via pública (Zona Azul) na cidade de São Paulo?',
+        unit:'por ano', currency:true, low:150000000, high:450000000, point:283000000,
+        guided:{stages:[
+          {title:'Etapa 1 — Oferta de vagas', steps:[
+            {q:'Quantas vagas rotativas de Zona Azul há na cidade?', explain:'Dezenas de milhares.', unit:'vagas', mag:'mil', ref:{low:20e3, high:80e3}},
+          ]},
+          {title:'Etapa 2 — Uso e tarifa', steps:[
+            {q:'Quantas horas pagas cada vaga gera por dia?', unit:'horas/dia', mag:'unidades', ref:{low:3, high:10}},
+            {q:'Qual a tarifa média cobrada por hora?', unit:'R$/hora', mag:'unidades', ref:{low:2, high:7}},
+            {q:'Quantos dias de cobrança há no ano?', unit:'dias/ano', mag:'unidades', ref:{low:200, high:330}},
+          ]},
+        ], formula:{title:'Faturamento anual', lines:[
+          {op:'', text:'número de vagas'},
+          {op:'×', text:'horas pagas por vaga/dia'},
+          {op:'×', text:'tarifa por hora'},
+          {op:'×', text:'dias de cobrança/ano'},
+        ]},
+        },
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore na oferta de vagas. Uma metrópole costuma ter algumas dezenas de milhares de vagas rotativas de Zona Azul distribuídas pela cidade.'},
+          {label:'Decomponha o problema', text:'Quebre em quatro grandezas: número de vagas, horas pagas por vaga ao dia, tarifa por hora e quantidade de dias de cobrança ao longo do ano.'},
+          {label:'Transforme em estimativa', text:'Multiplique as quatro grandezas em sequência (vagas × horas/dia × tarifa × dias/ano) para chegar ao faturamento anual.'},
+        ],
+        steps:[
+          {label:'Vagas rotativas', value:'~45.000', note:'Vagas de Zona Azul na cidade.'},
+          {label:'Horas pagas/dia', value:'~6 h/vaga', note:'Horário comercial, com rotatividade.'},
+          {label:'Tarifa média', value:'~R$ 3,50/hora', note:''},
+          {label:'Dias de cobrança', value:'~300 dias/ano', note:'Dias úteis e sábados.'},
+          {label:'Faturamento anual', value:'45.000 × 6 × 3,50 × 300 ≈ R$ 283 mi', note:''},
+        ],
+        impact:'A Zona Azul organiza o uso do espaço público mais disputado da cidade e gera receita que pode financiar mobilidade. Bem calibrada, aumenta a rotatividade de vagas e reduz o congestionamento.',
+        strategicQuestion:'Se a cobrança fosse 100% digital e a tarifa variasse por demanda e horário, quanto a receita e a rotatividade de vagas poderiam aumentar?',
+        opportunities:[
+          'Apps de pagamento e gestão de vagas em tempo real',
+          'Sensores de ocupação e dados de mobilidade urbana',
+          'Tarifação dinâmica por demanda e localização',
+          'Parcerias com o varejo local para validação de estacionamento',
+        ],
+        discussions:['Precificação do espaço urbano e gestão do congestionamento','Cidades inteligentes e dados de mobilidade','Financiamento do transporte a partir do uso do carro'],
+        whatIfPremise:'E se a cidade dobrasse a tarifa da Zona Azul?',
+        whatIfQuestions:['O faturamento dobraria ou a demanda cairia a ponto de reduzir o ganho?','Que efeitos isso teria sobre o comércio local e o uso do transporte público?'] }),
+      // ---- ARCHIVE ----
+      mk({ id:'a1', theme:'Saúde', level:'Interessado', dateShort:'12 jul 2026',
+        title:'Consultas no SUS por dia',
+        prompt:'Quantas consultas médicas são realizadas na rede do SUS em todo o Brasil em um único dia?',
+        unit:'consultas/dia', low:1500000, high:4000000, point:2500000,
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore na população do Brasil: cerca de 215 milhões de habitantes. É a base de qualquer estimativa nacional de saúde.'},
+          {label:'Decomponha o problema', text:'Quebre em três partes: quantas consultas uma pessoa faz por ano, que fração da população depende do SUS, e quantos dias de atendimento há no ano.'},
+          {label:'Transforme em estimativa', text:'Chegue ao total de consultas anuais no SUS (população × consultas/ano × fração SUS) e divida pelos dias de atendimento para obter o número por dia.'},
+        ],
+        steps:[
+          {label:'População', value:'215.000.000', note:'Brasil.'},
+          {label:'Consultas/pessoa/ano', value:'~5 → 1,07 bi/ano', note:'Média incluindo idosos e crianças.'},
+          {label:'Fração no SUS', value:'~70% → 752 mi/ano', note:'Maioria depende do SUS.'},
+          {label:'Por dia', value:'752M ÷ ~300 ≈ 2,5 mi', note:'~300 dias de atendimento.'},
+        ],
+        impact:'O SUS é um dos maiores sistemas públicos de saúde do mundo. O volume diário de consultas define filas, orçamento e a necessidade de médicos — e afeta diretamente a saúde de milhões.',
+        strategicQuestion:'Se a telemedicina absorvesse 20% das consultas, quanta capacidade e orçamento seriam liberados para os casos mais complexos?',
+        opportunities:[
+          'Plataformas de telemedicina para a rede pública',
+          'Sistemas de triagem e agendamento inteligentes',
+          'Prontuário eletrônico integrado em escala nacional',
+          'Diagnóstico assistido por IA na atenção básica',
+          'Logística de medicamentos e insumos',
+        ],
+        discussions:['Financiamento e sustentabilidade dos sistemas públicos de saúde','Tecnologia e IA no diagnóstico médico','Atenção primária como porta de entrada do sistema'],
+        whatIfPremise:'E se a expectativa de vida aumentasse 10 anos?',
+        whatIfQuestions:['Como isso mudaria o número de consultas por pessoa ao ano?','Que pressão adicional traria ao orçamento e à força de trabalho da saúde?'] }),
+      mk({ id:'a2', theme:'Educação', level:'Iniciante', dateShort:'11 jul 2026',
+        title:'Cadernos na volta às aulas',
+        prompt:'Quantos cadernos escolares são vendidos no Brasil durante o período de volta às aulas (janeiro–fevereiro)?',
+        unit:'cadernos', low:100000000, high:250000000, point:150000000,
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore no número de estudantes: o Brasil tem cerca de 47 milhões de alunos na educação básica (fundamental e médio).'},
+          {label:'Decomponha o problema', text:'Quebre em duas partes: quantos cadernos um aluno compra por ano e qual fração dessas compras se concentra no período de volta às aulas.'},
+          {label:'Transforme em estimativa', text:'Multiplique estudantes por cadernos por aluno para obter o total anual e aplique a fração comprada na volta às aulas.'},
+        ],
+        steps:[
+          {label:'Estudantes (ed. básica)', value:'~47.000.000', note:'Fundamental + médio.'},
+          {label:'Cadernos por aluno', value:'~4 → 188 mi', note:'Por matéria/uso.'},
+          {label:'Comprados na volta às aulas', value:'~80% → ~150 mi', note:'Concentração no período.'},
+        ],
+        impact:'A volta às aulas move um mercado sazonal enorme de material escolar, concentra vendas do varejo no início do ano e tem peso ambiental relevante pelo consumo de papel.',
+        strategicQuestion:'Como uma marca de material escolar poderia suavizar a sazonalidade e capturar receita fora do pico de janeiro e fevereiro?',
+        opportunities:[
+          'Cadernos e materiais sustentáveis (papel reciclado)',
+          'Assinaturas e kits escolares organizados por matéria',
+          'Cadernos digitais e soluções híbridas',
+          'Parcerias com escolas para compra em escala',
+        ],
+        discussions:['Digitalização da educação e o futuro do material impresso','Consumo sazonal e cadeias de suprimento do varejo','Sustentabilidade e a indústria do papel'],
+        whatIfPremise:'E se metade dos alunos migrasse para cadernos digitais?',
+        whatIfQuestions:['Quanto o mercado de cadernos de papel encolheria?','Que novos mercados e quais impactos ambientais surgiriam dessa migração?'] }),
+      mk({ id:'a3', theme:'Lazer', level:'Interessado', dateShort:'10 jul 2026',
+        title:'Bolas de futebol por ano',
+        prompt:'Quantas bolas de futebol são vendidas no Brasil por ano?',
+        unit:'bolas/ano', low:5000000, high:18000000, point:10000000,
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore no número de praticantes: cerca de 30 milhões de brasileiros jogam futebol de forma recreativa.'},
+          {label:'Decomponha o problema', text:'Separe em duas fontes: a reposição de bolas dos praticantes (elas são compartilhadas e se desgastam) e as compras fora do jogo casual — escolas, clubes e presentes.'},
+          {label:'Transforme em estimativa', text:'Estime uma taxa de reposição (ex.: 1 bola nova por grupo de pessoas por ano), aplique-a aos praticantes e some as demais fontes de compra.'},
+        ],
+        steps:[
+          {label:'Pessoas que jogam', value:'~30.000.000', note:'Praticantes recreativos.'},
+          {label:'Reposição', value:'1 bola / 5 pessoas → 6 mi', note:'Bolas compartilhadas e repostas.'},
+          {label:'Escolas, clubes, presentes', value:'+ ~4 mi', note:''},
+          {label:'Total', value:'≈ 10 milhões', note:''},
+        ],
+        impact:'O futebol é elemento central da cultura brasileira e sustenta uma cadeia de material esportivo, varejo e escolinhas, com forte apelo emocional e picos de consumo em anos de Copa.',
+        strategicQuestion:'Como uma marca esportiva poderia usar o pico de demanda em ano de Copa para ganhar participação de mercado de forma duradoura?',
+        opportunities:[
+          'Bolas conectadas com sensores de desempenho',
+          'Marcas locais focadas em futebol de várzea e escolinhas',
+          'Assinaturas de material esportivo',
+          'Colecionáveis e edições de times e da seleção',
+        ],
+        discussions:['Economia do esporte e mercado de material esportivo','Futebol como fenômeno cultural e social','Tecnologia aplicada ao esporte amador'],
+        whatIfPremise:'E se o Brasil sediasse a próxima Copa do Mundo?',
+        whatIfQuestions:['Quanto a demanda anual por bolas poderia crescer?','Que efeitos econômicos e sociais isso teria no varejo esportivo e nas comunidades?'] }),
+      mk({ id:'a4', theme:'Consumo', level:'Iniciante', dateShort:'9 jul 2026',
+        title:'Pizzas numa sexta em SP',
+        prompt:'Quantas pizzas são entregues por delivery na cidade de São Paulo em uma noite de sexta-feira?',
+        unit:'pizzas', low:120000, high:450000, point:260000,
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore no número de domicílios: a cidade de São Paulo tem cerca de 4 milhões de lares.'},
+          {label:'Decomponha o problema', text:'Quebre em duas partes: que fração dos lares pede pizza numa noite de sexta e quantas pizzas há, em média, em cada pedido.'},
+          {label:'Transforme em estimativa', text:'Multiplique os domicílios pela fração que pede pizza (número de pedidos) e pelo tamanho médio do pedido para chegar ao total de pizzas.'},
+        ],
+        steps:[
+          {label:'Domicílios em SP', value:'~4.000.000', note:''},
+          {label:'Pedem pizza na sexta', value:'~5% → 200 mil pedidos', note:''},
+          {label:'Pizzas por pedido', value:'~1,3 → ~260 mil', note:''},
+        ],
+        impact:'O delivery de comida é hoje um mercado bilionário que emprega entregadores, sustenta milhares de restaurantes e mudou o hábito de consumo das famílias nas grandes cidades.',
+        strategicQuestion:'Qual seria o valor de vida do cliente (LTV) para uma pizzaria que investisse em pedidos diretos em vez de depender só dos apps de delivery?',
+        opportunities:[
+          'Plataformas de pedido direto, sem intermediários',
+          'Cozinhas ocultas (dark kitchens) por bairro',
+          'Otimização de entregas por IA e roteirização',
+          'Programas de fidelidade e assinatura de refeições',
+        ],
+        discussions:['Economia do delivery e o papel dos aplicativos','Trabalho de entregadores e regulação da gig economy','Mudança nos hábitos alimentares urbanos'],
+        whatIfPremise:'E se os apps de delivery cobrassem 30% de comissão em vez de 20%?',
+        whatIfQuestions:['Como isso afetaria a margem das pizzarias?','Levaria mais restaurantes ao pedido direto e a preços mais altos para o consumidor?'] }),
+      mk({ id:'a5', theme:'Consumo', level:'Expert', dateShort:'8 jul 2026',
+        title:'Mercado de tênis esportivos',
+        prompt:'Qual o tamanho do mercado anual (em R$) de tênis esportivos no varejo brasileiro?',
+        unit:'por ano', currency:true, low:12000000000, high:40000000000, point:23000000000,
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore na população do Brasil: cerca de 215 milhões de pessoas. É a base para estimar volume de consumo.'},
+          {label:'Decomponha o problema', text:'Quebre em duas grandezas: quantos pares de tênis uma pessoa compra por ano (nem todos compram todo ano) e qual o preço médio por par no varejo.'},
+          {label:'Transforme em estimativa', text:'Multiplique a população por pares por pessoa (chegando ao volume anual) e depois pelo preço médio por par.'},
+        ],
+        steps:[
+          {label:'População', value:'215.000.000', note:''},
+          {label:'Pares/pessoa/ano', value:'~0,6', note:'Nem todos compram todo ano.'},
+          {label:'Pares/ano', value:'≈ 130 milhões', note:''},
+          {label:'Preço médio', value:'~R$ 180', note:''},
+          {label:'Mercado', value:'130M × 180 ≈ R$ 23 bi', note:''},
+        ],
+        impact:'O mercado de tênis mistura necessidade, moda e status, sustenta grandes marcas e o varejo esportivo e é um dos setores em que a venda online mais cresce no Brasil.',
+        strategicQuestion:'Onde está a maior margem da cadeia — na marca, no varejo ou no e-commerce — e como um novo entrante poderia atacá-la?',
+        opportunities:[
+          'Marcas nacionais diretas ao consumidor (D2C)',
+          'Revenda e mercado de tênis usados ou raros',
+          'Personalização e produção sob demanda',
+          'Tênis sustentáveis e de materiais reciclados',
+        ],
+        discussions:['Varejo de moda e a ascensão do modelo D2C','E-commerce e comportamento de compra online','Cultura de sneakers e mercado de revenda'],
+        whatIfPremise:'E se metade das vendas migrasse para o online?',
+        whatIfQuestions:['Como isso mudaria a estrutura de custos e a margem do setor?','Que efeitos teria sobre as lojas físicas e o emprego no varejo?'] }),
+      mk({ id:'a6', theme:'Mobilidade e Infra', level:'Iniciante', dateShort:'7 jul 2026',
+        title:'Viagens de metrô por dia',
+        prompt:'Quantas viagens de passageiros o metrô de São Paulo transporta em um dia útil?',
+        unit:'viagens/dia', low:2000000, high:5000000, point:2900000,
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore no tamanho da cidade: São Paulo tem cerca de 12 milhões de habitantes.'},
+          {label:'Decomponha o problema', text:'Quebre em partes: que fração usa transporte de massa, dessa fração quantos vão de metrô (e não de ônibus/trem), e lembre que cada pessoa faz ida e volta.'},
+          {label:'Transforme em estimativa', text:'Aplique as frações à população para achar os usuários de metrô e multiplique por dois (ida e volta) para chegar às viagens por dia.'},
+        ],
+        steps:[
+          {label:'População da cidade', value:'~12.000.000', note:''},
+          {label:'Usam o metrô/dia', value:'~12% → ~1,45 mi', note:'~30% usam transporte de massa; ~40% desses no metrô.'},
+          {label:'Ida e volta', value:'×2 ≈ 2,9 mi', note:'Cada pessoa faz duas viagens.'},
+        ],
+        impact:'O metrô é a espinha dorsal da mobilidade na metrópole: reduz congestionamento e poluição e conecta o mercado de trabalho, mas depende de alto investimento e de tarifa acessível.',
+        strategicQuestion:'Qual seria o retorno econômico de estender a rede em 20 km, considerando tempo economizado, valorização imobiliária e nova demanda?',
+        opportunities:[
+          'Adensamento imobiliário no entorno das estações',
+          'Varejo e serviços dentro das estações',
+          'Bilhetagem integrada e mobilidade como serviço (MaaS)',
+          'Integração de primeira e última milha com bikes e apps',
+        ],
+        discussions:['Transporte de massa e desenvolvimento urbano','Financiamento de grandes obras de infraestrutura','Mobilidade como serviço e integração de modais'],
+        whatIfPremise:'E se a tarifa do metrô passasse a ser gratuita?',
+        whatIfQuestions:['Como isso mudaria o número de viagens por dia?','Como financiar o sistema e quais seriam os efeitos no trânsito e na cidade?'] }),
+      mk({ id:'a7', theme:'Tecnologia', level:'Interessado', dateShort:'6 jul 2026',
+        title:'Satélites ativos em órbita',
+        prompt:'Quantos satélites ativos existem hoje em órbita ao redor da Terra?',
+        unit:'satélites ativos', low:6000, high:12000, point:9000,
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore nas megaconstelações: a Starlink sozinha já opera satélites na casa dos milhares (algo em torno de 5 mil). Esse é o maior bloco.'},
+          {label:'Decomponha o problema', text:'Separe por tipo de operador: megaconstelações, outros satélites comerciais (telecom, imagem, navegação) e os de governo, militares e de ciência.'},
+          {label:'Transforme em estimativa', text:'Some as parcelas de cada bloco. Confira a ordem de grandeza: o total fica na casa dos milhares, não dos milhões.'},
+        ],
+        steps:[
+          {label:'Megaconstelações', value:'~5.000', note:'Starlink e similares.'},
+          {label:'Outros comerciais', value:'~2.000', note:'Telecom, imagem, navegação.'},
+          {label:'Governo, militar e ciência', value:'~1.500', note:''},
+          {label:'Total', value:'≈ 8.500', note:'Ordem de grandeza: milhares.'},
+        ],
+        impact:'O espaço próximo à Terra virou infraestrutura crítica para internet, navegação e clima. O rápido aumento de satélites levanta o risco de colisões e de lixo espacial em órbita baixa.',
+        strategicQuestion:'Com a órbita baixa ficando congestionada, qual serviço se tornaria mais valioso: lançamento, conectividade ou gestão do tráfego espacial?',
+        opportunities:[
+          'Conectividade via satélite em áreas remotas',
+          'Monitoramento da Terra (clima, agricultura, defesa)',
+          'Remoção de lixo espacial e gestão de tráfego orbital',
+          'Lançadores reutilizáveis de baixo custo',
+        ],
+        discussions:['Comercialização do espaço e a nova corrida orbital','Lixo espacial e sustentabilidade da órbita baixa','Conectividade global via satélite'],
+        whatIfPremise:'E se o número de satélites em órbita baixa se multiplicasse por dez?',
+        whatIfQuestions:['Quanto aumentaria o risco de colisões em cadeia?','Que impactos econômicos e ambientais isso traria para o uso do espaço?'] }),
+      mk({ id:'a8', theme:'Fora da Caixa', level:'Expert', dateShort:'5 jul 2026',
+        title:'Planetas habitáveis na Via Láctea',
+        prompt:'Quantos planetas potencialmente habitáveis podem existir na nossa galáxia, a Via Láctea?',
+        unit:'planetas', low:50000000, high:1000000000, point:200000000,
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore no número de estrelas: a Via Láctea tem cerca de 100 bilhões de estrelas. É daqui que todo o cálculo parte.'},
+          {label:'Decomponha o problema', text:'Quebre em filtros sucessivos: estrelas com planetas na zona habitável, quantos planetas certos há por sistema, quais são rochosos e quais mantêm condições estáveis.'},
+          {label:'Transforme em estimativa', text:'Aplique cada fração em sequência sobre o número de estrelas. O produto de todas elas dá a ordem de grandeza final.'},
+        ],
+        steps:[
+          {label:'Estrelas na Via Láctea', value:'~100 bilhões', note:'Ponto de partida cósmico.'},
+          {label:'Com planeta na zona habitável', value:'~50% → 50 bi', note:''},
+          {label:'Planetas certos por sistema', value:'~0,2 → 10 bi', note:'Em média, na zona habitável.'},
+          {label:'Rochosos e adequados', value:'~20% → 2 bi', note:''},
+          {label:'Com condições estáveis', value:'~10% → ~200 mi', note:'Estabilidade de longo prazo.'},
+        ],
+        impact:'Estimar planetas habitáveis molda como investimos em telescópios e exploração e alimenta uma das maiores perguntas da humanidade: estamos sozinhos no universo?',
+        strategicQuestion:'Se a chance de vida for baixíssima, vale mais investir em buscar sinais de vida ou em telescópios capazes de mapear atmosferas de exoplanetas?',
+        opportunities:[
+          'Telescópios e instrumentos de detecção de atmosferas',
+          'Análise de dados astronômicos com IA',
+          'Turismo e educação científica em torno da astronomia',
+          'Tecnologias de suporte à vida para exploração de longo prazo',
+        ],
+        discussions:['A Equação de Drake e a busca por vida extraterrestre','Exoplanetas e as fronteiras da astronomia','Exploração espacial e o futuro da humanidade'],
+        whatIfPremise:'E se a fração de planetas com condições estáveis fosse 10 vezes menor?',
+        whatIfQuestions:['Como isso mudaria a estimativa final de planetas habitáveis?','O que isso implicaria para a probabilidade de existirem outras civilizações?'] }),
+      mk({ id:'a9', theme:'Tecnologia', level:'Interessado', dateShort:'4 jul 2026',
+        title:'Mensagens de IA por dia no Brasil',
+        prompt:'Quantas mensagens (prompts) são enviadas para assistentes de IA generativa (ChatGPT, Gemini, etc.) no Brasil em um dia?',
+        unit:'mensagens/dia', low:80000000, high:400000000, point:180000000,
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore na base de internautas: o Brasil tem cerca de 150 milhões de usuários de internet.'},
+          {label:'Decomponha o problema', text:'Quebre em duas partes: que fração dos internautas usa IA generativa com regularidade e quantas mensagens um usuário ativo envia por dia.'},
+          {label:'Transforme em estimativa', text:'Multiplique os usuários de internet pela fração que usa IA (usuários ativos) e pela média de mensagens por usuário ao dia.'},
+        ],
+        steps:[
+          {label:'Usuários de internet', value:'~150.000.000', note:'Brasil.'},
+          {label:'Usam IA generativa', value:'~15% → 22,5 mi', note:'Uso regular de ferramentas de IA.'},
+          {label:'Mensagens por usuário/dia', value:'~8', note:'Prompts em um dia ativo.'},
+          {label:'Total', value:'22,5M × 8 ≈ 180 mi', note:''},
+        ],
+        impact:'A IA generativa entrou no dia a dia de trabalho e estudo em poucos anos. O volume de uso pressiona data centers e consumo de energia e redefine a produtividade em vários setores.',
+        strategicQuestion:'Se o uso dobrar a cada ano, onde estará o gargalo primeiro: energia, chips ou o modelo de negócio que sustente o custo por mensagem?',
+        opportunities:[
+          'Aplicações verticais de IA (jurídico, saúde, educação)',
+          'Infraestrutura e data centers eficientes em energia',
+          'Ferramentas de produtividade com IA integrada',
+          'Serviços de governança, segurança e dados para IA',
+        ],
+        discussions:['Consumo de energia e sustentabilidade da IA','Impacto da IA generativa no trabalho e na educação','Regulação e governança de inteligência artificial'],
+        whatIfPremise:'E se cada mensagem passasse a consumir o dobro de energia?',
+        whatIfQuestions:['Qual seria o consumo diário de energia no país?','Como isso afetaria custos, tarifas e as metas ambientais do setor de tecnologia?'] }),
+      mk({ id:'a10', theme:'Tecnologia', level:'Expert', dateShort:'3 jul 2026',
+        title:'Mercado brasileiro de nuvem',
+        prompt:'Qual o tamanho do mercado brasileiro anual (em R$) de serviços de computação em nuvem?',
+        unit:'por ano', currency:true, low:12000000000, high:40000000000, point:23000000000,
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore no número de clientes corporativos: o Brasil tem cerca de 50 mil médias e grandes empresas, as principais consumidoras de nuvem.'},
+          {label:'Decomponha o problema', text:'Quebre em blocos de clientes: médias e grandes empresas, pequenas empresas e startups, e o setor público — cada um com um gasto médio anual diferente.'},
+          {label:'Transforme em estimativa', text:'Multiplique cada bloco pelo seu gasto médio anual e some os resultados para chegar ao tamanho do mercado.'},
+        ],
+        steps:[
+          {label:'Médias e grandes empresas', value:'~50.000', note:'Principais consumidoras.'},
+          {label:'Gasto médio/ano', value:'~R$ 300 mil → R$ 15 bi', note:''},
+          {label:'+ Pequenas empresas e startups', value:'+ R$ 5 bi', note:''},
+          {label:'+ Setor público', value:'+ R$ 3 bi', note:''},
+          {label:'Mercado total', value:'≈ R$ 23 bi', note:''},
+        ],
+        impact:'A nuvem é a base da economia digital: hospeda serviços de bancos, varejo e governo. A dependência de provedores estrangeiros levanta debates sobre custo, dados e soberania.',
+        strategicQuestion:'Vale mais competir com os gigantes globais em infraestrutura ou construir serviços especializados e de conformidade sobre a nuvem deles?',
+        opportunities:[
+          'Provedores de nuvem soberana e data centers locais',
+          'Serviços gerenciados e consultoria de migração',
+          'Ferramentas de otimização de custos de nuvem (FinOps)',
+          'Soluções de segurança e conformidade de dados (LGPD)',
+        ],
+        discussions:['Soberania de dados e infraestrutura digital nacional','Economia das big techs e concentração de mercado','Segurança da informação e proteção de dados'],
+        whatIfPremise:'E se uma lei exigisse que dados públicos ficassem em nuvem nacional?',
+        whatIfQuestions:['Como isso mudaria o mercado dos provedores estrangeiros?','Que impactos econômicos e tecnológicos traria para o país?'] }),
+      // ---- FORA DA CAIXA ----
+      mk({ id:'a11', theme:'Fora da Caixa', level:'Interessado', dateShort:'2 jul 2026',
+        title:'Cachorros latindo neste momento',
+        prompt:'Quantos cachorros estão latindo no mundo exatamente neste instante?',
+        unit:'cães latindo', low:3000000, high:30000000, point:10000000,
+        guided:{stages:[
+          {title:'Etapa 1 — Universo analisado', steps:[
+            {q:'Quantas pessoas existem no mundo?', unit:'pessoas', mag:'bilhões', ref:{low:6e9, high:10e9}},
+            {q:'Quantas pessoas, em média, por residência?', unit:'pessoas/lar', mag:'unidades', ref:{low:2, high:6}},
+            {q:'Que percentual das residências tem pelo menos um cachorro?', unit:'%', mag:'unidades', ref:{low:10, high:50}},
+          ]},
+          {title:'Etapa 2 — Número de cachorros', steps:[
+            {q:'Quantos cachorros, em média, por residência que tem cachorro?', unit:'cães/lar', mag:'unidades', ref:{low:1, high:3}},
+          ]},
+          {title:'Etapa 3 — Probabilidade de latido', steps:[
+            {q:'Que percentual dos cachorros está acordado agora?', explain:'Metade do planeta é dia, metade é noite.', unit:'%', mag:'unidades', ref:{low:30, high:70}},
+            {q:'Entre os acordados, que percentual está latindo num dado instante?', unit:'%', mag:'unidades', ref:{low:0.1, high:5}},
+          ]},
+        ], formula:{title:'Cães latindo agora', lines:[
+          {op:'', text:'população mundial'},
+          {op:'÷', text:'pessoas por residência'},
+          {op:'×', text:'% de lares com cachorro'},
+          {op:'×', text:'cães por lar'},
+          {op:'×', text:'% acordados'},
+          {op:'×', text:'% latindo agora'},
+        ]},
+        },
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore na população mundial: cerca de 8 bilhões de pessoas, agrupadas em residências de ~3 pessoas em média. Daqui sai o número de lares.'},
+          {label:'Decomponha o problema', text:'Quebre em filtros: que fração dos lares tem cachorro, quantos cães por lar, quantos estão acordados agora e, dos acordados, que fração está latindo num dado instante.'},
+          {label:'Transforme em estimativa', text:'Multiplique lares × fração com cão × cães por lar para achar o total de cães. Depois aplique a fração acordada e a fração latindo para chegar ao número instantâneo.'},
+        ],
+        steps:[
+          {label:'População mundial', value:'~8.000.000.000', note:'Ponto de partida global.'},
+          {label:'Lares (~3 pessoas)', value:'≈ 2,7 bilhões', note:''},
+          {label:'Lares com cachorro', value:'~25% → ~670 milhões', note:''},
+          {label:'Total de cães (~1,5/lar)', value:'≈ 1 bilhão', note:''},
+          {label:'Acordados agora', value:'~50% → 500 milhões', note:'Metade do planeta é dia.'},
+          {label:'Latindo num instante', value:'~2% → ≈ 10 milhões', note:'Só uma fração late a cada momento.'},
+        ],
+        impact:'Um problema aparentemente absurdo revela o poder do método de Fermi: decompor uma pergunta impossível em premissas conhecidas até chegar a uma ordem de grandeza defensável.',
+        strategicQuestion:'Se você tivesse que reduzir a incerteza dessa estimativa pela metade, qual das premissas valeria mais a pena medir de verdade?',
+        opportunities:[
+          'Pensar em qual variável domina a incerteza do resultado',
+          'Aplicar o mesmo método a fenômenos instantâneos e globais',
+          'Treinar a intuição para frações e ordens de grandeza',
+          'Comunicar estimativas com faixas, não com números exatos',
+        ],
+        discussions:['O método de Fermi aplicado a perguntas impossíveis','Como lidar com incerteza empilhada em várias premissas','Ordem de grandeza como forma de raciocínio'],
+        whatIfPremise:'E se a fração de cães latindo a cada instante fosse 5 vezes maior?',
+        whatIfQuestions:['Como isso mudaria a estimativa final?','Qual premissa você teria mais dificuldade de defender diante de outra pessoa?'] }),
+      mk({ id:'a12', theme:'Fora da Caixa', level:'Iniciante', dateShort:'1 jul 2026',
+        title:'Moedas perdidas dentro de sofás',
+        prompt:'Quantas moedas estão perdidas dentro dos sofás das casas do Brasil neste momento?',
+        unit:'moedas', low:50000000, high:400000000, point:150000000,
+        hints:[
+          {label:'Encontre um ponto de partida', text:'Ancore no número de domicílios: o Brasil tem cerca de 75 milhões de lares. É a base para qualquer estimativa doméstica nacional.'},
+          {label:'Decomponha o problema', text:'Quebre em partes: que fração dos lares tem sofá e quantas moedas, em média, acabam esquecidas entre as almofadas de cada um.'},
+          {label:'Transforme em estimativa', text:'Multiplique o número de lares pela fração com sofá (número de sofás) e pela média de moedas perdidas por sofá.'},
+        ],
+        steps:[
+          {label:'Domicílios no Brasil', value:'~75.000.000', note:'Ponto de partida nacional.'},
+          {label:'Lares com sofá', value:'~70% → ~52 milhões', note:''},
+          {label:'Moedas perdidas por sofá', value:'~3', note:'Uma média modesta entre as almofadas.'},
+          {label:'Total estimado', value:'≈ 150 milhões', note:'Ordem de grandeza: centenas de milhões.'},
+        ],
+        impact:'Estimar o invisível — dinheiro parado e esquecido — mostra como o método de Fermi transforma curiosidades do cotidiano em contas que fazem sentido.',
+        strategicQuestion:'Se todas essas moedas voltassem a circular de uma vez, isso seria relevante para a economia ou é um valor desprezível diante do PIB?',
+        opportunities:[
+          'Traduzir um número abstrato em valor monetário aproximado',
+          'Comparar a estimativa com grandezas econômicas conhecidas',
+          'Treinar frações simples aplicadas ao cotidiano',
+          'Perceber quando um número grande ainda é economicamente pequeno',
+        ],
+        discussions:['Dinheiro parado e o custo de oportunidade','Como intuições enganam sobre números grandes','Estimativas de cauda: pequenas quantidades multiplicadas por muitos'],
+        whatIfPremise:'E se cada sofá tivesse, em média, 10 moedas em vez de 3?',
+        whatIfQuestions:['Como isso mudaria o total estimado?','O valor total passaria a ser relevante para a economia?'] }),
+    ];
+  }
+
+  find(id) { return this.DATA.find(c => c.id === id); }
+
+  compact(n, currency) {
+    const abs = Math.abs(n); let s;
+    if (abs >= 1e9) s = (n/1e9).toFixed(n/1e9 >= 10 ? 0 : 1).replace('.', ',') + ' bi';
+    else if (abs >= 1e6) s = (n/1e6).toFixed(n/1e6 >= 10 ? 0 : 1).replace('.', ',') + ' mi';
+    else if (abs >= 1e3) s = Math.round(n/1e3).toLocaleString('pt-BR') + ' mil';
+    else s = Math.round(n).toLocaleString('pt-BR');
+    return currency ? 'R$ ' + s : s;
+  }
+
+  // ---- navigation ----
+  goHome = () => this.setState({ screen: 'home' });
+  goArchive = () => this.setState({ screen: 'archive' });
+  goBack = () => this.setState({ screen: this.find(this.state.currentId) && this.find(this.state.currentId).today ? 'home' : 'archive' });
+  openChallenge(id) {
+    const solvedRec = this.state.solved[id];
+    const parts = solvedRec ? this.decompose(solvedRec.guess) : { num: '', mag: 'milhões' };
+    const c = this.find(id);
+    const hasGuided = !!(c && c.guided && c.guided.stages && c.guided.stages.length);
+    this.setState({
+      screen: 'challenge', currentId: id, openHints: {},
+      checked: !!solvedRec,
+      guessNum: parts.num, guessMag: parts.mag,
+      mode: hasGuided ? 'guided' : 'free',
+      guidedVals: {},
+    });
+    if (typeof window !== 'undefined') window.scrollTo(0, 0);
+  }
+
+  // ---- estimativa: número + ordem de grandeza + unidade ----
+  MAGS = [
+    { key: 'unidades', mult: 1 },
+    { key: 'mil', mult: 1e3 },
+    { key: 'milhões', mult: 1e6 },
+    { key: 'bilhões', mult: 1e9 },
+    { key: 'trilhões', mult: 1e12 },
+  ];
+  magMult(key) { const m = this.MAGS.find(x => x.key === key); return m ? m.mult : 1; }
+  // Divide um número absoluto em mantissa (0–999,9) + ordem de grandeza.
+  decompose(n) {
+    if (!(n > 0)) return { num: '', mag: 'milhões' };
+    for (let i = this.MAGS.length - 1; i >= 0; i--) {
+      const v = n / this.MAGS[i].mult;
+      if (v >= 1 && v <= 999.9) {
+        const r = Math.round(v * 10) / 10;
+        const num = (r % 1 === 0 ? String(r) : r.toFixed(1)).replace('.', ',');
+        return { num, mag: this.MAGS[i].key };
+      }
+    }
+    const r = Math.round((n / 1e12) * 10) / 10;
+    return { num: (r % 1 === 0 ? String(r) : r.toFixed(1)).replace('.', ','), mag: 'trilhões' };
+  }
+  // Converte o campo digitado em valor numérico (número × ordem de grandeza).
+  normalizedGuess() {
+    const raw = (this.state.guessNum || '').replace(',', '.').trim();
+    if (raw === '') return NaN;
+    const v = parseFloat(raw);
+    if (!(v > 0) || v > 999.9) return NaN;
+    return v * this.magMult(this.state.guessMag);
+  }
+  // Converte um valor guiado (número + ordem de grandeza) em valor absoluto.
+  normalizeGuidedVal(gv) {
+    const raw = ((gv && gv.num) || '').replace(',', '.').trim();
+    if (raw === '') return NaN;
+    const v = parseFloat(raw);
+    if (!(v > 0)) return NaN;
+    return v * this.magMult((gv && gv.mag) || 'unidades');
+  }
+  // Sanitiza a digitação: só dígitos, um separador decimal e uma casa.
+  sanitizeNumStr(value) {
+    let v = (value || '').replace(/[^0-9.,]/g, '').replace(/\./g, ',');
+    const parts = v.split(',');
+    v = parts.length > 1 ? parts[0] + ',' + parts.slice(1).join('').slice(0, 1) : parts[0];
+    if (v.replace(',', '') !== '') {
+      const n = parseFloat(v.replace(',', '.'));
+      if (n > 999.9) v = '999,9';
+    }
+    return v;
+  }
+  onGuessNum = (e) => this.setState({ guessNum: this.sanitizeNumStr(e.target.value) });
+  onGuessMag = (e) => this.setState({ guessMag: e.target.value });
+
+  // ---- modo de resolução (guiado / livre) ----
+  setModeGuided = () => this.setState({ mode: 'guided' });
+  setModeFree = () => this.setState({ mode: 'free' });
+  onGuidedNum = (key, defMag) => (e) => {
+    const num = this.sanitizeNumStr(e.target.value);
+    this.setState(s => ({ guidedVals: { ...s.guidedVals, [key]: { ...(s.guidedVals[key] || { mag: defMag || 'unidades' }), num } } }));
+  };
+  onGuidedMag = (key, defMag) => (e) => {
+    const mag = e.target.value;
+    this.setState(s => ({ guidedVals: { ...s.guidedVals, [key]: { ...(s.guidedVals[key] || { num: '' }), mag } } }));
+  };
+  toggleHint(i) { this.setState(s => ({ openHints: { ...s.openHints, [i]: !s.openHints[i] } })); }
+
+  checkAnswer = () => {
+    const g = this.normalizedGuess();
+    if (!(g > 0)) return;
+    const solved = { ...this.state.solved, [this.state.currentId]: { guess: g } };
+    this.persist(solved);
+    this.setState({ checked: true, solved });
+    if (typeof window !== 'undefined') window.scrollTo(0, 0);
+  };
+
+  setArchive(kind, val) {
+    if (kind === 'theme') this.setState({ archiveTheme: val });
+    else if (kind === 'status') this.setState({ archiveStatus: val });
+    else this.setState({ archiveLevel: val });
+  }
+
+  pos(v, minB, maxB) {
+    const p = (Math.log(v) - Math.log(minB)) / (Math.log(maxB) - Math.log(minB)) * 100;
+    return Math.max(2, Math.min(98, p));
+  }
+
+  renderVals() {
+    const s = this.state;
+    const data = this.DATA;
+    const today = data.filter(c => c.today);
+    const solvedTodayCount = today.filter(c => s.solved[c.id]).length;
+
+    const pill = (val, cur, kind) => ({
+      label: val,
+      active: cur === val,
+      bg: cur === val ? 'var(--accent)' : 'var(--card)',
+      color: cur === val ? 'var(--on-accent)' : 'var(--text-2)',
+      border: cur === val ? 'var(--accent)' : 'var(--border)',
+      select: () => this.setArchive(kind, val),
+    });
+
+    const vals = {
+      // nav
+      isHome: s.screen === 'home', isChallenge: s.screen === 'challenge', isArchive: s.screen === 'archive',
+      goHome: this.goHome, goArchive: this.goArchive, goBack: this.goBack,
+      toggleTheme: this.toggleTheme, themeIcon: s.theme === 'light' ? '☀' : '☾',
+      navHomeColor: s.screen === 'home' ? 'var(--accent)' : 'var(--text-2)',
+      navHomeBg: s.screen === 'home' ? 'var(--accent-chip)' : 'transparent',
+      navArchiveColor: s.screen === 'archive' ? 'var(--accent)' : 'var(--text-2)',
+      navArchiveBg: s.screen === 'archive' ? 'var(--accent-chip)' : 'transparent',
+      // home
+      todayDate: 'Segunda, 13 de julho de 2026',
+      todayTheme: 'Mobilidade e Infra',
+      solvedTodayCount,
+      todayProgress: today.map(c => ({ color: s.solved[c.id] ? 'var(--accent)' : 'var(--muted)' })),
+      todayCards: today.map(c => ({
+        level: c.level, title: c.title, teaser: c.teaser, dots: c.dots,
+        solved: !!s.solved[c.id],
+        border: s.solved[c.id] ? 'var(--border-strong)' : 'var(--border)',
+        cta: s.solved[c.id] ? 'Rever solução' : 'Resolver desafio',
+        open: () => this.openChallenge(c.id),
+      })),
+    };
+
+    // archive
+    const themes = ['Todos', ...Array.from(new Set(data.map(c => c.theme)))];
+    const levels = ['Todos', 'Iniciante', 'Interessado', 'Expert'];
+    const statuses = ['Todos', 'Não resolvido', 'Resolvido'];
+    vals.themePills = themes.map(t => pill(t, s.archiveTheme, 'theme'));
+    vals.levelPills = levels.map(l => pill(l, s.archiveLevel, 'level'));
+    vals.statusPills = statuses.map(st => pill(st, s.archiveStatus, 'status'));
+    const arch = data.filter(c => {
+      const isSolved = !!s.solved[c.id];
+      return (s.archiveTheme === 'Todos' || c.theme === s.archiveTheme) &&
+        (s.archiveLevel === 'Todos' || c.level === s.archiveLevel) &&
+        (s.archiveStatus === 'Todos' ||
+          (s.archiveStatus === 'Resolvido' && isSolved) ||
+          (s.archiveStatus === 'Não resolvido' && !isSolved));
+    });
+    vals.archiveList = arch.map(c => ({
+      title: c.title, theme: c.theme, level: c.level, dateShort: c.dateShort,
+      solved: !!s.solved[c.id],
+      border: s.solved[c.id] ? 'var(--border-strong)' : 'var(--border)',
+      open: () => this.openChallenge(c.id),
+    }));
+    vals.archiveEmpty = arch.length === 0;
+
+    // challenge
+    const c = this.find(s.currentId);
+    if (c) {
+      const g = this.normalizedGuess();
+      const canCheck = g > 0;
+      vals.ch = {
+        theme: c.theme, level: c.level, dateShort: c.dateShort, title: c.title, prompt: c.prompt, unit: c.unit,
+        impact: c.impact, strategicQuestion: c.strategicQuestion,
+        opportunities: c.opportunities, discussions: c.discussions,
+        whatIfPremise: '…' + c.whatIfPremise.replace(/^E se\s+/i, ''), whatIfQuestions: c.whatIfQuestions,
+        hints: c.hints.map((h, i) => ({
+          n: i + 1, label: h.label, text: h.text,
+          open: !!s.openHints[i], rotate: s.openHints[i] ? 'rotate(45deg)' : 'none',
+          toggle: () => this.toggleHint(i),
+        })),
+        steps: c.steps.map((st, i) => ({ n: i + 1, label: st.label, value: st.value, note: st.note, hasNote: !!st.note })),
+      };
+      vals.guessNum = s.guessNum;
+      vals.guessMag = s.guessMag;
+      vals.magOptions = this.MAGS.map(m => ({ value: m.key, label: m.key, selected: m.key === s.guessMag }));
+      vals.onGuessNum = this.onGuessNum;
+      vals.onGuessMag = this.onGuessMag;
+      vals.checkAnswer = this.checkAnswer;
+
+      // ---- modos de resolução ----
+      const hasGuided = !!(c.guided && c.guided.stages && c.guided.stages.length);
+      const mode = hasGuided ? s.mode : 'free';
+      const guidedActive = mode === 'guided' && hasGuided;
+      vals.showGuided = guidedActive;
+      vals.finalLabel = guidedActive ? 'Sua estimativa final' : 'Sua estimativa';
+      const guidedSel = guidedActive;
+      vals.modeGuidedBg = guidedSel ? 'var(--accent)' : 'transparent';
+      vals.modeGuidedColor = guidedSel ? 'var(--on-accent)' : 'var(--text-2)';
+      vals.modeFreeBg = !guidedSel ? 'var(--accent)' : 'transparent';
+      vals.modeFreeColor = !guidedSel ? 'var(--on-accent)' : 'var(--text-2)';
+      vals.setModeGuided = hasGuided ? this.setModeGuided : this.setModeFree;
+      vals.setModeFree = this.setModeFree;
+      vals.modeExplain = guidedActive
+        ? 'Divida o problema em etapas, estime cada variável e construa sua resposta progressivamente.'
+        : (hasGuided
+            ? 'Estruture o problema do seu jeito e registre apenas sua linha de raciocínio e a estimativa final.'
+            : 'Estruture o problema do seu jeito e registre sua estimativa final. Este desafio ainda não tem roteiro guiado.');
+
+      // ---- andaime do raciocínio guiado ----
+      if (guidedActive) {
+        let total = 0, filled = 0;
+        vals.guidedStages = c.guided.stages.map((stage, si) => ({
+          title: stage.title,
+          steps: stage.steps.map((st, ti) => {
+            const key = c.id + ':' + si + ':' + ti;
+            const gv = s.guidedVals[key] || { num: '', mag: st.mag || 'unidades' };
+            total++;
+            if (parseFloat((gv.num || '').replace(',', '.')) > 0) filled++;
+            // avaliação pedagógica da premissa (faixa plausível)
+            const fb = { hasFeedback: false };
+            const av = this.normalizeGuidedVal(gv);
+            if (av > 0 && st.ref) {
+              fb.hasFeedback = true;
+              if (av < st.ref.low) {
+                fb.fbIcon = '↓';
+                fb.fbText = 'Parece baixo para essa premissa — vale reconsiderar a ordem de grandeza.';
+                fb.fbColor = 'var(--warn)'; fb.fbBg = 'var(--warn-bg)'; fb.fbBd = 'var(--warn-bd)';
+              } else if (av > st.ref.high) {
+                fb.fbIcon = '↑';
+                fb.fbText = 'Parece alto para essa premissa — vale reconsiderar a ordem de grandeza.';
+                fb.fbColor = 'var(--warn)'; fb.fbBg = 'var(--warn-bg)'; fb.fbBd = 'var(--warn-bd)';
+              } else {
+                fb.fbIcon = '✓';
+                fb.fbText = 'Dentro de uma faixa plausível.';
+                fb.fbColor = 'var(--accent)'; fb.fbBg = 'var(--accent-chip)'; fb.fbBd = 'var(--accent-chip-bd)';
+              }
+            }
+            return {
+              q: st.q,
+              explain: st.explain, hasExplain: !!st.explain,
+              unit: st.unit, hasUnit: !!st.unit,
+              num: gv.num, mag: gv.mag,
+              magOptions: this.MAGS.map(m => ({ value: m.key, label: m.key, selected: m.key === gv.mag })),
+              onNum: this.onGuidedNum(key, st.mag || 'unidades'), onMag: this.onGuidedMag(key, st.mag || 'unidades'),
+              ...fb,
+            };
+          }),
+        }));
+        vals.guidedTotal = total;
+        vals.guidedFilled = filled;
+        vals.guidedPct = total ? Math.round(filled / total * 100) : 0;
+        const f = c.guided.formula;
+        vals.hasFormula = !!f;
+        if (f) { vals.formulaTitle = f.title; vals.formulaLines = f.lines.map(l => ({ op: l.op, text: l.text })); }
+      }
+
+      vals.checked = s.checked;
+      vals.notChecked = !s.checked;
+      vals.checkDisabled = !canCheck;
+      vals.checkBtnBg = canCheck ? 'var(--accent)' : 'var(--muted)';
+      vals.checkBtnColor = canCheck ? 'var(--on-accent)' : 'var(--faint)';
+      vals.checkBtnCursor = canCheck ? 'pointer' : 'not-allowed';
+
+      if (s.checked && g > 0) {
+        const minB = Math.min(c.low, g) / 1.7;
+        const maxB = Math.max(c.high, g) * 1.7;
+        const bandLeft = this.pos(c.low, minB, maxB);
+        const bandRight = this.pos(c.high, minB, maxB);
+        vals.bandLeft = bandLeft;
+        vals.bandWidth = Math.max(2, bandRight - bandLeft);
+        vals.pointPos = this.pos(c.point, minB, maxB);
+        vals.guessPos = this.pos(g, minB, maxB);
+        vals.guessDisplay = this.compact(g, c.currency);
+        vals.rangeDisplay = this.compact(c.low, c.currency) + ' – ' + this.compact(c.high, c.currency);
+        vals.pointDisplay = this.compact(c.point, c.currency);
+
+        const within = g >= c.low && g <= c.high;
+        const pct = Math.round(Math.abs(g - c.point) / c.point * 100);
+        vals.guessColor = within ? 'var(--accent)' : 'var(--warn)';
+        if (within) {
+          vals.verdictBg = 'var(--accent-chip)'; vals.verdictBorder = 'var(--accent-chip-bd)';
+          vals.verdictColor = 'var(--accent)'; vals.verdictIcon = '🎯';
+          vals.verdictText = 'Dentro da faixa esperada — ótima estimativa!';
+        } else {
+          vals.verdictBg = 'var(--warn-bg)'; vals.verdictBorder = 'var(--warn-bd)';
+          vals.verdictColor = 'var(--warn)'; vals.verdictIcon = g < c.point ? '↓' : '↑';
+          vals.verdictText = pct + '% ' + (g < c.point ? 'abaixo' : 'acima') + ' da estimativa de referência';
+        }
+      }
+    }
+    return vals;
+  }
+}
+</script>
+</body>
+</html>

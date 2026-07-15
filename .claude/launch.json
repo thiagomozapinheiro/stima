@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "fermi-dev",
+      "runtimeExecutable": "C:\\Users\\User\\Documents\\Stima\\stima_website\\.claude\\dev-server.cmd",
+      "runtimeArgs": [],
+      "port": 5173
+    }
+  ]
+}

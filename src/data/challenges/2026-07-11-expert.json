@@ -1,0 +1,53 @@
+{
+  "id": "2026-07-11-expert",
+  "theme": "Educação",
+  "level": "Expert",
+  "publishedAt": "2026-07-11",
+  "title": "Mercado de aulas particulares online",
+  "teaser": "Qual o faturamento anual do reforço escolar contratado online por famílias de SP?",
+  "prompt": "Qual é o faturamento anual (em R$) gerado por aulas particulares de reforço escolar contratadas por plataformas online, entre famílias residentes na cidade de São Paulo?",
+  "unit": "por ano",
+  "currency": true,
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no número de estudantes matriculados na educação básica na cidade."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Estudantes, % que contrata aula particular online e gasto médio por aluno/ano."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique estudantes cobertos pelo gasto médio anual."
+    }
+  ],
+  "solution": {
+    "referenceValue": { "amount": 173, "magnitude": "milhoes" },
+    "referenceRange": {
+      "min": { "amount": 100, "magnitude": "milhoes" },
+      "max": { "amount": 280, "magnitude": "milhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Estudantes na educação básica",
+        "value": "~1.800.000",
+        "note": "Redes pública e privada, do fundamental ao médio."
+      },
+      {
+        "label": "% que contrata reforço online",
+        "value": "~8%",
+        "note": "Sobretudo famílias de classe média/alta, em anos de prova importantes."
+      },
+      {
+        "label": "Gasto médio por aluno/ano",
+        "value": "~R$ 1.200",
+        "note": "Aulas avulsas ou pacotes mensais durante parte do ano."
+      },
+      {
+        "label": "Faturamento anual",
+        "value": "1.800.000 × 0,08 × 1.200 ≈ R$ 173 mi"
+      }
+    ]
+  }
+}

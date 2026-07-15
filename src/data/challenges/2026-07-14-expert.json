@@ -1,0 +1,47 @@
+{
+  "id": "2026-07-14-expert",
+  "theme": "Mobilidade e Infra",
+  "level": "Expert",
+  "publishedAt": "2026-07-14",
+  "title": "Mercado anual da Zona Azul",
+  "teaser": "Qual o faturamento anual do estacionamento rotativo pago?",
+  "prompt": "Qual é o faturamento anual (em R$) do estacionamento rotativo pago em via pública (Zona Azul) em São Paulo?",
+  "unit": "por ano",
+  "currency": true,
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore na oferta de vagas: dezenas de milhares de vagas de Zona Azul."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Vagas, horas pagas por vaga/dia, tarifa por hora e dias de cobrança/ano."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique as quatro grandezas em sequência."
+    }
+  ],
+  "solution": {
+    "referenceValue": { "amount": 283, "magnitude": "milhoes" },
+    "referenceRange": {
+      "min": { "amount": 150, "magnitude": "milhoes" },
+      "max": { "amount": 450, "magnitude": "milhoes" }
+    },
+    "reasoning": [
+      { "label": "Vagas rotativas", "value": "~45.000", "note": "Vagas de Zona Azul na cidade." },
+      {
+        "label": "Horas pagas/dia",
+        "value": "~6 h/vaga",
+        "note": "Horário comercial, com rotatividade."
+      },
+      { "label": "Tarifa média", "value": "~R$ 3,50/hora" },
+      {
+        "label": "Dias de cobrança",
+        "value": "~300 dias/ano",
+        "note": "Dias úteis e sábados."
+      },
+      { "label": "Faturamento anual", "value": "45.000 × 6 × 3,50 × 300 ≈ R$ 283 mi" }
+    ]
+  }
+}

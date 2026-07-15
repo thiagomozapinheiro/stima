@@ -1,0 +1,380 @@
+/*
+ * Ajustes de responsividade.
+ *
+ * Contexto: os componentes deste projeto são estilizados quase inteiramente
+ * via `style={...}` inline (objetos `CSSProperties`), replicando o design
+ * original desktop-only. Como inline styles não suportam @media queries,
+ * este arquivo usa o mesmo padrão já existente em `index.css` (classes
+ * "stima-*" para comportamentos que o style inline não cobre, ex.: hover) —
+ * aqui usadas para breakpoints, com `!important` para vencer o valor inline
+ * de desktop nas larguras menores.
+ *
+ * Breakpoints:
+ * - Mobile:  até 640px
+ * - Tablet:  641px a 1024px
+ * - Desktop: acima de 1024px (= o inline style original, sem overrides)
+ *
+ * Organização: uma seção por tela/componente, na ordem em que foram
+ * implementadas (Header -> Home -> Desafio -> Archive).
+ */
+
+/* =========================================================================
+ * HEADER (Header.tsx, Footer.tsx)
+ * ===================================================================== */
+
+@media (max-width: 1024px) {
+  .stima-header-container {
+    padding: 14px 24px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .stima-header-container {
+    flex-wrap: wrap;
+    justify-content: center !important;
+    row-gap: 10px !important;
+    padding: 12px 16px !important;
+  }
+  .stima-header-logo {
+    gap: 8px !important;
+  }
+  .stima-header-logo-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .stima-header-logo-text {
+    font-size: 18px !important;
+  }
+  .stima-header-nav {
+    width: 100%;
+    justify-content: center !important;
+    flex-wrap: wrap;
+    gap: 6px !important;
+  }
+  .stima-header-navbtn {
+    font-size: 13px !important;
+    padding: 8px 12px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+  .stima-header-theme-btn {
+    width: 44px !important;
+    height: 44px !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .stima-footer {
+    padding: 20px 24px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .stima-footer {
+    padding: 18px 16px !important;
+    font-size: 12px !important;
+    line-height: 1.5;
+  }
+}
+
+/* =========================================================================
+ * HOME (HomePage.tsx)
+ * ===================================================================== */
+
+@media (max-width: 1024px) {
+  .stima-home-main {
+    padding: 44px 24px 70px !important;
+  }
+  .stima-home-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    align-items: stretch !important;
+  }
+  .stima-home-hero-title {
+    font-size: 46px !important;
+    line-height: 1.04 !important;
+  }
+  .stima-home-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .stima-home-main {
+    padding: 32px 16px 60px !important;
+  }
+  .stima-home-badge-row {
+    gap: 8px !important;
+    flex-wrap: wrap;
+    margin-bottom: 18px !important;
+  }
+  .stima-home-hero-grid {
+    gap: 22px !important;
+    margin-bottom: 34px !important;
+  }
+  .stima-home-hero-title {
+    font-size: 32px !important;
+    line-height: 1.08 !important;
+  }
+  .stima-home-hero-text {
+    font-size: 15.5px !important;
+    margin-top: 14px !important;
+  }
+  .stima-home-progress-card {
+    padding: 20px 20px !important;
+  }
+  .stima-home-progress-value {
+    font-size: 40px !important;
+  }
+  .stima-home-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .stima-home-card {
+    padding: 22px 20px 20px !important;
+  }
+  .stima-home-archive-banner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    padding: 20px 20px !important;
+  }
+  .stima-home-archive-banner-cta {
+    width: 100%;
+    justify-content: center !important;
+  }
+}
+
+/* =========================================================================
+ * DESAFIO (ChallengePage.tsx + componentes de src/components/challenge/*)
+ *
+ * Decisão sobre o "scaffold guiado" no mobile (GuidedScaffold.tsx):
+ * optamos por MANTER a lista de microetapas empilhada verticalmente (como
+ * no desktop), em vez de transformá-la em um fluxo "uma etapa por tela"
+ * com paginação. Isso exigiria estado/navegação novos (índice da etapa
+ * atual, botões avançar/voltar) — ou seja, lógica de interação nova, fora
+ * do escopo desta tarefa (somente CSS/layout). Em vez disso, o modo guiado
+ * empilhado foi otimizado para mobile com: cards de etapa com mais
+ * respiro vertical, campos numéricos com alvo de toque maior e sem zoom
+ * automático do iOS (fonte >= 16px), e tipografia/paddings reduzidos para
+ * não estourar a largura da tela. O usuário rola a lista normalmente,
+ * apoiado pela barra de progresso no topo do bloco.
+ * ===================================================================== */
+
+@media (max-width: 1024px) {
+  .stima-challenge-main {
+    padding: 32px 24px 90px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .stima-challenge-main {
+    padding: 22px 16px 80px !important;
+  }
+  .stima-challenge-title {
+    font-size: 26px !important;
+    margin-bottom: 14px !important;
+  }
+  .stima-challenge-prompt {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+    padding: 16px 16px !important;
+    margin-bottom: 26px !important;
+  }
+  .stima-challenge-input-card {
+    padding: 18px 16px !important;
+  }
+}
+
+/* ---- HintBox.tsx ---- */
+@media (max-width: 640px) {
+  .stima-hint-header {
+    padding: 13px 14px !important;
+    font-size: 14px !important;
+    gap: 10px !important;
+  }
+  .stima-hint-body {
+    padding: 0 14px 14px 14px !important;
+    font-size: 14px !important;
+  }
+}
+
+/* ---- ModeSelector.tsx ---- */
+@media (max-width: 640px) {
+  .stima-mode-toggle-wrap {
+    display: flex !important;
+    width: 100%;
+  }
+  .stima-mode-toggle-btn {
+    flex: 1 1 0 !important;
+    padding: 10px 8px !important;
+    font-size: 13px !important;
+    text-align: center;
+    min-height: 44px !important;
+  }
+}
+
+/* ---- GuidedScaffold.tsx ---- */
+@media (max-width: 640px) {
+  .stima-scaffold-step-card {
+    padding: 14px 14px !important;
+  }
+  .stima-scaffold-feedback {
+    max-width: 100% !important;
+  }
+  .stima-scaffold-formula-box {
+    padding: 16px 16px !important;
+  }
+  .stima-scaffold-formula-body {
+    font-size: 15px !important;
+  }
+}
+
+/* ---- FinalEstimateInput.tsx ---- */
+@media (max-width: 640px) {
+  .stima-final-check-btn {
+    width: 100% !important;
+  }
+}
+
+/* ---- NumberMagnitudeField.tsx ----
+ * Campo mais usado do site: em telas pequenas garantimos alvo de toque
+ * confortável e fonte >= 16px em input/select para não disparar o zoom
+ * automático do iOS Safari ao focar.
+ */
+@media (max-width: 640px) {
+  .stima-num-wrap-step {
+    max-width: 100% !important;
+    padding: 7px 8px 7px 12px !important;
+  }
+  .stima-num-wrap-final {
+    min-width: 0 !important;
+    width: 100%;
+  }
+  .stima-num-input-step {
+    font-size: 18px !important;
+    padding: 9px 0 !important;
+  }
+  .stima-num-input-final {
+    font-size: 22px !important;
+  }
+  .stima-num-select {
+    font-size: 16px !important;
+    padding: 11px 10px !important;
+    min-height: 44px !important;
+  }
+  .stima-num-unit {
+    font-size: 13px !important;
+  }
+}
+
+/* ---- ResultsPanel.tsx ---- */
+@media (max-width: 640px) {
+  .stima-results-card {
+    padding: 20px 18px !important;
+  }
+  .stima-results-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+  .stima-results-header-row > div {
+    text-align: left !important;
+  }
+  .stima-results-big-value {
+    font-size: 22px !important;
+  }
+  .stima-results-verdict {
+    padding: 12px 14px !important;
+  }
+  .stima-results-reasoning-row {
+    padding: 14px 0 !important;
+    gap: 12px !important;
+  }
+  .stima-results-reasoning-label-row {
+    flex-wrap: wrap;
+  }
+  .stima-results-ref-card {
+    padding: 18px 16px !important;
+  }
+  .stima-results-ref-value {
+    font-size: 22px !important;
+  }
+  .stima-results-back-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ---- GoBeyondPanel.tsx ---- */
+@media (max-width: 640px) {
+  .stima-gobeyond-wrap {
+    padding: 20px 16px 22px !important;
+    margin-top: 22px !important;
+  }
+  .stima-gobeyond-paragraph {
+    font-size: 14.5px !important;
+  }
+  .stima-gobeyond-strategic-box {
+    padding: 14px 16px !important;
+  }
+  .stima-gobeyond-strategic-text {
+    font-size: 15px !important;
+  }
+  .stima-gobeyond-whatif-premise {
+    font-size: 15px !important;
+  }
+}
+
+/* =========================================================================
+ * ARCHIVE (ArchivePage.tsx)
+ * ===================================================================== */
+
+@media (max-width: 1024px) {
+  .stima-archive-main {
+    padding: 40px 24px 70px !important;
+  }
+  .stima-archive-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .stima-archive-main {
+    padding: 30px 16px 60px !important;
+  }
+  .stima-archive-title {
+    font-size: 30px !important;
+    margin-bottom: 8px !important;
+  }
+  .stima-archive-subtitle {
+    font-size: 15px !important;
+    margin-bottom: 26px !important;
+  }
+  .stima-archive-filters-col {
+    gap: 12px !important;
+    margin-bottom: 26px !important;
+  }
+  .stima-archive-filter-row {
+    gap: 8px !important;
+  }
+  .stima-archive-filter-label {
+    width: 100% !important;
+  }
+  .stima-archive-pill {
+    padding: 7px 12px !important;
+    font-size: 13px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+  .stima-archive-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .stima-archive-card {
+    padding: 18px !important;
+  }
+}

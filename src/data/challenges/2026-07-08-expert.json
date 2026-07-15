@@ -1,0 +1,74 @@
+{
+  "id": "2026-07-08-expert",
+  "theme": "Saúde",
+  "level": "Expert",
+  "publishedAt": "2026-07-08",
+  "title": "Mercado de planos de saúde corporativos em SP",
+  "teaser": "Qual o faturamento anual dos planos de saúde empresariais na cidade?",
+  "prompt": "Qual é o faturamento anual (em R$) das operadoras de planos de saúde com contratos empresariais (planos coletivos) para empresas sediadas na cidade de São Paulo?",
+  "unit": "por ano",
+  "currency": true,
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no número de trabalhadores formais na cidade: alguns milhões de pessoas com carteira assinada."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Trabalhadores formais, % com plano de saúde pela empresa e mensalidade média por vida."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique trabalhadores cobertos pela mensalidade média e por 12 meses."
+    }
+  ],
+  "solution": {
+    "referenceValue": { "amount": 11.3, "magnitude": "bilhoes" },
+    "referenceRange": {
+      "min": { "amount": 7, "magnitude": "bilhoes" },
+      "max": { "amount": 16, "magnitude": "bilhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Trabalhadores formais na cidade",
+        "value": "~6.000.000",
+        "note": "Empregos com carteira assinada no município."
+      },
+      {
+        "label": "Cobertura por plano corporativo",
+        "value": "~35% → 2.100.000",
+        "note": "Nem toda empresa oferece plano; startups e pequenas empresas cobrem menos."
+      },
+      {
+        "label": "Mensalidade média por vida",
+        "value": "~R$ 450/mês",
+        "note": "Varia muito por faixa etária e tipo de plano."
+      },
+      {
+        "label": "Faturamento anual",
+        "value": "2.100.000 × 450 × 12 ≈ R$ 11,3 bi"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "A saúde suplementar corporativa é um dos maiores mercados de serviços B2B do país, e a sinistralidade crescente pressiona as margens das operadoras.",
+    "strategicQuestion": "Se a sinistralidade média subisse de 80% para 95%, qual reajuste percentual seria necessário para manter a rentabilidade das operadoras?",
+    "opportunities": [
+      "Planos de saúde com coparticipação inteligente",
+      "Telemedicina para reduzir sinistralidade",
+      "Autogestão de saúde para grandes empresas",
+      "Corretoras digitais de benefícios"
+    ],
+    "discussions": [
+      "Sustentabilidade financeira da saúde suplementar",
+      "Regulação da ANS sobre reajustes"
+    ],
+    "whatIf": {
+      "premise": "…metade das grandes empresas migrasse para planos de autogestão?",
+      "questions": [
+        "Como isso mudaria a receita das operadoras tradicionais?",
+        "Quais riscos as empresas assumiriam ao se tornarem 'seguradoras' de si mesmas?"
+      ]
+    }
+  }
+}

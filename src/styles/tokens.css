@@ -1,0 +1,81 @@
+/*
+ * Tokens de design extraídos de:
+ * design-original/Fermi - Desafios de Estimativa.dc.html
+ *
+ * Mantém o mesmo sistema de temas do design original:
+ * - `:root` e `[data-theme="dark"]` compartilham os valores padrão (escuro).
+ * - `[data-theme="light"]` sobrescreve para o tema claro.
+ * O tema ativo é controlado escrevendo o atributo `data-theme` em <html>
+ * (ver lógica de toggle de tema, que será conectada pelo agente ui-builder).
+ */
+
+:root,
+[data-theme='dark'] {
+  --page-bg:
+    radial-gradient(120% 42% at 50% 0%, rgba(255, 106, 69, 0.16), transparent 55%),
+    radial-gradient(120% 40% at 82% 4%, rgba(123, 91, 208, 0.18), transparent 55%),
+    linear-gradient(180deg, #0c1740 0%, #05091c 62%);
+  --bg: #070d24;
+  --card: #101a3e;
+  --card-2: #15214c;
+  --border: #293668;
+  --border-faint: #1b2650;
+  --border-2: #313f79;
+  --border-strong: #45548f;
+  --muted: #26305e;
+  --text: #f4f5fc;
+  --text-bright: #ffffff;
+  --text-2: #c4c9e8;
+  --text-3: #cdd2ee;
+  --dim: #9096c6;
+  --faint: #6a719e;
+  --faint2: #868dbc;
+  --accent: #ff6a45;
+  --accent-hi: #ff8f72;
+  --on-accent: #0b143a;
+  --accent2: #6675f0;
+  --accent-chip: rgba(255, 106, 69, 0.15);
+  --accent-chip-bd: rgba(255, 106, 69, 0.42);
+  --accent-glow: rgba(255, 106, 69, 0.28);
+  --band-bg: rgba(255, 106, 69, 0.34);
+  --band-bd: rgba(255, 106, 69, 0.75);
+  --warn: #ff8f72;
+  --warn-bg: rgba(255, 143, 114, 0.12);
+  --warn-bd: rgba(255, 143, 114, 0.4);
+  --header-bg: rgba(7, 13, 36, 0.85);
+}
+
+[data-theme='light'] {
+  --page-bg:
+    radial-gradient(130% 46% at 50% 0%, rgba(255, 106, 69, 0.22), transparent 55%),
+    radial-gradient(120% 44% at 80% 0%, rgba(123, 91, 208, 0.16), transparent 55%),
+    linear-gradient(180deg, #fdf2ef 0%, #f3f3fb 100%);
+  --bg: #f5f4fc;
+  --card: #ffffff;
+  --card-2: #faf7fc;
+  --border: #e6e2f4;
+  --border-faint: #ece9f6;
+  --border-2: #e0dbf2;
+  --border-strong: #bfc5ee;
+  --muted: #e8e4f4;
+  --text: #0d1b45;
+  --text-bright: #0a1638;
+  --text-2: #454d78;
+  --text-3: #484f7a;
+  --dim: #565e8c;
+  --faint: #5c6390;
+  --faint2: #8087ad;
+  --accent: #f0522f;
+  --accent-hi: #d8431f;
+  --on-accent: #ffffff;
+  --accent2: #4b5ae6;
+  --accent-chip: rgba(240, 82, 47, 0.14);
+  --accent-chip-bd: rgba(240, 82, 47, 0.45);
+  --accent-glow: rgba(240, 82, 47, 0.25);
+  --band-bg: rgba(240, 82, 47, 0.3);
+  --band-bd: rgba(240, 82, 47, 0.7);
+  --warn: #c14a1f;
+  --warn-bg: rgba(240, 82, 47, 0.12);
+  --warn-bd: rgba(240, 82, 47, 0.42);
+  --header-bg: rgba(245, 244, 252, 0.85);
+}

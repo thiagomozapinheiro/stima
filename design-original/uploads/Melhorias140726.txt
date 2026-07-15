@@ -1,0 +1,291 @@
+Quero redesenhar principalmente a página de resolução dos desafios, incorporando as funcionalidades descritas abaixo.
+
+1. Dois modos de resolução
+
+Cada desafio deverá oferecer dois modos de uso:
+
+Raciocínio guiado
+Raciocínio livre
+
+O usuário deverá conseguir escolher o modo antes de começar o desafio e também alternar entre eles, desde que fique claro que a mudança poderá reorganizar a área de resposta.
+
+Criar um seletor visual elegante e muito fácil de entender.
+
+Exemplo:
+
+[ Raciocínio guiado ] [ Raciocínio livre ]
+
+O modo selecionado deve ficar claramente destacado.
+
+Adicionar uma explicação curta abaixo ou em um tooltip:
+
+Raciocínio guiado
+
+Divida o problema em etapas, estime cada variável e construa sua resposta progressivamente.
+
+Raciocínio livre
+
+Estruture o problema do seu jeito e registre apenas sua linha de raciocínio e estimativa final.
+
+Evitar termos que façam o usuário sentir que um modo é correto e o outro inferior.
+
+2. Funcionamento do raciocínio guiado
+
+No modo de raciocínio guiado, cada problema será previamente quebrado pelo administrador em pequenas partes ou variáveis estimáveis.
+
+O sistema deverá apresentar uma sequência de microetapas para o usuário preencher.
+
+O objetivo é fazer com que a pessoa construa a estimativa final progressivamente, em vez de tentar chegar imediatamente a um número.
+
+Exemplo de problema
+
+Quantos cachorros estão latindo no mundo neste momento?
+
+O raciocínio guiado poderia ser dividido em campos como:
+
+Etapa 1 — Universo analisado
+Quantas pessoas existem no mundo?
+Quantas pessoas existem, em média, por residência?
+Qual percentual das residências possui pelo menos um cachorro?
+Etapa 2 — Número de cachorros
+Quantos cachorros existem, em média, por residência que possui cachorro?
+Quantos cachorros isso representa no total?
+Etapa 3 — Probabilidade de latido
+Qual percentual dos cachorros está acordado neste momento?
+Entre os cachorros acordados, qual percentual está latindo em um dado instante?
+Etapa 4 — Resultado estimado
+Quantos cachorros estariam latindo neste momento?
+
+Cada microetapa deve conter:
+
+uma pergunta curta;
+uma explicação opcional;
+um campo para valor numérico;
+uma lista suspensa de ordem de grandeza;
+uma unidade, quando necessário;
+possibilidade de dica contextual;
+indicação visual de progresso.
+
+Exemplo de campo:
+
+[ 250,0 ] [ milhões ▼ ] [ pessoas ]
+
+O usuário poderá preencher os campos progressivamente.
+
+Sempre que possível, mostrar visualmente a fórmula construída com esses elementos.
+
+Exemplo:
+
+Residências com cachorro
+= população mundial
+÷ pessoas por residência
+× percentual de residências com cachorro
+
+O design deve ajudar o usuário a perceber como as variáveis se conectam.
+
+Usar recursos como:
+
+linhas discretas entre as etapas;
+blocos conectados;
+equações visuais;
+cards progressivos;
+numeração das etapas;
+resumo lateral ou inferior da estrutura construída.
+
+Evitar transformar a experiência em uma planilha pesada ou em um formulário burocrático.
+
+Ela deve parecer um exercício intelectual fluido e agradável.
+
+3. Avaliação das estimativas intermediárias
+
+Quando o usuário apertar o botão para conferir a resposta, o sistema deverá avaliar não apenas a estimativa final, mas também os campos intermediários preenchidos no modo guiado.
+
+Cada variável cadastrada pelo administrador poderá ter uma faixa considerada plausível.
+
+Exemplo:
+
+População mundial aceitável:
+
+mínimo: 7 bilhões;
+máximo: 9 bilhões.
+
+O site deverá comparar o valor do usuário com essa faixa, considerando conjuntamente:
+
+o número digitado;
+a ordem de grandeza selecionada;
+a unidade da variável.
+Forma de exibição
+
+Para as estimativas intermediárias, a avaliação deve ser discreta e pedagógica.
+
+Não usar linguagem como:
+
+errado;
+resposta incorreta;
+falhou;
+muito ruim.
+
+Usar mensagens como:
+
+Dentro da faixa esperada
+
+Sua premissa está dentro de uma faixa plausível para esta estimativa.
+
+Abaixo da faixa esperada
+
+Sua premissa ficou abaixo da faixa usada na solução de referência.
+
+Acima da faixa esperada
+
+Sua premissa ficou acima da faixa usada na solução de referência.
+
+Sem faixa definida
+
+Essa premissa pode variar bastante. Compare seu raciocínio com a solução proposta.
+
+A avaliação das microestimativas não deve receber a mesma ênfase visual da resposta final.
+
+Ela deve aparecer como informação complementar, usando:
+
+pequenos ícones;
+bordas discretas;
+texto curto;
+cores suaves;
+feedback individual abaixo de cada campo.
+
+Evitar uma grande quantidade de vermelho ou aparência de correção escolar.
+
+O objetivo é estimular reflexão, não punição.
+
+Além da indicação da faixa, mostrar o valor de referência utilizado pela solução, quando adequado.
+
+Exemplo:
+
+Sua estimativa: 2,5 bilhões
+Faixa de referência: 1,4 a 2,0 bilhões
+4. Campo de estimativa final
+
+Melhorar a forma como a resposta final do usuário é registrada antes de clicar em “Conferir estimativa”.
+
+Atualmente, o usuário não deve digitar toda a resposta em um campo textual genérico.
+
+Criar um componente numérico dividido em três partes:
+
+campo numérico;
+seletor de ordem de grandeza;
+unidade da resposta.
+Campo numérico
+
+O usuário poderá digitar valores entre:
+
+0,0;
+999,9.
+
+Aceitar uma casa decimal.
+
+Exemplos válidos:
+
+5
+5,5
+120
+999,9
+
+O campo deve:
+
+aceitar vírgula ou ponto como separador decimal;
+converter internamente para um formato numérico;
+impedir números negativos;
+impedir valores maiores que 999,9;
+impedir caracteres não numéricos;
+usar uma tipografia grande e clara;
+ser otimizado para celular.
+Seletor de ordem de grandeza
+
+Ao lado do campo numérico, criar uma lista suspensa contendo:
+
+unidades;
+mil;
+milhões;
+bilhões;
+trilhões.
+
+Exemplo:
+
+[ 125,5 ] [ milhões ▼ ]
+
+A interface deverá considerar número e ordem de grandeza como uma única resposta.
+
+Exemplos:
+
+125,5 + milhões = 125.500.000;
+2,3 + bilhões = 2.300.000.000;
+800 + mil = 800.000;
+45 + unidades = 45.
+
+O sistema deverá normalizar o valor antes de compará-lo à faixa esperada da resposta.
+
+Essa lógica deve funcionar tanto para:
+
+a estimativa final;
+os campos intermediários do raciocínio guiado.
+Unidade da resposta
+
+Ao lado ou abaixo, mostrar a unidade esperada.
+
+Exemplos:
+
+[ 125,5 ] [ milhões ▼ ] cachorros
+
+[ 3,2 ] [ bilhões ▼ ] litros por dia
+
+[ 450,0 ] [ mil ▼ ] pessoas
+
+A unidade será definida no cadastro do desafio e não deverá ser alterada pelo usuário
+
+6. Modo de raciocínio livre
+
+No modo livre, o usuário não verá os campos obrigatórios de microestimativas.
+Usar o mesmo componente:
+
+[ número ] [ ordem de grandeza ] [ unidade ]
+
+As três dicas do desafio devem continuar disponíveis.
+
+Ao conferir, avaliar apenas a estimativa final numericamente.
+
+7. Adição da categoria “Fora da Caixa”
+
+Adicionar uma nova categoria de desafios chamada:
+
+Fora da Caixa
+
+Essa categoria deverá substituir a categoria atual:
+
+Planeta & Espaço
+
+Os desafios de Fora da Caixa serão problemas de Fermi menos diretamente relacionados a negócios ou aplicações profissionais.
+
+Eles deverão envolver perguntas curiosas, inesperadas ou aparentemente impossíveis, mas que ainda possam ser estruturadas com premissas ligadas à realidade.
+
+Exemplos:
+
+Quantos sonhos acontecem no mundo por noite?
+Quantos cachorros devem estar latindo neste momento?
+Quantas pessoas estão cantando no mundo agora?
+Quantas bolas de golfe estão no ar neste momento?
+Quantas moedas estão perdidas dentro de sofás?
+Quantas fotografias de comida serão tiradas hoje?
+Quantas pessoas estão usando um elevador neste instante?
+Quantos guarda-chuvas estão abertos no mundo agora?
+
+A categoria não deve parecer infantil ou puramente humorística.
+
+Ela deve transmitir:
+
+curiosidade;
+criatividade;
+exploração;
+liberdade de raciocínio;
+aplicação do método em fenômenos inesperados.
+
+Os desafios Fora da Caixa vão substituir os desafios de Planeta e Espaço que ficarão alocados em outras categorias.

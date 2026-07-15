@@ -1,0 +1,122 @@
+{
+  "id": "2026-07-14-iniciante",
+  "theme": "Mobilidade e Infra",
+  "level": "Iniciante",
+  "publishedAt": "2026-07-14",
+  "title": "Corridas de aplicativo em São Paulo",
+  "teaser": "Quantas corridas de Uber/99 acontecem num dia útil na cidade?",
+  "prompt": "Quantas corridas de transporte por aplicativo (Uber, 99, etc.) são realizadas na cidade de São Paulo em um dia útil típico?",
+  "unit": "corridas/dia",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no tamanho da cidade: São Paulo tem cerca de 12 milhões de habitantes."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Da população, quantos são usuários ativos de transporte por app? E quantas corridas cada um faz por dia?"
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique usuários ativos pela frequência diária média de corridas por usuário."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Universo de usuários",
+        "steps": [
+          {
+            "question": "Quantas pessoas vivem na cidade de São Paulo?",
+            "explanation": "Ancore num número que você já conhece de cabeça.",
+            "unit": "pessoas",
+            "defaultMagnitude": "milhoes",
+            "acceptableRange": {
+              "min": { "amount": 10, "magnitude": "milhoes" },
+              "max": { "amount": 13, "magnitude": "milhoes" }
+            }
+          },
+          {
+            "question": "Que fração da população usa apps de transporte com frequência?",
+            "explanation": "Nem todo mundo usa; pense em uma porcentagem.",
+            "unit": "%",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 15, "magnitude": "unidades" },
+              "max": { "amount": 35, "magnitude": "unidades" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Frequência de uso",
+        "steps": [
+          {
+            "question": "Quantas corridas um usuário ativo faz, em média, por dia?",
+            "explanation": "Pode ser um número menor que 1.",
+            "unit": "corridas/dia",
+            "defaultMagnitude": "unidades",
+            "hint": "Pense na sua própria semana: quantas vezes você pediria um carro por dia?",
+            "acceptableRange": {
+              "min": { "amount": 0.2, "magnitude": "unidades" },
+              "max": { "amount": 0.6, "magnitude": "unidades" }
+            }
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Corridas por dia",
+      "lines": [
+        { "operator": "", "text": "população da cidade" },
+        { "operator": "×", "text": "% de usuários ativos" },
+        { "operator": "×", "text": "corridas por usuário/dia" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 1.2, "magnitude": "milhoes" },
+    "referenceRange": {
+      "min": { "amount": 800, "magnitude": "mil" },
+      "max": { "amount": 1.6, "magnitude": "milhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "População da cidade",
+        "value": "12.000.000",
+        "note": "São Paulo tem ~12 milhões de habitantes."
+      },
+      {
+        "label": "Usuários ativos de apps",
+        "value": "~25% → 3.000.000",
+        "note": "Cerca de 1 em cada 4 pessoas usa apps com frequência."
+      },
+      {
+        "label": "Corridas por dia",
+        "value": "3.000.000 × 0,4 ≈ 1.200.000",
+        "note": "Cada usuário pede ~0,4 corrida por dia."
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "As corridas por app são hoje uma fatia central da mobilidade urbana: sustentam a renda de centenas de milhares de motoristas.",
+    "strategicQuestion": "Se a demanda cresce 15% ao ano, qual seria o ponto de equilíbrio de uma frota própria de veículos elétricos operada pela plataforma?",
+    "opportunities": [
+      "Frotas de veículos elétricos dedicadas a apps",
+      "Crédito, seguro e serviços financeiros para motoristas",
+      "Integração com o transporte público",
+      "Publicidade durante a corrida"
+    ],
+    "discussions": [
+      "Economia de plataformas e regulação do trabalho por app",
+      "Planejamento urbano e mobilidade compartilhada"
+    ],
+    "whatIf": {
+      "premise": "…metade das corridas passasse a ser feita em veículos autônomos?",
+      "questions": [
+        "Como isso mudaria o custo por corrida e a receita dos motoristas atuais?",
+        "Quais seriam os efeitos sociais e econômicos sobre o emprego na cidade?"
+      ]
+    }
+  }
+}

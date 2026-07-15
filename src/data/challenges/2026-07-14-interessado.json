@@ -1,0 +1,112 @@
+{
+  "id": "2026-07-14-interessado",
+  "theme": "Mobilidade e Infra",
+  "level": "Interessado",
+  "publishedAt": "2026-07-14",
+  "title": "Diesel consumido pelos ônibus",
+  "teaser": "Quantos litros a frota municipal de ônibus queima por dia?",
+  "prompt": "Quantos litros de óleo diesel são consumidos pela frota de ônibus urbanos de São Paulo em um dia?",
+  "unit": "litros/dia",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no tamanho da frota: algo na casa de 10 a 15 mil ônibus."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Frota, km por ônibus/dia e km por litro de diesel."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Calcule os km totais e divida pela eficiência (km/litro)."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Tamanho da frota",
+        "steps": [
+          {
+            "question": "Quantos ônibus municipais a cidade opera?",
+            "explanation": "Ordem de milhares.",
+            "unit": "ônibus",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 10, "magnitude": "mil" },
+              "max": { "amount": 15, "magnitude": "mil" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Uso diário e consumo",
+        "steps": [
+          {
+            "question": "Quantos km cada ônibus roda por dia?",
+            "unit": "km/dia",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 150, "magnitude": "unidades" },
+              "max": { "amount": 250, "magnitude": "unidades" }
+            }
+          },
+          {
+            "question": "Quantos km o ônibus faz por litro de diesel?",
+            "explanation": "Veículo pesado, parando muito no trânsito. Esta etapa não tem faixa de referência definida.",
+            "unit": "km/litro",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Litros por dia",
+      "lines": [
+        { "operator": "", "text": "frota de ônibus" },
+        { "operator": "×", "text": "km por ônibus/dia" },
+        { "operator": "÷", "text": "km por litro" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 1.12, "magnitude": "milhoes" },
+    "referenceRange": {
+      "min": { "amount": 700, "magnitude": "mil" },
+      "max": { "amount": 1.5, "magnitude": "milhoes" }
+    },
+    "reasoning": [
+      { "label": "Frota de ônibus", "value": "~14.000", "note": "Frota municipal aproximada." },
+      {
+        "label": "Km por ônibus/dia",
+        "value": "~200 km",
+        "note": "~40 km/h × ~5 h efetivas de operação."
+      },
+      {
+        "label": "Consumo",
+        "value": "~2,5 km/litro",
+        "note": "Veículo pesado, parando o tempo todo no trânsito."
+      },
+      { "label": "Litros por dia", "value": "14.000 × 200 ÷ 2,5 ≈ 1.120.000" }
+    ]
+  },
+  "goBeyond": {
+    "impact": "O diesel da frota é um dos maiores custos do sistema e uma grande fonte de emissões urbanas.",
+    "strategicQuestion": "Qual é o payback de eletrificar a frota ao longo de 10 anos?",
+    "opportunities": [
+      "Fabricação e financiamento de ônibus elétricos",
+      "Infraestrutura de recarga",
+      "Softwares de otimização de rotas"
+    ],
+    "discussions": [
+      "Transição energética no transporte público",
+      "Qualidade do ar e saúde pública"
+    ],
+    "whatIf": {
+      "premise": "…o preço do diesel dobrasse em um ano?",
+      "questions": [
+        "Quanto isso adicionaria ao custo anual do sistema?",
+        "Como afetaria a tarifa e o ritmo de eletrificação da frota?"
+      ]
+    }
+  }
+}

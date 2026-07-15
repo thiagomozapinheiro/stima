@@ -1,0 +1,119 @@
+{
+  "id": "2026-07-08-interessado",
+  "theme": "Saúde",
+  "level": "Interessado",
+  "publishedAt": "2026-07-08",
+  "title": "Caixas de analgésico vendidas por dia",
+  "teaser": "Quantas caixas de dipirona/paracetamol as farmácias de SP vendem por dia?",
+  "prompt": "Quantas caixas de analgésicos comuns (dipirona, paracetamol etc.) são vendidas, somadas, pelas farmácias da cidade de São Paulo em um dia médio?",
+  "unit": "caixas/dia",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no número de farmácias na cidade: alguns milhares de estabelecimentos."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Farmácias, clientes por dia e a fração que compra analgésico."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique farmácias × clientes/dia × % que compra analgésico."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Rede de farmácias",
+        "steps": [
+          {
+            "question": "Quantas farmácias existem na cidade de São Paulo?",
+            "explanation": "Some redes grandes e farmácias independentes de bairro.",
+            "unit": "farmácias",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 4, "magnitude": "mil" },
+              "max": { "amount": 7, "magnitude": "mil" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Fluxo de clientes e conversão",
+        "steps": [
+          {
+            "question": "Quantos clientes cada farmácia atende por dia, em média?",
+            "unit": "clientes/dia",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 150, "magnitude": "unidades" },
+              "max": { "amount": 300, "magnitude": "unidades" }
+            }
+          },
+          {
+            "question": "Que fração dos clientes compra algum analgésico naquele dia?",
+            "explanation": "Esta etapa não tem faixa de referência definida.",
+            "unit": "%",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Caixas vendidas por dia",
+      "lines": [
+        { "operator": "", "text": "farmácias na cidade" },
+        { "operator": "×", "text": "clientes por farmácia/dia" },
+        { "operator": "×", "text": "% que compra analgésico" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 165, "magnitude": "mil" },
+    "referenceRange": {
+      "min": { "amount": 100, "magnitude": "mil" },
+      "max": { "amount": 250, "magnitude": "mil" }
+    },
+    "reasoning": [
+      {
+        "label": "Farmácias na cidade",
+        "value": "~5.500",
+        "note": "Rede de farmácias independentes e grandes redes."
+      },
+      {
+        "label": "Clientes por farmácia/dia",
+        "value": "~200"
+      },
+      {
+        "label": "% que compra analgésico",
+        "value": "~15%",
+        "note": "Um dos itens mais vendidos em qualquer farmácia."
+      },
+      {
+        "label": "Caixas por dia",
+        "value": "5.500 × 200 × 0,15 ≈ 165.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "O mercado de analgésicos de venda livre (OTC) é um dos pilares de receita das farmácias e reflete hábitos de automedicação da população.",
+    "strategicQuestion": "Se um novo genérico entrasse 30% mais barato, que fatia de mercado ele poderia capturar em um ano?",
+    "opportunities": [
+      "Genéricos e similares de baixo custo",
+      "Farmácias de manipulação sob demanda",
+      "Delivery expresso de medicamentos",
+      "Programas de fidelidade em farmácias"
+    ],
+    "discussions": [
+      "Automedicação e saúde pública",
+      "Concorrência entre redes de farmácia e genéricos"
+    ],
+    "whatIf": {
+      "premise": "…a venda de analgésicos comuns passasse a exigir receita médica?",
+      "questions": [
+        "Como isso mudaria o fluxo das farmácias e das UBS?",
+        "Qual seria o impacto na indústria farmacêutica?"
+      ]
+    }
+  }
+}

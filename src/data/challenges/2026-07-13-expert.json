@@ -1,0 +1,73 @@
+{
+  "id": "2026-07-13-expert",
+  "theme": "Fora da Caixa",
+  "level": "Expert",
+  "publishedAt": "2026-07-13",
+  "title": "Guarda-chuvas comprados de última hora",
+  "teaser": "Quantos guarda-chuvas os paulistanos compram por ano quando são pegos de surpresa pela chuva?",
+  "prompt": "Quantos guarda-chuvas são comprados por ano na cidade de São Paulo por pessoas que foram pegas de surpresa pela chuva (compra de emergência em bancas, farmácias e lojas de conveniência)?",
+  "unit": "guarda-chuvas/ano",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no número de dias de chuva na cidade por ano: cerca de 100 a 120 dias."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Em quantos desses dias chove de surpresa (sem previsão clara) e quantas pessoas compram guarda-chuva de emergência nesses dias?"
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique dias de chuva de surpresa pelo número de compras de emergência por dia."
+    }
+  ],
+  "solution": {
+    "referenceValue": { "amount": 350, "magnitude": "mil" },
+    "referenceRange": {
+      "min": { "amount": 150, "magnitude": "mil" },
+      "max": { "amount": 600, "magnitude": "mil" }
+    },
+    "reasoning": [
+      {
+        "label": "Dias de chuva por ano em SP",
+        "value": "~110",
+        "note": "Clima subtropical úmido, chuvas concentradas no verão."
+      },
+      {
+        "label": "Dias de chuva 'de surpresa'",
+        "value": "~40% → 44 dias",
+        "note": "Boa parte da chuva já é prevista com antecedência pelos apps de tempo."
+      },
+      {
+        "label": "Compras de emergência por dia de surpresa",
+        "value": "~8.000",
+        "note": "Pessoas comprando em bancas, farmácias e lojas de conveniência perto do trabalho ou de casa."
+      },
+      {
+        "label": "Guarda-chuvas comprados por ano",
+        "value": "44 × 8.000 ≈ 352.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "Compras de emergência como essa mostram como eventos climáticos pontuais criam picos de demanda para produtos baratos e de baixa fidelidade de marca.",
+    "strategicQuestion": "Uma rede de conveniência poderia usar dados de previsão do tempo para prever e reabastecer guarda-chuvas em tempo real — quanto isso valeria em vendas incrementais?",
+    "opportunities": [
+      "Reposição dinâmica de estoque baseada em previsão do tempo",
+      "Guarda-chuvas de aluguel em estações de metrô",
+      "Parcerias entre apps de clima e varejo local",
+      "Guarda-chuvas descartáveis de baixo custo em pontos de ônibus"
+    ],
+    "discussions": [
+      "Consumo por impulso ligado a eventos climáticos",
+      "Logística just-in-time no varejo urbano"
+    ],
+    "whatIf": {
+      "premise": "…metade das estações de metrô tivesse máquinas de aluguel de guarda-chuva por poucos minutos?",
+      "questions": [
+        "Quantas dessas compras de emergência migrariam para aluguel?",
+        "Que efeito isso teria no consumo de plástico da cidade?"
+      ]
+    }
+  }
+}

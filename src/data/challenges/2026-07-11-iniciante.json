@@ -1,0 +1,109 @@
+{
+  "id": "2026-07-11-iniciante",
+  "theme": "Educação",
+  "level": "Iniciante",
+  "publishedAt": "2026-07-11",
+  "title": "Alunos de cursinho pré-vestibular em SP",
+  "teaser": "Quantos estudantes fazem cursinho pré-vestibular na cidade por ano?",
+  "prompt": "Quantos estudantes se matriculam em cursos pré-vestibulares (cursinhos) na cidade de São Paulo em um ano?",
+  "unit": "alunos/ano",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no número de estudantes que terminam o ensino médio na cidade todo ano."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Formandos do ensino médio e a fração deles (e de ex-alunos) que opta por cursinho."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique formandos pela % que faz cursinho."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Base de formandos",
+        "steps": [
+          {
+            "question": "Quantos estudantes concluem o ensino médio por ano na cidade de São Paulo?",
+            "explanation": "Some rede pública e privada.",
+            "unit": "alunos/ano",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 150, "magnitude": "mil" },
+              "max": { "amount": 220, "magnitude": "mil" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Adesão ao cursinho",
+        "steps": [
+          {
+            "question": "Que fração desses formandos (somada a quem já formou antes) se matricula em cursinho?",
+            "explanation": "Pense em quantos colegas seus faziam cursinho depois do 3º ano.",
+            "unit": "%",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 15, "magnitude": "unidades" },
+              "max": { "amount": 30, "magnitude": "unidades" }
+            }
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Alunos de cursinho por ano",
+      "lines": [
+        { "operator": "", "text": "formandos do ensino médio/ano" },
+        { "operator": "×", "text": "% que faz cursinho" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 36, "magnitude": "mil" },
+    "referenceRange": {
+      "min": { "amount": 25, "magnitude": "mil" },
+      "max": { "amount": 55, "magnitude": "mil" }
+    },
+    "reasoning": [
+      {
+        "label": "Formandos do ensino médio/ano",
+        "value": "~180.000",
+        "note": "Rede pública e privada somadas."
+      },
+      {
+        "label": "% que faz cursinho",
+        "value": "~20%",
+        "note": "Inclui também quem já se formou em anos anteriores e está tentando de novo."
+      },
+      {
+        "label": "Alunos de cursinho/ano",
+        "value": "180.000 × 0,20 ≈ 36.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "Os cursinhos são uma peça central na disputa por vagas nas universidades públicas mais concorridas do país.",
+    "strategicQuestion": "Se o ENEM passasse a ser 100% adaptativo (nível de dificuldade ajustado em tempo real), como isso mudaria a proposta de valor dos cursinhos?",
+    "opportunities": [
+      "Plataformas de ensino adaptativo com IA",
+      "Cursinhos populares gratuitos ou subsidiados",
+      "Bancos de questões e simulados online",
+      "Mentoria individualizada para redação"
+    ],
+    "discussions": [
+      "Desigualdade de acesso ao ensino superior",
+      "Efetividade do ensino por repetição de conteúdo"
+    ],
+    "whatIf": {
+      "premise": "…as universidades públicas usassem só a nota do ensino médio, sem vestibular?",
+      "questions": [
+        "O que aconteceria com a demanda por cursinhos?",
+        "Como as escolas mudariam sua forma de ensinar?"
+      ]
+    }
+  }
+}
