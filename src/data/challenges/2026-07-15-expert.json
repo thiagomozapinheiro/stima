@@ -1,0 +1,120 @@
+{
+  "id": "2026-07-15-expert",
+  "theme": "Consumo",
+  "level": "Expert",
+  "publishedAt": "2026-07-15",
+  "title": "Tênis de corrida e o efeito das canetas emagrecedoras",
+  "teaser": "Quantos pares extras de tênis de corrida a popularização das canetas emagrecedoras deve gerar em 5 anos?",
+  "prompt": "Com a popularização das canetas emagrecedoras (como Ozempic e Wegovy), mais pessoas estão perdendo peso e ganhando mobilidade para praticar exercícios. Quantos pares ADICIONAIS de tênis de corrida serão vendidos no mundo nos próximos 5 anos por causa desse efeito, além do que já seria vendido sem ele?",
+  "unit": "pares extras em 5 anos",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no número de pessoas que já usam canetas emagrecedoras hoje no mundo — está na casa das dezenas de milhões e crescendo rápido."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quantos desses usuários passam a correr como parte da rotina, e quantos pares extras de tênis cada novo corredor compra por ano."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique usuários, taxa de adoção da corrida, pares extras por ano e o período de 5 anos."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Base de usuários",
+        "steps": [
+          {
+            "question": "Quantas pessoas no mundo usam canetas emagrecedoras (tipo Ozempic/Wegovy/Mounjaro) hoje?",
+            "explanation": "Considere o público global, não só um país.",
+            "unit": "pessoas",
+            "defaultMagnitude": "milhoes",
+            "acceptableRange": {
+              "min": { "amount": 20, "magnitude": "milhoes" },
+              "max": { "amount": 45, "magnitude": "milhoes" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Efeito no comportamento",
+        "steps": [
+          {
+            "question": "Que fração desses usuários passa a correr regularmente como parte da manutenção do peso perdido?",
+            "explanation": "Pense em quem perde peso e ganha mobilidade — nem todos vão virar corredores.",
+            "unit": "%",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 5, "magnitude": "unidades" },
+              "max": { "amount": 15, "magnitude": "unidades" }
+            }
+          },
+          {
+            "question": "Quantos pares extras de tênis de corrida cada novo corredor compra por ano, além do que compraria sem esse hábito?",
+            "explanation": "Esse número é bem incerto — pense em alguém que começou a correr há pouco tempo. Esta etapa não tem faixa de referência definida.",
+            "unit": "pares/ano",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Pares extras em 5 anos",
+      "lines": [
+        { "operator": "", "text": "usuários de canetas emagrecedoras" },
+        { "operator": "×", "text": "% que passam a correr" },
+        { "operator": "×", "text": "pares extras por ano" },
+        { "operator": "×", "text": "5 anos" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 26, "magnitude": "milhoes" },
+    "referenceRange": {
+      "min": { "amount": 15, "magnitude": "milhoes" },
+      "max": { "amount": 45, "magnitude": "milhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Usuários de canetas emagrecedoras",
+        "value": "~35.000.000",
+        "note": "Estimativa global de usuários ativos, em rápido crescimento."
+      },
+      {
+        "label": "Adoção da corrida",
+        "value": "~10% → 3.500.000 novos corredores",
+        "note": "Fração dos usuários que ganha mobilidade e adota a corrida como hábito."
+      },
+      {
+        "label": "Consumo extra por corredor",
+        "value": "~1,5 par/ano"
+      },
+      {
+        "label": "Pares extras em 5 anos",
+        "value": "3.500.000 × 1,5 × 5 ≈ 26.250.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "Esse é um exemplo de efeito de segunda ordem: um medicamento de saúde metabólica alterando a demanda de uma indústria totalmente diferente, a de artigos esportivos.",
+    "strategicQuestion": "Quais outras indústrias de consumo (moda, alimentação, viagens) podem ser afetadas por efeitos de segunda ordem parecidos com o das canetas emagrecedoras?",
+    "opportunities": [
+      "Linhas de calçados e roupas esportivas voltadas a iniciantes na corrida",
+      "Parcerias entre laboratórios farmacêuticos e marcas esportivas",
+      "Aplicativos de acompanhamento de corrida voltados a quem está em tratamento"
+    ],
+    "discussions": [
+      "Efeitos de segunda ordem de inovações em saúde sobre outras indústrias",
+      "Como prever mudanças de demanda de consumo a partir de mudanças de comportamento em massa"
+    ],
+    "whatIf": {
+      "premise": "…o preço das canetas emagrecedoras caísse pela metade nos próximos 2 anos?",
+      "questions": [
+        "Quanto isso aceleraria a adoção e o efeito sobre a indústria esportiva?",
+        "Que outras categorias de consumo sentiriam esse mesmo choque de demanda?"
+      ]
+    }
+  }
+}

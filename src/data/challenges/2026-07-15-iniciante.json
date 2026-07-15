@@ -1,0 +1,121 @@
+{
+  "id": "2026-07-15-iniciante",
+  "theme": "Mobilidade e Infra",
+  "level": "Iniciante",
+  "publishedAt": "2026-07-15",
+  "title": "Combustível dos carros de passeio no Brasil",
+  "teaser": "Quantos litros carros de passeio consomem por dia no país inteiro?",
+  "prompt": "Quantos litros de combustível (gasolina + etanol) são consumidos por dia pelos carros de passeio — sem contar motos, ônibus ou caminhões — em todo o Brasil?",
+  "unit": "litros/dia",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no tamanho da frota: o Brasil tem uma das maiores frotas de automóveis do mundo, na casa das dezenas de milhões."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quantos carros existem, quantos km cada um roda por dia, e quantos km ele faz com 1 litro."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique a frota pela distância diária e divida pela eficiência média (km por litro)."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Tamanho da frota",
+        "steps": [
+          {
+            "question": "Quantos carros de passeio circulam no Brasil?",
+            "explanation": "Pense na frota nacional registrada, não só nas grandes cidades.",
+            "unit": "carros",
+            "defaultMagnitude": "milhoes",
+            "acceptableRange": {
+              "min": { "amount": 40, "magnitude": "milhoes" },
+              "max": { "amount": 50, "magnitude": "milhoes" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Uso diário e eficiência",
+        "steps": [
+          {
+            "question": "Quantos km cada carro roda, em média, por dia?",
+            "explanation": "Inclua trajetos curtos do dia a dia e viagens ocasionais, diluídos na média.",
+            "unit": "km/dia",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 20, "magnitude": "unidades" },
+              "max": { "amount": 40, "magnitude": "unidades" }
+            }
+          },
+          {
+            "question": "Quantos km o carro roda com 1 litro de combustível?",
+            "explanation": "Considere a mistura de carros a gasolina, etanol e flex rodando na cidade e na estrada. Esta etapa não tem faixa de referência definida.",
+            "unit": "km/litro",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Litros por dia",
+      "lines": [
+        { "operator": "", "text": "frota de carros de passeio" },
+        { "operator": "×", "text": "km rodados por carro/dia" },
+        { "operator": "÷", "text": "km por litro de combustível" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 123, "magnitude": "milhoes" },
+    "referenceRange": {
+      "min": { "amount": 90, "magnitude": "milhoes" },
+      "max": { "amount": 170, "magnitude": "milhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Frota de carros de passeio",
+        "value": "45.000.000",
+        "note": "Frota nacional aproximada de automóveis registrados."
+      },
+      {
+        "label": "Km rodados por dia",
+        "value": "~30 km",
+        "note": "Média entre uso urbano do dia a dia e viagens ocasionais."
+      },
+      {
+        "label": "Eficiência média",
+        "value": "~11 km/litro",
+        "note": "Mistura de carros a gasolina, etanol e flex."
+      },
+      {
+        "label": "Litros por dia",
+        "value": "45.000.000 × 30 ÷ 11 ≈ 123.000.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "O consumo de combustível dos carros de passeio movimenta boa parte da cadeia de distribuição de combustíveis do país e é uma fonte relevante de emissões nas cidades.",
+    "strategicQuestion": "Se 20% da frota migrasse para veículos elétricos na próxima década, qual seria o impacto na demanda por infraestrutura de recarga e na arrecadação de impostos sobre combustíveis?",
+    "opportunities": [
+      "Redes de recarga rápida para veículos elétricos",
+      "Programas de troca ou financiamento de carros mais eficientes",
+      "Serviços de gestão de frota e economia de combustível",
+      "Biocombustíveis de segunda geração"
+    ],
+    "discussions": [
+      "Transição energética no transporte individual",
+      "Impacto da eletrificação na arrecadação de impostos sobre combustíveis"
+    ],
+    "whatIf": {
+      "premise": "…o preço médio do combustível subisse 30% da noite para o dia?",
+      "questions": [
+        "Quanto isso reduziria a distância média rodada por carro?",
+        "Como isso aceleraria a migração para carros elétricos ou híbridos?"
+      ]
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "id": "2026-07-15-interessado",
+  "theme": "Mobilidade e Infra",
+  "level": "Interessado",
+  "publishedAt": "2026-07-15",
+  "title": "Faturamento de uma praça de pedágio movimentada",
+  "teaser": "Quanto uma praça de pedágio movimentada arrecada por ano no Brasil?",
+  "prompt": "Quanto arrecada, em média, uma praça de pedágio movimentada de uma rodovia concedida no Brasil, por ano?",
+  "unit": "por ano",
+  "currency": true,
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no fluxo de veículos: uma praça movimentada pode passar dezenas de milhares de veículos por dia."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quantos veículos passam por dia, quanto cada um paga em média (carros e caminhões pagam valores diferentes) e quantos dias por ano a praça arrecada."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique o fluxo diário pela tarifa média e pelo número de dias de cobrança no ano."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Fluxo de veículos",
+        "steps": [
+          {
+            "question": "Quantos veículos passam por uma praça de pedágio movimentada, por dia?",
+            "explanation": "Pense em uma rodovia com tráfego intenso entre duas regiões metropolitanas.",
+            "unit": "veículos/dia",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 20, "magnitude": "mil" },
+              "max": { "amount": 40, "magnitude": "mil" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Tarifa e período de cobrança",
+        "steps": [
+          {
+            "question": "Qual a tarifa média por veículo, considerando que caminhões pagam por eixo (valores múltiplos da tarifa de carro)?",
+            "explanation": "Uma média ponderada entre os muitos carros e os poucos, porém mais caros, caminhões.",
+            "unit": "R$/veículo",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 10, "magnitude": "unidades" },
+              "max": { "amount": 20, "magnitude": "unidades" }
+            }
+          },
+          {
+            "question": "Quantos dias por ano a praça arrecada pedágio?",
+            "explanation": "Praticamente o ano inteiro, mas pode haver dias de isenção ou manutenção. Esta etapa não tem faixa de referência definida.",
+            "unit": "dias/ano",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Faturamento anual",
+      "lines": [
+        { "operator": "", "text": "veículos por dia" },
+        { "operator": "×", "text": "tarifa média por veículo" },
+        { "operator": "×", "text": "dias de cobrança por ano" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 164, "magnitude": "milhoes" },
+    "referenceRange": {
+      "min": { "amount": 100, "magnitude": "milhoes" },
+      "max": { "amount": 250, "magnitude": "milhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Fluxo de veículos",
+        "value": "~30.000/dia",
+        "note": "Praça movimentada em rodovia concedida entre regiões metropolitanas."
+      },
+      {
+        "label": "Tarifa média",
+        "value": "~R$ 15/veículo",
+        "note": "Pondera carros (tarifa cheia) e caminhões (tarifa multiplicada por eixo)."
+      },
+      {
+        "label": "Dias de cobrança",
+        "value": "~365 dias/ano",
+        "note": "Pedágio é cobrado quase todos os dias do ano."
+      },
+      {
+        "label": "Faturamento anual",
+        "value": "30.000 × 15 × 365 ≈ R$ 164.000.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "As receitas de pedágio financiam a manutenção, duplicação e sinalização das rodovias concedidas, sendo a principal fonte de receita das concessionárias.",
+    "strategicQuestion": "Como a chegada da cobrança free-flow (sem cancela, via reconhecimento de placa) mudaria os custos operacionais dessa praça e o comportamento dos motoristas?",
+    "opportunities": [
+      "Sistemas de cobrança free-flow",
+      "Programas de fidelidade e tags para frotas comerciais",
+      "Serviços ao longo da via (conveniência, descanso) financiados pela concessão"
+    ],
+    "discussions": [
+      "Modelos de concessão e regulação de rodovias",
+      "Equidade tarifária entre carros de passeio e transporte de carga"
+    ],
+    "whatIf": {
+      "premise": "…metade dos caminhões que passam por essa praça migrasse para o transporte ferroviário na região?",
+      "questions": [
+        "Quanto a receita da praça cairia?",
+        "Como a concessionária poderia compensar essa perda de receita?"
+      ]
+    }
+  }
+}
