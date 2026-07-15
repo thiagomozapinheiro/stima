@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import Header, { type Screen } from './components/Header'
 import Footer from './components/Footer'
 import HomeContainer from './pages/HomeContainer'
@@ -46,6 +47,7 @@ function Layout() {
       </Routes>
 
       <Footer />
+      <Analytics />
     </div>
   )
 }
