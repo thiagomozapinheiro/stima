@@ -42,7 +42,7 @@ export default function Header({
           style={styles.logoWrap}
         >
           <span className="stima-header-logo-icon" style={styles.logoIconWrap}>
-            <img src="/stima-icon.png" alt="Stima" style={styles.logoImg} />
+            <img src="/logo.png" alt="Stima" style={styles.logoImg} />
           </span>
           <span className="stima-header-logo-text" style={styles.logoText}>
             Stima
