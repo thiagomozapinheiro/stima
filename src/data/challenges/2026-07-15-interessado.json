@@ -33,8 +33,14 @@
             "unit": "veículos/dia",
             "defaultMagnitude": "mil",
             "acceptableRange": {
-              "min": { "amount": 20, "magnitude": "mil" },
-              "max": { "amount": 40, "magnitude": "mil" }
+              "min": {
+                "amount": 20,
+                "magnitude": "mil"
+              },
+              "max": {
+                "amount": 40,
+                "magnitude": "mil"
+              }
             }
           }
         ]
@@ -48,8 +54,14 @@
             "unit": "R$/veículo",
             "defaultMagnitude": "unidades",
             "acceptableRange": {
-              "min": { "amount": 10, "magnitude": "unidades" },
-              "max": { "amount": 20, "magnitude": "unidades" }
+              "min": {
+                "amount": 10,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 20,
+                "magnitude": "unidades"
+              }
             }
           },
           {
@@ -64,17 +76,35 @@
     "formula": {
       "title": "Faturamento anual",
       "lines": [
-        { "operator": "", "text": "veículos por dia" },
-        { "operator": "×", "text": "tarifa média por veículo" },
-        { "operator": "×", "text": "dias de cobrança por ano" }
+        {
+          "operator": "",
+          "text": "veículos por dia"
+        },
+        {
+          "operator": "×",
+          "text": "tarifa média por veículo"
+        },
+        {
+          "operator": "×",
+          "text": "dias de cobrança por ano"
+        }
       ]
     }
   },
   "solution": {
-    "referenceValue": { "amount": 164, "magnitude": "milhoes" },
+    "referenceValue": {
+      "amount": 164,
+      "magnitude": "milhoes"
+    },
     "referenceRange": {
-      "min": { "amount": 100, "magnitude": "milhoes" },
-      "max": { "amount": 250, "magnitude": "milhoes" }
+      "min": {
+        "amount": 100,
+        "magnitude": "milhoes"
+      },
+      "max": {
+        "amount": 250,
+        "magnitude": "milhoes"
+      }
     },
     "reasoning": [
       {
@@ -105,10 +135,6 @@
       "Sistemas de cobrança free-flow",
       "Programas de fidelidade e tags para frotas comerciais",
       "Serviços ao longo da via (conveniência, descanso) financiados pela concessão"
-    ],
-    "discussions": [
-      "Modelos de concessão e regulação de rodovias",
-      "Equidade tarifária entre carros de passeio e transporte de carga"
     ],
     "whatIf": {
       "premise": "…metade dos caminhões que passam por essa praça migrasse para o transporte ferroviário na região?",

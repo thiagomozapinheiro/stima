@@ -32,8 +32,14 @@
             "unit": "pessoas",
             "defaultMagnitude": "milhoes",
             "acceptableRange": {
-              "min": { "amount": 20, "magnitude": "milhoes" },
-              "max": { "amount": 45, "magnitude": "milhoes" }
+              "min": {
+                "amount": 20,
+                "magnitude": "milhoes"
+              },
+              "max": {
+                "amount": 45,
+                "magnitude": "milhoes"
+              }
             }
           }
         ]
@@ -47,8 +53,14 @@
             "unit": "%",
             "defaultMagnitude": "unidades",
             "acceptableRange": {
-              "min": { "amount": 5, "magnitude": "unidades" },
-              "max": { "amount": 15, "magnitude": "unidades" }
+              "min": {
+                "amount": 5,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 15,
+                "magnitude": "unidades"
+              }
             }
           },
           {
@@ -63,18 +75,39 @@
     "formula": {
       "title": "Pares extras em 5 anos",
       "lines": [
-        { "operator": "", "text": "usuários de canetas emagrecedoras" },
-        { "operator": "×", "text": "% que passam a correr" },
-        { "operator": "×", "text": "pares extras por ano" },
-        { "operator": "×", "text": "5 anos" }
+        {
+          "operator": "",
+          "text": "usuários de canetas emagrecedoras"
+        },
+        {
+          "operator": "×",
+          "text": "% que passam a correr"
+        },
+        {
+          "operator": "×",
+          "text": "pares extras por ano"
+        },
+        {
+          "operator": "×",
+          "text": "5 anos"
+        }
       ]
     }
   },
   "solution": {
-    "referenceValue": { "amount": 26, "magnitude": "milhoes" },
+    "referenceValue": {
+      "amount": 26,
+      "magnitude": "milhoes"
+    },
     "referenceRange": {
-      "min": { "amount": 15, "magnitude": "milhoes" },
-      "max": { "amount": 45, "magnitude": "milhoes" }
+      "min": {
+        "amount": 15,
+        "magnitude": "milhoes"
+      },
+      "max": {
+        "amount": 45,
+        "magnitude": "milhoes"
+      }
     },
     "reasoning": [
       {
@@ -104,10 +137,6 @@
       "Linhas de calçados e roupas esportivas voltadas a iniciantes na corrida",
       "Parcerias entre laboratórios farmacêuticos e marcas esportivas",
       "Aplicativos de acompanhamento de corrida voltados a quem está em tratamento"
-    ],
-    "discussions": [
-      "Efeitos de segunda ordem de inovações em saúde sobre outras indústrias",
-      "Como prever mudanças de demanda de consumo a partir de mudanças de comportamento em massa"
     ],
     "whatIf": {
       "premise": "…o preço das canetas emagrecedoras caísse pela metade nos próximos 2 anos?",

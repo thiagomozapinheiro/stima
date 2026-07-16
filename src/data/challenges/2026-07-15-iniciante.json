@@ -32,8 +32,14 @@
             "unit": "carros",
             "defaultMagnitude": "milhoes",
             "acceptableRange": {
-              "min": { "amount": 40, "magnitude": "milhoes" },
-              "max": { "amount": 50, "magnitude": "milhoes" }
+              "min": {
+                "amount": 40,
+                "magnitude": "milhoes"
+              },
+              "max": {
+                "amount": 50,
+                "magnitude": "milhoes"
+              }
             }
           }
         ]
@@ -47,8 +53,14 @@
             "unit": "km/dia",
             "defaultMagnitude": "unidades",
             "acceptableRange": {
-              "min": { "amount": 20, "magnitude": "unidades" },
-              "max": { "amount": 40, "magnitude": "unidades" }
+              "min": {
+                "amount": 20,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 40,
+                "magnitude": "unidades"
+              }
             }
           },
           {
@@ -63,17 +75,35 @@
     "formula": {
       "title": "Litros por dia",
       "lines": [
-        { "operator": "", "text": "frota de carros de passeio" },
-        { "operator": "×", "text": "km rodados por carro/dia" },
-        { "operator": "÷", "text": "km por litro de combustível" }
+        {
+          "operator": "",
+          "text": "frota de carros de passeio"
+        },
+        {
+          "operator": "×",
+          "text": "km rodados por carro/dia"
+        },
+        {
+          "operator": "÷",
+          "text": "km por litro de combustível"
+        }
       ]
     }
   },
   "solution": {
-    "referenceValue": { "amount": 123, "magnitude": "milhoes" },
+    "referenceValue": {
+      "amount": 123,
+      "magnitude": "milhoes"
+    },
     "referenceRange": {
-      "min": { "amount": 90, "magnitude": "milhoes" },
-      "max": { "amount": 170, "magnitude": "milhoes" }
+      "min": {
+        "amount": 90,
+        "magnitude": "milhoes"
+      },
+      "max": {
+        "amount": 170,
+        "magnitude": "milhoes"
+      }
     },
     "reasoning": [
       {
@@ -105,10 +135,6 @@
       "Programas de troca ou financiamento de carros mais eficientes",
       "Serviços de gestão de frota e economia de combustível",
       "Biocombustíveis de segunda geração"
-    ],
-    "discussions": [
-      "Transição energética no transporte individual",
-      "Impacto da eletrificação na arrecadação de impostos sobre combustíveis"
     ],
     "whatIf": {
       "premise": "…o preço médio do combustível subisse 30% da noite para o dia?",

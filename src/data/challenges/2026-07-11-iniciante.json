@@ -32,8 +32,14 @@
             "unit": "alunos/ano",
             "defaultMagnitude": "mil",
             "acceptableRange": {
-              "min": { "amount": 150, "magnitude": "mil" },
-              "max": { "amount": 220, "magnitude": "mil" }
+              "min": {
+                "amount": 150,
+                "magnitude": "mil"
+              },
+              "max": {
+                "amount": 220,
+                "magnitude": "mil"
+              }
             }
           }
         ]
@@ -47,8 +53,14 @@
             "unit": "%",
             "defaultMagnitude": "unidades",
             "acceptableRange": {
-              "min": { "amount": 15, "magnitude": "unidades" },
-              "max": { "amount": 30, "magnitude": "unidades" }
+              "min": {
+                "amount": 15,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 30,
+                "magnitude": "unidades"
+              }
             }
           }
         ]
@@ -57,16 +69,31 @@
     "formula": {
       "title": "Alunos de cursinho por ano",
       "lines": [
-        { "operator": "", "text": "formandos do ensino médio/ano" },
-        { "operator": "×", "text": "% que faz cursinho" }
+        {
+          "operator": "",
+          "text": "formandos do ensino médio/ano"
+        },
+        {
+          "operator": "×",
+          "text": "% que faz cursinho"
+        }
       ]
     }
   },
   "solution": {
-    "referenceValue": { "amount": 36, "magnitude": "mil" },
+    "referenceValue": {
+      "amount": 36,
+      "magnitude": "mil"
+    },
     "referenceRange": {
-      "min": { "amount": 25, "magnitude": "mil" },
-      "max": { "amount": 55, "magnitude": "mil" }
+      "min": {
+        "amount": 25,
+        "magnitude": "mil"
+      },
+      "max": {
+        "amount": 55,
+        "magnitude": "mil"
+      }
     },
     "reasoning": [
       {
@@ -93,10 +120,6 @@
       "Cursinhos populares gratuitos ou subsidiados",
       "Bancos de questões e simulados online",
       "Mentoria individualizada para redação"
-    ],
-    "discussions": [
-      "Desigualdade de acesso ao ensino superior",
-      "Efetividade do ensino por repetição de conteúdo"
     ],
     "whatIf": {
       "premise": "…as universidades públicas usassem só a nota do ensino médio, sem vestibular?",

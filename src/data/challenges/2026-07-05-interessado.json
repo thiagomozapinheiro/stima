@@ -31,8 +31,14 @@
             "unit": "pessoas",
             "defaultMagnitude": "milhoes",
             "acceptableRange": {
-              "min": { "amount": 1.5, "magnitude": "milhoes" },
-              "max": { "amount": 3.5, "magnitude": "milhoes" }
+              "min": {
+                "amount": 1.5,
+                "magnitude": "milhoes"
+              },
+              "max": {
+                "amount": 3.5,
+                "magnitude": "milhoes"
+              }
             }
           }
         ]
@@ -47,8 +53,14 @@
             "defaultMagnitude": "unidades",
             "hint": "Bolas de várzea desgastam bem mais rápido que bolas oficiais guardadas com cuidado.",
             "acceptableRange": {
-              "min": { "amount": 1, "magnitude": "unidades" },
-              "max": { "amount": 3, "magnitude": "unidades" }
+              "min": {
+                "amount": 1,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 3,
+                "magnitude": "unidades"
+              }
             }
           }
         ]
@@ -57,16 +69,31 @@
     "formula": {
       "title": "Bolas vendidas por ano",
       "lines": [
-        { "operator": "", "text": "praticantes regulares" },
-        { "operator": "÷", "text": "anos entre compras (vida útil média da bola)" }
+        {
+          "operator": "",
+          "text": "praticantes regulares"
+        },
+        {
+          "operator": "÷",
+          "text": "anos entre compras (vida útil média da bola)"
+        }
       ]
     }
   },
   "solution": {
-    "referenceValue": { "amount": 1.5, "magnitude": "milhoes" },
+    "referenceValue": {
+      "amount": 1.5,
+      "magnitude": "milhoes"
+    },
     "referenceRange": {
-      "min": { "amount": 900, "magnitude": "mil" },
-      "max": { "amount": 2.2, "magnitude": "milhoes" }
+      "min": {
+        "amount": 900,
+        "magnitude": "mil"
+      },
+      "max": {
+        "amount": 2.2,
+        "magnitude": "milhoes"
+      }
     },
     "reasoning": [
       {
@@ -93,10 +120,6 @@
       "Marketplaces de material esportivo usado",
       "Patrocínio de campeonatos de várzea",
       "Aluguel de quadras society por app"
-    ],
-    "discussions": [
-      "Economia do futebol amador",
-      "Sustentabilidade na fabricação de artigos esportivos"
     ],
     "whatIf": {
       "premise": "…toda bola vendida tivesse um chip de rastreamento de uso (gamificação)?",

@@ -1,0 +1,138 @@
+{
+  "id": "2026-07-16-interessado",
+  "theme": "Tecnologia",
+  "level": "Interessado",
+  "publishedAt": "2026-07-16",
+  "title": "Drones para entregas de delivery no Brasil",
+  "teaser": "Quantos drones seriam necessários para entregar toda a comida pedida por apps no país?",
+  "prompt": "Quantos drones seriam necessários para assumir TODAS as entregas de delivery de comida feitas no Brasil, considerando o volume de pedidos em um dia típico?",
+  "unit": "drones",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no volume de pedidos: os grandes apps de delivery somados fazem milhões de entregas por dia no Brasil."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quantas entregas acontecem por dia e quantas entregas um único drone conseguiria fazer nesse mesmo dia."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Divida o total de entregas diárias pela capacidade de entrega de um drone."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Volume de entregas",
+        "steps": [
+          {
+            "question": "Quantas entregas de delivery de comida acontecem no Brasil, por dia?",
+            "explanation": "Some mentalmente os grandes apps (iFood e concorrentes).",
+            "unit": "entregas/dia",
+            "defaultMagnitude": "milhoes",
+            "acceptableRange": {
+              "min": {
+                "amount": 3,
+                "magnitude": "milhoes"
+              },
+              "max": {
+                "amount": 6,
+                "magnitude": "milhoes"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Capacidade de um drone",
+        "steps": [
+          {
+            "question": "Quantas entregas um único drone consegue fazer por dia?",
+            "explanation": "Considere o tempo de voo, pouso, decolagem e recarga da bateria entre uma entrega e outra.",
+            "unit": "entregas/dia",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": {
+                "amount": 10,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 20,
+                "magnitude": "unidades"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Drones necessários",
+      "lines": [
+        {
+          "operator": "",
+          "text": "entregas de delivery por dia"
+        },
+        {
+          "operator": "÷",
+          "text": "entregas por drone/dia"
+        }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": {
+      "amount": 267,
+      "magnitude": "mil"
+    },
+    "referenceRange": {
+      "min": {
+        "amount": 150,
+        "magnitude": "mil"
+      },
+      "max": {
+        "amount": 600,
+        "magnitude": "mil"
+      }
+    },
+    "reasoning": [
+      {
+        "label": "Entregas de delivery de comida por dia",
+        "value": "~4.000.000",
+        "note": "Somando os principais aplicativos de delivery no Brasil."
+      },
+      {
+        "label": "Capacidade de um drone",
+        "value": "~15 entregas/dia",
+        "note": "Considerando voo, pouso, decolagem e recarga de bateria entre entregas."
+      },
+      {
+        "label": "Drones necessários",
+        "value": "4.000.000 ÷ 15 ≈ 267.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "Entregas por drone prometem reduzir o tempo e o custo por pedido, mas dependem de regulação do espaço aéreo urbano e de baterias mais eficientes.",
+    "strategicQuestion": "Que investimento em infraestrutura (estações de recarga, corredores aéreos) seria necessário para viabilizar uma frota desse tamanho nas grandes cidades brasileiras?",
+    "opportunities": [
+      "Redes de estações de pouso e recarga para drones",
+      "Softwares de gestão de tráfego aéreo urbano",
+      "Seguros específicos para entregas autônomas",
+      "Baterias de troca rápida para frotas de drones"
+    ],
+    "materiaisComplementares": [
+      {
+        "titulo": "iFood começa a usar drones para entregas",
+        "url": "https://g1.globo.com/tecnologia/noticia/2026/06/01/ifood-entrega-drones.ghtml"
+      }
+    ],
+    "whatIf": {
+      "premise": "…metade da frota de entregadores humanos fosse substituída por drones em 5 anos?",
+      "questions": [
+        "Como isso afetaria o emprego de milhões de entregadores no país?",
+        "Que novos empregos poderiam surgir para operar e manter essa frota de drones?"
+      ]
+    }
+  }
+}

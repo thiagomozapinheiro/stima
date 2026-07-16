@@ -32,8 +32,14 @@
             "unit": "farmácias",
             "defaultMagnitude": "mil",
             "acceptableRange": {
-              "min": { "amount": 4, "magnitude": "mil" },
-              "max": { "amount": 7, "magnitude": "mil" }
+              "min": {
+                "amount": 4,
+                "magnitude": "mil"
+              },
+              "max": {
+                "amount": 7,
+                "magnitude": "mil"
+              }
             }
           }
         ]
@@ -46,8 +52,14 @@
             "unit": "clientes/dia",
             "defaultMagnitude": "unidades",
             "acceptableRange": {
-              "min": { "amount": 150, "magnitude": "unidades" },
-              "max": { "amount": 300, "magnitude": "unidades" }
+              "min": {
+                "amount": 150,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 300,
+                "magnitude": "unidades"
+              }
             }
           },
           {
@@ -62,17 +74,35 @@
     "formula": {
       "title": "Caixas vendidas por dia",
       "lines": [
-        { "operator": "", "text": "farmácias na cidade" },
-        { "operator": "×", "text": "clientes por farmácia/dia" },
-        { "operator": "×", "text": "% que compra analgésico" }
+        {
+          "operator": "",
+          "text": "farmácias na cidade"
+        },
+        {
+          "operator": "×",
+          "text": "clientes por farmácia/dia"
+        },
+        {
+          "operator": "×",
+          "text": "% que compra analgésico"
+        }
       ]
     }
   },
   "solution": {
-    "referenceValue": { "amount": 165, "magnitude": "mil" },
+    "referenceValue": {
+      "amount": 165,
+      "magnitude": "mil"
+    },
     "referenceRange": {
-      "min": { "amount": 100, "magnitude": "mil" },
-      "max": { "amount": 250, "magnitude": "mil" }
+      "min": {
+        "amount": 100,
+        "magnitude": "mil"
+      },
+      "max": {
+        "amount": 250,
+        "magnitude": "mil"
+      }
     },
     "reasoning": [
       {
@@ -103,10 +133,6 @@
       "Farmácias de manipulação sob demanda",
       "Delivery expresso de medicamentos",
       "Programas de fidelidade em farmácias"
-    ],
-    "discussions": [
-      "Automedicação e saúde pública",
-      "Concorrência entre redes de farmácia e genéricos"
     ],
     "whatIf": {
       "premise": "…a venda de analgésicos comuns passasse a exigir receita médica?",

@@ -102,6 +102,11 @@ input::placeholder {
   color: var(--accent);
 }
 
+.stima-gobeyond-material-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 .stima-input-wrap:focus-within {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-glow);

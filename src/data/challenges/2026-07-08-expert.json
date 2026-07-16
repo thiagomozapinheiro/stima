@@ -23,10 +23,19 @@
     }
   ],
   "solution": {
-    "referenceValue": { "amount": 11.3, "magnitude": "bilhoes" },
+    "referenceValue": {
+      "amount": 11.3,
+      "magnitude": "bilhoes"
+    },
     "referenceRange": {
-      "min": { "amount": 7, "magnitude": "bilhoes" },
-      "max": { "amount": 16, "magnitude": "bilhoes" }
+      "min": {
+        "amount": 7,
+        "magnitude": "bilhoes"
+      },
+      "max": {
+        "amount": 16,
+        "magnitude": "bilhoes"
+      }
     },
     "reasoning": [
       {
@@ -58,10 +67,6 @@
       "Telemedicina para reduzir sinistralidade",
       "Autogestão de saúde para grandes empresas",
       "Corretoras digitais de benefícios"
-    ],
-    "discussions": [
-      "Sustentabilidade financeira da saúde suplementar",
-      "Regulação da ANS sobre reajustes"
     ],
     "whatIf": {
       "premise": "…metade das grandes empresas migrasse para planos de autogestão?",

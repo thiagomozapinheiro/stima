@@ -32,8 +32,14 @@
             "unit": "pessoas",
             "defaultMagnitude": "milhoes",
             "acceptableRange": {
-              "min": { "amount": 10, "magnitude": "milhoes" },
-              "max": { "amount": 13, "magnitude": "milhoes" }
+              "min": {
+                "amount": 10,
+                "magnitude": "milhoes"
+              },
+              "max": {
+                "amount": 13,
+                "magnitude": "milhoes"
+              }
             }
           },
           {
@@ -42,8 +48,14 @@
             "unit": "%",
             "defaultMagnitude": "unidades",
             "acceptableRange": {
-              "min": { "amount": 15, "magnitude": "unidades" },
-              "max": { "amount": 35, "magnitude": "unidades" }
+              "min": {
+                "amount": 15,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 35,
+                "magnitude": "unidades"
+              }
             }
           }
         ]
@@ -58,8 +70,14 @@
             "defaultMagnitude": "unidades",
             "hint": "Pense na sua própria semana: quantas vezes você pediria um carro por dia?",
             "acceptableRange": {
-              "min": { "amount": 0.2, "magnitude": "unidades" },
-              "max": { "amount": 0.6, "magnitude": "unidades" }
+              "min": {
+                "amount": 0.2,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 0.6,
+                "magnitude": "unidades"
+              }
             }
           }
         ]
@@ -68,17 +86,35 @@
     "formula": {
       "title": "Corridas por dia",
       "lines": [
-        { "operator": "", "text": "população da cidade" },
-        { "operator": "×", "text": "% de usuários ativos" },
-        { "operator": "×", "text": "corridas por usuário/dia" }
+        {
+          "operator": "",
+          "text": "população da cidade"
+        },
+        {
+          "operator": "×",
+          "text": "% de usuários ativos"
+        },
+        {
+          "operator": "×",
+          "text": "corridas por usuário/dia"
+        }
       ]
     }
   },
   "solution": {
-    "referenceValue": { "amount": 1.2, "magnitude": "milhoes" },
+    "referenceValue": {
+      "amount": 1.2,
+      "magnitude": "milhoes"
+    },
     "referenceRange": {
-      "min": { "amount": 800, "magnitude": "mil" },
-      "max": { "amount": 1.6, "magnitude": "milhoes" }
+      "min": {
+        "amount": 800,
+        "magnitude": "mil"
+      },
+      "max": {
+        "amount": 1.6,
+        "magnitude": "milhoes"
+      }
     },
     "reasoning": [
       {
@@ -107,9 +143,11 @@
       "Integração com o transporte público",
       "Publicidade durante a corrida"
     ],
-    "discussions": [
-      "Economia de plataformas e regulação do trabalho por app",
-      "Planejamento urbano e mobilidade compartilhada"
+    "materiaisComplementares": [
+      {
+        "titulo": "Artigo da McKinsey sobre o futuro da mobilidade urbana",
+        "url": "https://www.mckinsey.com/industries/automotive-and-assembly/our-insights"
+      }
     ],
     "whatIf": {
       "premise": "…metade das corridas passasse a ser feita em veículos autônomos?",

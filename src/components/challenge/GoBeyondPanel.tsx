@@ -1,17 +1,24 @@
 import type { CSSProperties } from 'react'
 
+export interface MaterialComplementarDisplay {
+  titulo: string
+  url: string
+}
+
 export interface GoBeyondPanelProps {
   impact: string
   strategicQuestion: string
   opportunities: string[]
-  discussions: string[]
+  /** Links de leitura complementar, exibidos dentro de "Oportunidades". Ausente/vazio = lista não aparece. */
+  materiaisComplementares?: MaterialComplementarDisplay[]
   whatIfPremise: string
   whatIfQuestions: string[]
 }
 
 /**
- * Painel "Vá além" — impactos, pergunta estratégica, oportunidades,
- * discussões e "E se...". Réplica visual da seção VÁ ALÉM.
+ * Painel "Vá além" — impactos, pergunta estratégica, oportunidades
+ * (com materiais complementares, se houver) e "E se...". Réplica visual da
+ * seção VÁ ALÉM.
  *
  * No design original, esta seção é sempre renderizada quando `checked` é
  * verdadeiro (não há um "sc-if" próprio para ausência de conteúdo). Como o
@@ -24,7 +31,7 @@ export default function GoBeyondPanel({
   impact,
   strategicQuestion,
   opportunities,
-  discussions,
+  materiaisComplementares,
   whatIfPremise,
   whatIfQuestions,
 }: GoBeyondPanelProps) {
@@ -59,23 +66,30 @@ export default function GoBeyondPanel({
             </div>
           ))}
         </div>
-      </div>
-
-      <div style={styles.sectionBordered}>
-        <h4 style={styles.h4}>Discussões que este desafio provoca</h4>
-        <p
-          className="stima-gobeyond-paragraph"
-          style={{ ...styles.paragraph, marginBottom: 14 }}
-        >
-          Se você gostou desse tema e quer saber mais, vale a pena ler sobre:
-        </p>
-        <div style={styles.tagRow}>
-          {discussions.map((t, i) => (
-            <span key={i} style={styles.tag}>
-              {t}
-            </span>
-          ))}
-        </div>
+        {materiaisComplementares && materiaisComplementares.length > 0 && (
+          <>
+            <p
+              className="stima-gobeyond-paragraph"
+              style={{ ...styles.paragraph, marginTop: 18, marginBottom: 10 }}
+            >
+              Vale a pena ler sobre:
+            </p>
+            <div className="stima-gobeyond-materials" style={styles.materialsCol}>
+              {materiaisComplementares.map((m, i) => (
+                <a
+                  key={i}
+                  href={m.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="stima-gobeyond-material-link"
+                  style={styles.materialLink}
+                >
+                  ↗ {m.titulo}
+                </a>
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
       <div style={styles.sectionBordered}>
@@ -158,14 +172,17 @@ const styles: Record<string, CSSProperties> = {
     marginTop: 8,
   },
   bulletText: { fontSize: 15.5, lineHeight: 1.5, color: 'var(--text-3)' },
-  tagRow: { display: 'flex', flexWrap: 'wrap', gap: 9 },
-  tag: {
-    background: 'var(--card)',
-    border: '1px solid var(--border-2)',
-    borderRadius: 999,
-    padding: '8px 15px',
-    fontSize: 14,
-    color: 'var(--text-bright)',
+  materialsCol: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 6,
+    marginTop: 14,
+  },
+  materialLink: {
+    fontSize: 13.5,
+    color: 'var(--dim)',
+    textDecoration: 'none',
+    width: 'fit-content',
   },
   whatIfPremise: {
     fontSize: 16,

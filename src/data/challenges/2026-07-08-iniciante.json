@@ -32,8 +32,14 @@
             "unit": "UBS",
             "defaultMagnitude": "unidades",
             "acceptableRange": {
-              "min": { "amount": 400, "magnitude": "unidades" },
-              "max": { "amount": 550, "magnitude": "unidades" }
+              "min": {
+                "amount": 400,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 550,
+                "magnitude": "unidades"
+              }
             }
           }
         ]
@@ -47,8 +53,14 @@
             "unit": "atendimentos/dia",
             "defaultMagnitude": "unidades",
             "acceptableRange": {
-              "min": { "amount": 80, "magnitude": "unidades" },
-              "max": { "amount": 150, "magnitude": "unidades" }
+              "min": {
+                "amount": 80,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 150,
+                "magnitude": "unidades"
+              }
             }
           }
         ]
@@ -57,16 +69,31 @@
     "formula": {
       "title": "Atendimentos por dia",
       "lines": [
-        { "operator": "", "text": "número de UBS na cidade" },
-        { "operator": "×", "text": "atendimentos por UBS/dia" }
+        {
+          "operator": "",
+          "text": "número de UBS na cidade"
+        },
+        {
+          "operator": "×",
+          "text": "atendimentos por UBS/dia"
+        }
       ]
     }
   },
   "solution": {
-    "referenceValue": { "amount": 52, "magnitude": "mil" },
+    "referenceValue": {
+      "amount": 52,
+      "magnitude": "mil"
+    },
     "referenceRange": {
-      "min": { "amount": 35, "magnitude": "mil" },
-      "max": { "amount": 70, "magnitude": "mil" }
+      "min": {
+        "amount": 35,
+        "magnitude": "mil"
+      },
+      "max": {
+        "amount": 70,
+        "magnitude": "mil"
+      }
     },
     "reasoning": [
       {
@@ -93,10 +120,6 @@
       "Telemedicina para triagem inicial",
       "Logística de insumos e medicamentos",
       "Aplicativos de agendamento e controle de fila"
-    ],
-    "discussions": [
-      "Capacidade da atenção básica no SUS",
-      "Uso de tecnologia na saúde pública"
     ],
     "whatIf": {
       "premise": "…cada UBS ganhasse um totem de triagem automatizada?",

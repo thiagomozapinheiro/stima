@@ -22,10 +22,19 @@
     }
   ],
   "solution": {
-    "referenceValue": { "amount": 350, "magnitude": "mil" },
+    "referenceValue": {
+      "amount": 350,
+      "magnitude": "mil"
+    },
     "referenceRange": {
-      "min": { "amount": 150, "magnitude": "mil" },
-      "max": { "amount": 600, "magnitude": "mil" }
+      "min": {
+        "amount": 150,
+        "magnitude": "mil"
+      },
+      "max": {
+        "amount": 600,
+        "magnitude": "mil"
+      }
     },
     "reasoning": [
       {
@@ -57,10 +66,6 @@
       "Guarda-chuvas de aluguel em estações de metrô",
       "Parcerias entre apps de clima e varejo local",
       "Guarda-chuvas descartáveis de baixo custo em pontos de ônibus"
-    ],
-    "discussions": [
-      "Consumo por impulso ligado a eventos climáticos",
-      "Logística just-in-time no varejo urbano"
     ],
     "whatIf": {
       "premise": "…metade das estações de metrô tivesse máquinas de aluguel de guarda-chuva por poucos minutos?",

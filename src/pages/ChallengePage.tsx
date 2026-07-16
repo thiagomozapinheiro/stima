@@ -214,7 +214,7 @@ export default function ChallengePage({
               impact={goBeyond.impact}
               strategicQuestion={goBeyond.strategicQuestion}
               opportunities={goBeyond.opportunities}
-              discussions={goBeyond.discussions}
+              materiaisComplementares={goBeyond.materiaisComplementares}
               whatIfPremise={goBeyond.whatIfPremise}
               whatIfQuestions={goBeyond.whatIfQuestions}
             />

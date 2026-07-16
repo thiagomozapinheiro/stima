@@ -154,7 +154,12 @@ O bloco **`goBeyond`** é a seção extra de pensamento estratégico.
 - `impact`: um parágrafo sobre os impactos do tema.
 - `strategicQuestion`: uma pergunta estratégica de destaque.
 - `opportunities`: uma lista de oportunidades (cada item é um texto).
-- `discussions`: uma lista de temas para discutir (cada item vira uma "tag").
+- `materiaisComplementares` (opcional): links de leitura complementar,
+  exibidos dentro de "Oportunidades", abaixo do texto "Vale a pena ler
+  sobre" (abrem em uma aba nova). **Se não tiver nenhum link para indicar,
+  apague o campo inteiro.** Cada item tem:
+  - `titulo`: o texto do link. Ex.: `"Artigo da McKinsey sobre o tema"`.
+  - `url`: o endereço completo, começando com `"https://"`.
 - `whatIf`: o bloco "E se...", com:
   - `premise`: a hipótese. Ex.: `"…metade das corridas fosse autônoma?"`.
   - `questions`: uma lista de perguntas provocativas.
@@ -174,6 +179,10 @@ O bloco **`goBeyond`** é a seção extra de pensamento estratégico.
 3. **Desafio sem a seção "Vá Além":**
    simplesmente **não inclua** o bloco `goBeyond`.
    → Veja o exemplo `challenges/2026-07-14-expert.json`.
+
+4. **"Vá Além" sem materiais complementares (sem links de leitura):**
+   dentro do bloco `goBeyond`, **não inclua** o campo `materiaisComplementares`.
+   → Veja o exemplo `challenges/2026-07-14-interessado.json`.
 
 ---
 

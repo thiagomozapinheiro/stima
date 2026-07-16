@@ -200,7 +200,7 @@ function ChallengeView({ challenge }: { challenge: Challenge }) {
         impact: challenge.goBeyond.impact,
         strategicQuestion: challenge.goBeyond.strategicQuestion,
         opportunities: challenge.goBeyond.opportunities,
-        discussions: challenge.goBeyond.discussions,
+        materiaisComplementares: challenge.goBeyond.materiaisComplementares,
         whatIfPremise: challenge.goBeyond.whatIf.premise,
         whatIfQuestions: challenge.goBeyond.whatIf.questions,
       }

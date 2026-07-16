@@ -1,0 +1,152 @@
+{
+  "id": "2026-07-16-iniciante",
+  "theme": "Tecnologia",
+  "level": "Iniciante",
+  "publishedAt": "2026-07-16",
+  "title": "Ondas quebrando nas costas do mundo",
+  "teaser": "Quantas ondas do mar quebram nas costas do mundo todos os dias?",
+  "prompt": "Quantas ondas do mar quebram nas costas do mundo todos os dias, somando o litoral de todos os continentes e ilhas?",
+  "unit": "ondas/dia",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore na extensão da costa mundial: some o litoral de todos os continentes e ilhas — a escala é de centenas de milhares de km."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quantas ondas quebram por dia num único ponto da praia, e que trecho de costa cada onda cobre ao quebrar."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Divida a costa mundial pelo trecho coberto por uma onda, e multiplique pelo número de ondas por dia em cada ponto."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Extensão da costa mundial",
+        "steps": [
+          {
+            "question": "Qual a extensão total das costas do mundo, somando todos os continentes e ilhas?",
+            "explanation": "Pense na escala de todas as praias e litorais do planeta.",
+            "unit": "km de costa",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": {
+                "amount": 350,
+                "magnitude": "mil"
+              },
+              "max": {
+                "amount": 600,
+                "magnitude": "mil"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Frequência e tamanho de uma onda",
+        "steps": [
+          {
+            "question": "De quanto em quanto tempo, em média, uma onda quebra num mesmo ponto da praia?",
+            "explanation": "Pense no ritmo típico das ondas chegando na areia.",
+            "unit": "segundos",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": {
+                "amount": 6,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 12,
+                "magnitude": "unidades"
+              }
+            }
+          },
+          {
+            "question": "Que trecho de costa, em metros, uma única onda cobre ao quebrar de uma só vez?",
+            "explanation": "Isso define o que conta como 'uma onda' ao longo da praia — é bem impreciso. Esta etapa não tem faixa de referência definida.",
+            "unit": "metros",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Ondas que quebram por dia no mundo",
+      "lines": [
+        {
+          "operator": "",
+          "text": "extensão da costa mundial (m)"
+        },
+        {
+          "operator": "÷",
+          "text": "trecho de costa coberto por uma onda (m)"
+        },
+        {
+          "operator": "×",
+          "text": "ondas que quebram por dia em um mesmo ponto"
+        }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": {
+      "amount": 54,
+      "magnitude": "bilhoes"
+    },
+    "referenceRange": {
+      "min": {
+        "amount": 15,
+        "magnitude": "bilhoes"
+      },
+      "max": {
+        "amount": 150,
+        "magnitude": "bilhoes"
+      }
+    },
+    "reasoning": [
+      {
+        "label": "Extensão da costa mundial",
+        "value": "~500.000 km",
+        "note": "Somando o litoral de todos os continentes e ilhas."
+      },
+      {
+        "label": "Ondas por dia em um mesmo ponto",
+        "value": "~10.800",
+        "note": "Uma onda a cada ~8 segundos, ao longo de 86.400 segundos no dia."
+      },
+      {
+        "label": "Trecho coberto por uma onda",
+        "value": "~100 metros",
+        "note": "Extensão de praia que conta como 'uma onda' ao quebrar de uma vez."
+      },
+      {
+        "label": "Ondas que quebram por dia no mundo",
+        "value": "(500.000.000 ÷ 100) × 10.800 ≈ 54.000.000.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "A energia liberada por todas essas ondas quebrando é imensa — é justamente esse fenômeno que tecnologias de captura de energia das ondas tentam aproveitar para gerar eletricidade.",
+    "strategicQuestion": "Se conseguíssemos captar mesmo uma fração pequena da energia dessas ondas, quanto isso poderia contribuir para a matriz energética de países com litoral extenso?",
+    "opportunities": [
+      "Tecnologias de captura de energia das ondas",
+      "Monitoramento costeiro por satélite e sensores",
+      "Turismo e esportes ligados à previsão de ondas, como o surfe"
+    ],
+    "materiaisComplementares": [
+      {
+        "titulo": "Geração de energia por ondas do mar",
+        "url": "https://neofeed.com.br/negocios/o-investimento-do-fundador-do-paypal-na-geracao-de-energia-pela-onda-do-mar/"
+      }
+    ],
+    "whatIf": {
+      "premise": "…toda essa energia das ondas fosse aproveitada com 100% de eficiência?",
+      "questions": [
+        "Quantas vezes o consumo elétrico mundial isso representaria?",
+        "Por que, na prática, é tão difícil chegar perto dessa eficiência?"
+      ]
+    }
+  }
+}

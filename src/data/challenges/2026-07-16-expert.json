@@ -1,0 +1,164 @@
+{
+  "id": "2026-07-16-expert",
+  "theme": "Consumo",
+  "level": "Expert",
+  "publishedAt": "2026-07-16",
+  "title": "Energia solar depois do pôr do sol",
+  "teaser": "Quantas residências uma usina solar abasteceria operando 2 horas a mais, com espelhos refletores?",
+  "prompt": "Uma startup propõe usar espelhos para refletir luz solar sobre usinas solares depois do pôr do sol, estendendo a geração de energia por cerca de 2 horas. Quantas residências poderiam ser abastecidas com a energia extra gerada nessas 2 horas por uma usina solar de grande porte?",
+  "unit": "residências",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore na capacidade de uma usina solar de grande porte: centenas de megawatts em plena luz do dia."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quanto da capacidade plena a usina consegue gerar com luz refletida por espelhos, e quanto uma casa consome de energia por dia."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique a capacidade pela fração aproveitada e pelas 2 horas extras, depois divida pelo consumo diário de uma residência."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Capacidade da usina",
+        "steps": [
+          {
+            "question": "Qual a capacidade de geração de uma usina solar de grande porte, em plena luz do dia?",
+            "unit": "MW",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": {
+                "amount": 200,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 500,
+                "magnitude": "unidades"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Geração extra e consumo residencial",
+        "steps": [
+          {
+            "question": "Durante essas duas horas extras com luz refletida por espelhos, a que fração da capacidade plena a usina consegue gerar?",
+            "explanation": "A luz refletida é mais fraca que a luz solar direta do meio-dia.",
+            "unit": "%",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": {
+                "amount": 15,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 40,
+                "magnitude": "unidades"
+              }
+            }
+          },
+          {
+            "question": "Quanto uma residência brasileira consome de energia, em média, por dia?",
+            "unit": "kWh/dia",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": {
+                "amount": 4,
+                "magnitude": "unidades"
+              },
+              "max": {
+                "amount": 8,
+                "magnitude": "unidades"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Residências abastecidas",
+      "lines": [
+        {
+          "operator": "",
+          "text": "capacidade da usina (MW)"
+        },
+        {
+          "operator": "×",
+          "text": "% de geração durante as 2h extras"
+        },
+        {
+          "operator": "×",
+          "text": "2 horas"
+        },
+        {
+          "operator": "÷",
+          "text": "consumo diário de uma residência (kWh)"
+        }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": {
+      "amount": 30,
+      "magnitude": "mil"
+    },
+    "referenceRange": {
+      "min": {
+        "amount": 7.5,
+        "magnitude": "mil"
+      },
+      "max": {
+        "amount": 100,
+        "magnitude": "mil"
+      }
+    },
+    "reasoning": [
+      {
+        "label": "Capacidade da usina em pleno sol",
+        "value": "~300 MW",
+        "note": "Uma usina solar de grande porte típica."
+      },
+      {
+        "label": "Geração durante as 2 horas extras",
+        "value": "~30% da capacidade plena",
+        "note": "A luz refletida por espelhos é mais fraca que a luz solar direta do meio-dia."
+      },
+      {
+        "label": "Consumo diário de uma residência",
+        "value": "~6 kWh/dia",
+        "note": "Consumo médio de uma residência brasileira."
+      },
+      {
+        "label": "Residências abastecidas",
+        "value": "300.000 kW × 0,30 × 2h ÷ 6 kWh ≈ 30.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "Estender a geração solar para depois do pôr do sol, mesmo que por poucas horas, pode reduzir a dependência de baterias e usinas termelétricas de reserva no horário de pico noturno.",
+    "strategicQuestion": "Se essa tecnologia de espelhos refletores se tornasse viável em escala, como isso mudaria o investimento em baterias para armazenamento de energia solar?",
+    "opportunities": [
+      "Fabricação e operação de espelhos refletores orbitais ou terrestres",
+      "Softwares de rastreamento e direcionamento de luz refletida",
+      "Contratos de fornecimento de energia para o horário de pico noturno"
+    ],
+    "materiaisComplementares": [
+      {
+        "titulo": "Energia solar após o pôr do sol",
+        "url": "https://neofeed.com.br/negocios/por-que-especialistas-estao-divididos-com-startup-que-vai-gerar-energia-solar-apos-o-por-do-sol/"
+      }
+    ],
+    "whatIf": {
+      "premise": "…essa tecnologia conseguisse estender a geração solar por 6 horas em vez de 2?",
+      "questions": [
+        "Quanto isso reduziria a necessidade de baterias para armazenamento?",
+        "Que impacto isso teria no preço da energia no horário de pico da noite?"
+      ]
+    }
+  }
+}

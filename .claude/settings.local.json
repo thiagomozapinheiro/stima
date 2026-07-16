@@ -57,7 +57,11 @@
       "Bash(ls vite.config.* vitest.config.*)",
       "Bash(cat vite.config.ts)",
       "Bash(powershell -Command 'Get-Process -Name node -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle -eq '\\\\'''\\\\'' } | Stop-Process -Force')",
-      "Bash(pkill -f vite)"
+      "Bash(pkill -f vite)",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('src/data/challenges/2026-07-14-iniciante.json','utf8'\\)\\); console.log\\('JSON OK'\\)\")",
+      "Bash(powershell -Command \"Get-Process -Id 11256 -ErrorAction SilentlyContinue | Select-Object Id,ProcessName,StartTime\")",
+      "Bash(powershell -Command \"Stop-Process -Id 11256 -Force -ErrorAction SilentlyContinue\")",
+      "Bash(powershell -Command \"Get-Process -Id 11256 -ErrorAction SilentlyContinue\")"
     ]
   }
 }

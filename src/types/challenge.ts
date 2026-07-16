@@ -160,6 +160,18 @@ export interface Solution {
   reasoning: ReasoningStep[]
 }
 
+/**
+ * Um link de leitura complementar (artigo, relatório, etc.) exibido dentro
+ * de "Oportunidades", abaixo do texto "Vale a pena ler sobre". Abre em uma
+ * aba nova.
+ */
+export interface MaterialComplementar {
+  /** Texto do link. Ex.: "Artigo da McKinsey sobre o tema". */
+  titulo: string
+  /** Endereço do link (URL completa, com "https://"). */
+  url: string
+}
+
 /** Bloco "E se..." dentro da seção "Vá Além". */
 export interface WhatIf {
   /** Premissa hipotética. Ex.: "…metade das corridas fosse feita por carros autônomos?". */
@@ -179,8 +191,11 @@ export interface GoBeyond {
   strategicQuestion: string
   /** Lista de oportunidades (negócios, tecnologias, etc.). */
   opportunities: string[]
-  /** Temas/discussões que o desafio provoca (viram "tags"). */
-  discussions: string[]
+  /**
+   * Links de leitura complementar (artigos, relatórios), exibidos dentro de
+   * "Oportunidades". OPCIONAL — omita o campo inteiro quando não houver nenhum.
+   */
+  materiaisComplementares?: MaterialComplementar[]
   /** Bloco "E se...". */
   whatIf: WhatIf
 }
