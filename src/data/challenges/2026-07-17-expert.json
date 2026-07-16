@@ -1,0 +1,121 @@
+{
+  "id": "2026-07-17-expert",
+  "theme": "Saúde",
+  "level": "Expert",
+  "publishedAt": "2026-07-17",
+  "title": "A economia do sono",
+  "teaser": "Quanto uma empresa de médio porte economizaria por ano com anéis de monitoramento do sono?",
+  "prompt": "Quanto uma empresa de médio porte economizaria por ano se transformasse anéis de monitoramento do sono em benefício corporativo para todos os funcionários?",
+  "unit": "por ano",
+  "currency": true,
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no tamanho de uma empresa de médio porte: algumas centenas de funcionários."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quanto a empresa ganha por funcionário com sono melhor monitorado, e que fração disso sobra depois de pagar pelos anéis. Pesquise o preço de um dispositivo desse tipo e estime quanto de receita poderia ser agregada à empresa."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique o número de funcionários pelo ganho bruto por pessoa e pela margem líquida que sobra depois do custo dos anéis."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Tamanho da empresa",
+        "steps": [
+          {
+            "question": "Quantos funcionários tem uma empresa de médio porte, no Brasil?",
+            "unit": "funcionários",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 200, "magnitude": "unidades" },
+              "max": { "amount": 400, "magnitude": "unidades" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Ganho e margem líquida por funcionário",
+        "steps": [
+          {
+            "question": "Quanto a empresa ganha, por funcionário e por ano, em produtividade e redução de afastamentos com sono melhor monitorado?",
+            "unit": "R$/funcionário/ano",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 800, "magnitude": "unidades" },
+              "max": { "amount": 2000, "magnitude": "unidades" }
+            }
+          },
+          {
+            "question": "Que fração desse ganho bruto sobra depois de descontar o custo de fornecer os anéis (aparelho + assinatura) a todo mundo?",
+            "explanation": "O preço desses dispositivos varia bastante por fornecedor e essa margem é incerta. Esta etapa não tem faixa de referência definida.",
+            "unit": "%",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Economia líquida anual da empresa",
+      "lines": [
+        { "operator": "", "text": "funcionários da empresa" },
+        { "operator": "×", "text": "ganho bruto por funcionário (R$/ano)" },
+        { "operator": "×", "text": "% que sobra líquido após o custo dos anéis" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 180, "magnitude": "mil" },
+    "referenceRange": {
+      "min": { "amount": 130, "magnitude": "mil" },
+      "max": { "amount": 250, "magnitude": "mil" }
+    },
+    "reasoning": [
+      {
+        "label": "Funcionários da empresa",
+        "value": "~300",
+        "note": "Uma empresa de médio porte típica no Brasil."
+      },
+      {
+        "label": "Ganho bruto por funcionário",
+        "value": "~R$ 1.500/ano",
+        "note": "Produtividade e menos afastamentos com sono melhor monitorado."
+      },
+      {
+        "label": "Margem líquida após o custo dos anéis",
+        "value": "~40%",
+        "note": "O que sobra do ganho bruto depois de pagar aparelho e assinatura para todo mundo."
+      },
+      {
+        "label": "Economia líquida anual da empresa",
+        "value": "300 × R$ 1.500 × 0,40 ≈ R$ 180.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "Benefícios corporativos ligados à saúde do sono são uma fronteira nova de RH — empresas de tecnologia e finanças já competem por quem oferece os pacotes de bem-estar mais completos.",
+    "strategicQuestion": "Vale mais a pena para uma empresa investir em anéis de sono individuais ou em mudanças estruturais (horário flexível, ambiente de trabalho) que melhorem o sono de todos de uma vez?",
+    "opportunities": [
+      "Programas corporativos de bem-estar com wearables de sono",
+      "Consultoria em produtividade baseada em dados de sono agregados e anonimizados",
+      "Seguros de saúde com desconto para quem monitora e melhora hábitos de sono"
+    ],
+    "materiaisComplementares": [
+      {
+        "titulo": "Vence quem dorme mais e melhor",
+        "url": "https://neofeed.com.br/finde/a-nova-obsessao-da-faria-lima-ceos-disputam-quem-dorme-mais-e-melhor/"
+      }
+    ],
+    "whatIf": {
+      "premise": "…a empresa exigisse que todo mundo compartilhasse os dados de sono com o RH?",
+      "questions": [
+        "Que problemas éticos e de privacidade isso levantaria?",
+        "Isso mudaria o comportamento das pessoas de forma diferente do que um benefício opcional?"
+      ]
+    }
+  }
+}

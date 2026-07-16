@@ -12,6 +12,7 @@
  * =====================================================================
  */
 import type { Challenge } from '../types/challenge'
+import { getTodayDateKeyBrasilia } from '../lib/todayDate'
 
 // `import.meta.glob(..., { eager: true })` é um recurso do Vite: no momento
 // do build ele injeta aqui, já importados, todos os JSON da pasta.
@@ -20,9 +21,21 @@ const modules = import.meta.glob('./challenges/*.json', { eager: true }) as unkn
   { default: Challenge }
 >
 
-/** Todos os desafios, do mais recente para o mais antigo (por data de publicação). */
+/**
+ * Todos os desafios já PUBLICADOS (ou seja, com `publishedAt` até hoje, no
+ * fuso de Brasília), do mais recente para o mais antigo.
+ *
+ * Um desafio com `publishedAt` no futuro existe no código mas fica
+ * invisível — não entra aqui, então não aparece na Home nem no Arquivo, e
+ * `getChallengeById` também não o encontra por link direto — até a data
+ * virar. Isso permite cadastrar desafios com antecedência sem publicá-los
+ * cedo demais. A checagem é feita uma vez, ao carregar a página; se o site
+ * ficar aberto passando da meia-noite, o novo desafio só aparece após um
+ * recarregamento.
+ */
 export const challenges: Challenge[] = Object.values(modules)
   .map((mod) => mod.default)
+  .filter((challenge) => challenge.publishedAt <= getTodayDateKeyBrasilia())
   .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
 
 /** Busca um desafio pelo seu `id`. Retorna `undefined` se não existir. */

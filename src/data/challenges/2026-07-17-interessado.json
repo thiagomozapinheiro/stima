@@ -1,0 +1,122 @@
+{
+  "id": "2026-07-17-interessado",
+  "theme": "Fora da Caixa",
+  "level": "Interessado",
+  "publishedAt": "2026-07-17",
+  "title": "Sonhos que são lembrados",
+  "teaser": "Quantas pessoas no Brasil lembrarão amanhã do sonho que tiverem esta noite?",
+  "prompt": "Quantas pessoas no Brasil lembrarão amanhã do sonho que tiverem esta noite?",
+  "unit": "pessoas",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore na população do Brasil: quase todo mundo dorme numa noite."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quantas pessoas lembram de algum sonho logo ao acordar, e quantas dessas ainda vão lembrar no dia seguinte."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique a população que dorme pelas duas frações: lembrar ao acordar e continuar lembrando no dia seguinte."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — População que dorme e sonha",
+        "steps": [
+          {
+            "question": "Quantas pessoas no Brasil vão dormir essa noite?",
+            "explanation": "Pense na maior parte da população do país, mas lembre que há empregos noturnos, por exemplo.",
+            "unit": "pessoas",
+            "defaultMagnitude": "milhoes",
+            "acceptableRange": {
+              "min": { "amount": 180, "magnitude": "milhoes" },
+              "max": { "amount": 210, "magnitude": "milhoes" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Lembrança do sonho",
+        "steps": [
+          {
+            "question": "Que fração das pessoas lembra de pelo menos um sonho logo ao acordar?",
+            "explanation": "As pessoas geralmente sonham na fase REM (sono profundo), mas nem sempre se dão conta dos sonhos que tiveram.",
+            "unit": "%",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 30, "magnitude": "unidades" },
+              "max": { "amount": 50, "magnitude": "unidades" }
+            }
+          },
+          {
+            "question": "Dessas que se dão conta ao acordar, que fração ainda vai se lembrar do sonho de manhã?",
+            "explanation": "A lembrança de sonhos costuma desaparecer muito rápido, e isso é pouco estudado com precisão. Esta etapa não tem faixa de referência definida.",
+            "unit": "%",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Pessoas que lembrarão amanhã",
+      "lines": [
+        { "operator": "", "text": "pessoas que dormem essa noite" },
+        { "operator": "×", "text": "% que registra um sonho na mente" },
+        { "operator": "×", "text": "% que ainda lembra no dia seguinte" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 8.5, "magnitude": "milhoes" },
+    "referenceRange": {
+      "min": { "amount": 5, "magnitude": "milhoes" },
+      "max": { "amount": 14, "magnitude": "milhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Pessoas que dormem no Brasil essa noite",
+        "value": "~190.000.000",
+        "note": "Praticamente toda a população do país dorme alguma quantidade de horas por noite."
+      },
+      {
+        "label": "Atingem a fase REM do sono",
+        "value": "~45% → 85.500.000",
+        "note": "Todo mundo sonha várias vezes por noite, mas a maioria esquece quase tudo ao acordar."
+      },
+      {
+        "label": "Ainda lembram no dia seguinte",
+        "value": "~10%",
+        "note": "A lembrança de sonhos desaparece muito rápido — boa parte se perde já nos primeiros minutos acordado."
+      },
+      {
+        "label": "Pessoas que lembrarão amanhã",
+        "value": "190.000.000 × 0,45 × 0,10 ≈ 8.550.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "A ciência do sono mostra que sonhamos várias vezes por noite, mas a memória dos sonhos é extremamente frágil já que a maior parte se perde nos primeiros minutos após acordar.",
+    "strategicQuestion": "O que produtos e apps de 'diário de sonhos' precisariam ter para virarem mainstream, dado o interesse recorrente das pessoas em lembrar seus sonhos?",
+    "opportunities": [
+      "Apps de registro rápido de sonhos logo ao acordar",
+      "Rotinas diárias para maximizar o sono REM",
+      "Conteúdo de entretenimento e curiosidades sobre sonhos"
+    ],
+    "materiaisComplementares": [
+      {
+        "titulo": "Um tipo do sonho que ajuda a dormir melhor",
+        "url": "https://epocanegocios.globo.com/ciencia-e-saude/noticia/2026/04/existe-um-tipo-de-sonho-que-ajuda-a-dormir-melhor-saiba-qual-e.ghtml"
+      }
+    ],
+    "whatIf": {
+      "premise": "…todo mundo anotasse o sonho assim que acordasse?",
+      "questions": [
+        "Quanto empresas de marketing pagariam por essas informações?",
+        "Quanto esse dream marketing movimentaria por ano? "
+      ]
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "id": "2026-07-17-iniciante",
+  "theme": "Saúde",
+  "level": "Iniciante",
+  "publishedAt": "2026-07-17",
+  "title": "Sono perdido por causa do celular antes de dormir",
+  "teaser": "Quantas horas de sono são perdidas todos os dias por uso do celular antes de dormir?",
+  "prompt": "Quantas horas de sono são perdidas diariamente no mundo por causa do uso de celular antes de dormir?",
+  "unit": "horas/dia",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no número de pessoas com smartphone no mundo: a escala é de bilhões. Só lhar ao seu redor."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quanto tempo cada pessoa passa no celular antes de dormir (redes sociais, jogos, e-mails), e quanto desse tempo realmente atrasa o sono dela (além do tempo no app, tem a demora em si para dormir)."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique pessoas pelo tempo no celular e pela fração que atrasa o sono, depois converta minutos em horas."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Quantas pessoas usam celular antes de dormir",
+        "steps": [
+          {
+            "question": "Quantas pessoas no mundo usam celular na cama, antes de dormir, numa noite típica?",
+            "explanation": "Pense na fatia dos bilhões de usuários de smartphone que faz isso e analise por púbico (crianças pequenas e idosos podem ser diferentes de jovens e adultos.",
+            "unit": "pessoas",
+            "defaultMagnitude": "bilhoes",
+            "acceptableRange": {
+              "min": { "amount": 3, "magnitude": "bilhoes" },
+              "max": { "amount": 4.5, "magnitude": "bilhoes" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Tempo perdido por pessoa",
+        "steps": [
+          {
+            "question": "Quantos minutos, em média, uma pessoa passa no celular antes de conseguir dormir? Some tempo em redes sociais, jogos e respondendo e-mails.",
+            "unit": "minutos",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 20, "magnitude": "unidades" },
+              "max": { "amount": 40, "magnitude": "unidades" }
+            }
+          },
+          {
+            "question": "Desse tempo no celular, que fração realmente atrasa o sono, em vez de ser tempo que a pessoa ficaria acordada de qualquer jeito?",
+            "explanation": "É difícil separar o que é 'culpa' do celular do que já seria demora natural para dormir. Esta etapa não tem faixa de referência definida.",
+            "unit": "%",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Horas de sono perdidas por dia",
+      "lines": [
+        { "operator": "", "text": "pessoas que usam celular antes de dormir" },
+        { "operator": "×", "text": "minutos no celular por pessoa" },
+        { "operator": "×", "text": "% desse tempo que realmente atrasa o sono" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 1.2, "magnitude": "bilhoes" },
+    "referenceRange": {
+      "min": { "amount": 1, "magnitude": "milhoes" },
+      "max": { "amount": 1.5, "magnitude": "bilhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Pessoas que usam celular na cama antes de dormir",
+        "value": "~4.000.000.000",
+        "note": "Boa parte dos bilhões de usuários de smartphone no mundo mexe no celular na cama."
+      },
+      {
+        "label": "Minutos no celular antes de dormir",
+        "value": "~30 minutos",
+        "note": "Tempo médio de tela até conseguir pegar no sono."
+      },
+      {
+        "label": "Fração que realmente atrasa o sono",
+        "value": "~60%",
+        "note": "Parte desse tempo a pessoa ficaria acordada de qualquer forma; o resto é atraso causado pelo celular."
+      },
+      {
+        "label": "Horas de sono perdidas por dia no mundo",
+        "value": "(4.000.000.000 × 30 × 0,6) ÷ 60 ≈ 1.200.000.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "O uso de telas antes de dormir está associado a menos qualidade de sono, e isso tem sido um dos motores por trás do crescimento de apps e produtos voltados a melhorar o sono.",
+    "strategicQuestion": "Se cada pessoa recuperasse metade desse tempo de sono perdido, qual seria o impacto agregado na produtividade e na saúde pública mundial?",
+    "opportunities": [
+      "Apps de meditação e relaxamento antes de dormir",
+      "Modos 'não perturbe' e telas com luz noturna mais eficazes",
+      "Softwares que bloqueiem o uso de contas empresariais a partir de certo horário"
+    ],
+    "materiaisComplementares": [
+      {
+        "titulo": "Calm, a Nike da mente",
+        "url": "https://timesbrasil.com.br/minhas-financas/sucesso/como-eles-transformaram-a-calm-no-principal-aplicativo-de-meditacao/"
+      }
+    ],
+    "whatIf": {
+      "premise": "…10% desse tempo perdido fosse convertido de volta em sono?",
+      "questions": [
+        "Qual seria o impacto na produtividade dos trabalhadores?",
+        "Que efeito isso teria na saúde e no humor das pessoas em larga escala?"
+      ]
+    }
+  }
+}
