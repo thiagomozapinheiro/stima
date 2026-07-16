@@ -10,11 +10,11 @@
   "hints": [
     {
       "label": "Encontre um ponto de partida",
-      "text": "Ancore no volume de pedidos: os grandes apps de delivery somados fazem milhões de entregas por dia no Brasil."
+      "text": "Ancore no volume de pedidos: partindo da população do país, pense qual está em áreas cobertas pelos apps, quantas dessas pessoas fazem pedidos e em média quantas vezes por semana isso ocorre."
     },
     {
-      "label": "Decomponha o problema",
-      "text": "Pense em quantas entregas acontecem por dia e quantas entregas um único drone conseguiria fazer nesse mesmo dia."
+      "label": "Capacidade dos drones",
+      "text": "Pense em quantas entregas um único drone conseguiria fazer nesse mesmo dia. Lembre de adicionar ao translado o tempo de equipar o drone, retirar pedido, além da recarga da bateria dos drones."
     },
     {
       "label": "Transforme em estimativa",

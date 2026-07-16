@@ -10,11 +10,11 @@
   "hints": [
     {
       "label": "Encontre um ponto de partida",
-      "text": "Ancore na extensão da costa mundial: some o litoral de todos os continentes e ilhas — a escala é de centenas de milhares de km."
+      "text": "Ancore na extensão da costa mundial: some o litoral de todos os continentes e ilhas — a escala é de centenas de milhares de km. Comece pensando na extensão de uma praia conhecida. Ex.: Copacabana tem 5km de litoral."
     },
     {
       "label": "Decomponha o problema",
-      "text": "Pense em quantas ondas quebram por dia num único ponto da praia, e que trecho de costa cada onda cobre ao quebrar."
+      "text": "Pense em quantas ondas quebram por dia num único ponto da praia (de quanto em quanto tempo surge uma nova onda grande ou pequena), e que trecho de costa cada onda cobre ao quebrar."
     },
     {
       "label": "Transforme em estimativa",
@@ -97,11 +97,11 @@
     },
     "referenceRange": {
       "min": {
-        "amount": 15,
+        "amount": 35,
         "magnitude": "bilhoes"
       },
       "max": {
-        "amount": 150,
+        "amount": 80,
         "magnitude": "bilhoes"
       }
     },
@@ -142,10 +142,10 @@
       }
     ],
     "whatIf": {
-      "premise": "…toda essa energia das ondas fosse aproveitada com 100% de eficiência?",
+      "premise": "…essa energia das ondas fosse aproveitada com 25% de eficiência?",
       "questions": [
         "Quantas vezes o consumo elétrico mundial isso representaria?",
-        "Por que, na prática, é tão difícil chegar perto dessa eficiência?"
+        "Quanto custaria para implementar esse tipo de tecnologia?"
       ]
     }
   }

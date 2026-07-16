@@ -4,7 +4,7 @@
   "level": "Expert",
   "publishedAt": "2026-07-16",
   "title": "Energia solar depois do pôr do sol",
-  "teaser": "Quantas residências uma usina solar abasteceria operando 2 horas a mais, com espelhos refletores?",
+  "teaser": "Quantas residências uma usina solar abasteceria operando 2 horas a mais, após o pôr do sol?",
   "prompt": "Uma startup propõe usar espelhos para refletir luz solar sobre usinas solares depois do pôr do sol, estendendo a geração de energia por cerca de 2 horas. Quantas residências poderiam ser abastecidas com a energia extra gerada nessas 2 horas por uma usina solar de grande porte?",
   "unit": "residências",
   "hints": [
@@ -109,11 +109,11 @@
     },
     "referenceRange": {
       "min": {
-        "amount": 7.5,
+        "amount": 15,
         "magnitude": "mil"
       },
       "max": {
-        "amount": 100,
+        "amount": 55,
         "magnitude": "mil"
       }
     },
