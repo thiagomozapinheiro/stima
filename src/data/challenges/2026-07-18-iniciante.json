@@ -1,0 +1,122 @@
+{
+  "id": "2026-07-18-iniciante",
+  "theme": "Esporte",
+  "level": "Iniciante",
+  "publishedAt": "2026-07-18",
+  "title": "Arrecadação de ingressos numa Copa do Mundo com 64 seleções",
+  "teaser": "Quanto a FIFA arrecadaria em ingressos numa Copa do Mundo com 64 seleções?",
+  "prompt": "Quanto a FIFA arrecadaria em ingressos numa Copa do Mundo com 64 seleções, o dobro do formato atual?",
+  "unit": "no torneio",
+  "currency": true,
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no número de jogos: dobrar as seleções não dobra exatamente os jogos, mas aumenta bastante a fase de grupos e o mata-mata."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense no público médio que cada jogo atrai e no preço médio do ingresso, considerando que preços dinâmicos deixam os jogos mais concorridos mais caros."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique o número de jogos pelo público médio por jogo e pelo preço médio do ingresso."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Volume de jogos",
+        "steps": [
+          {
+            "question": "Quantos jogos aconteceriam numa Copa do Mundo com 64 seleções?",
+            "explanation": "Pense na fase de grupos e no mata-mata, somando tudo.",
+            "unit": "jogos",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 110, "magnitude": "unidades" },
+              "max": { "amount": 140, "magnitude": "unidades" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Público e preço do ingresso",
+        "steps": [
+          {
+            "question": "Qual o público médio por jogo, considerando os grandes estádios usados numa Copa do Mundo?",
+            "unit": "pessoas/jogo",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 40, "magnitude": "mil" },
+              "max": { "amount": 55, "magnitude": "mil" }
+            }
+          },
+          {
+            "question": "Qual seria o preço médio do ingresso, considerando o uso de preços dinâmicos?",
+            "explanation": "O preço varia muito entre a fase de grupos e a final, e a precificação dinâmica torna isso ainda mais incerto. Esta etapa não tem faixa de referência definida.",
+            "unit": "R$/ingresso",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Arrecadação total em ingressos",
+      "lines": [
+        { "operator": "", "text": "número de jogos" },
+        { "operator": "×", "text": "público médio por jogo" },
+        { "operator": "×", "text": "preço médio do ingresso" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 4.4, "magnitude": "bilhoes" },
+    "referenceRange": {
+      "min": { "amount": 2.2, "magnitude": "bilhoes" },
+      "max": { "amount": 7.7, "magnitude": "bilhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Jogos na Copa com 64 seleções",
+        "value": "~130",
+        "note": "Quase o dobro dos jogos do formato atual (48 seleções), somando fase de grupos e mata-mata."
+      },
+      {
+        "label": "Público médio por jogo",
+        "value": "~45.000 pessoas",
+        "note": "Considerando os grandes estádios usados numa Copa do Mundo."
+      },
+      {
+        "label": "Preço médio do ingresso",
+        "value": "~R$ 750",
+        "note": "Com preços dinâmicos, ingressos de jogos concorridos custam bem mais que os da fase de grupos."
+      },
+      {
+        "label": "Arrecadação total em ingressos",
+        "value": "130 × 45.000 × R$ 750 ≈ R$ 4.387.500.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "A receita de ingressos é só uma fatia do que a FIFA arrecada numa Copa — transmissão e patrocínio somam ainda mais —, mas o modelo de preços dinâmicos tem se mostrado uma forma eficaz de aumentar essa receita sem reduzir a ocupação dos estádios.",
+    "strategicQuestion": "Se a FIFA aumentasse ainda mais a diferença de preço entre jogos concorridos e jogos de fase de grupos, até que ponto isso aumentaria a receita sem afastar torcedores?",
+    "opportunities": [
+      "Plataformas de revenda oficial de ingressos com preços dinâmicos",
+      "Pacotes de hospitalidade premium para jogos de maior demanda",
+      "Parcerias com cidades-sede para infraestrutura turística"
+    ],
+    "materiaisComplementares": [
+      {
+        "titulo": "O efeito dos preços dinâmicos na Copa",
+        "url": "https://www.bloomberglinea.com.br/linha-esportiva/publico-recorde-nos-estadios-da-copa-fortalece-modelo-de-precos-dinamicos-da-fifa/"
+      }
+    ],
+    "whatIf": {
+      "premise": "…a FIFA vendesse 20% dos ingressos por leilão, em vez de preço fixo dinâmico?",
+      "questions": [
+        "Isso aumentaria ou diminuiria a receita total?",
+        "Que efeito isso teria no acesso de torcedores de renda mais baixa aos jogos?"
+      ]
+    }
+  }
+}

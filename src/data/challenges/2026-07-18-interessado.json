@@ -1,0 +1,127 @@
+{
+  "id": "2026-07-18-interessado",
+  "theme": "Fora da Caixa",
+  "level": "Interessado",
+  "publishedAt": "2026-07-18",
+  "title": "Passageiros nos aeroportos do Brasil",
+  "teaser": "Quantos passageiros no Brasil passam nos aeroportos por ano?",
+  "prompt": "Quantos passageiros no Brasil passam pelos aeroportos por ano, somando embarques e desembarques em todo o país?",
+  "unit": "por ano",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore na população do Brasil e pense em que fração dela realmente usa avião ao longo do ano — ainda é minoria."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quantos trechos de voo, ida e volta contando como dois, uma pessoa que voa faz, em média, por ano."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique pessoas que voam pelos trechos por ano, e lembre que cada trecho gera duas passagens pelo aeroporto: embarque e desembarque."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Quem voa no Brasil",
+        "steps": [
+          {
+            "question": "Qual a população do Brasil?",
+            "unit": "pessoas",
+            "defaultMagnitude": "milhoes",
+            "acceptableRange": {
+              "min": { "amount": 200, "magnitude": "milhoes" },
+              "max": { "amount": 220, "magnitude": "milhoes" }
+            }
+          },
+          {
+            "question": "Que fração dessa população voa pelo menos uma vez por ano?",
+            "explanation": "No Brasil, viajar de avião ainda não é hábito da maioria.",
+            "unit": "%",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 15, "magnitude": "unidades" },
+              "max": { "amount": 25, "magnitude": "unidades" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Frequência de voos",
+        "steps": [
+          {
+            "question": "Em média, quantos trechos de voo (ida OU volta, cada um contado separadamente) uma pessoa que voa faz por ano?",
+            "explanation": "Pense em pelo menos uma viagem de ida e volta ao ano, às vezes mais de uma.",
+            "unit": "trechos/ano",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 2, "magnitude": "unidades" },
+              "max": { "amount": 5, "magnitude": "unidades" }
+            }
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Passageiros processados nos aeroportos por ano",
+      "lines": [
+        { "operator": "", "text": "população do Brasil" },
+        { "operator": "×", "text": "% que voa pelo menos uma vez ao ano" },
+        { "operator": "×", "text": "trechos de voo por pessoa/ano" },
+        { "operator": "×", "text": "2 passagens por trecho (embarque e desembarque)" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 252, "magnitude": "milhoes" },
+    "referenceRange": {
+      "min": { "amount": 120, "magnitude": "milhoes" },
+      "max": { "amount": 550, "magnitude": "milhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "População do Brasil",
+        "value": "~210.000.000",
+        "note": "Estimativa da população total do país."
+      },
+      {
+        "label": "Fração que voa pelo menos uma vez no ano",
+        "value": "~20% → 42.000.000 pessoas",
+        "note": "A maior parte dos brasileiros ainda não usa avião com frequência."
+      },
+      {
+        "label": "Trechos de voo por ano, entre quem voa",
+        "value": "~3 trechos/ano",
+        "note": "Uma pessoa que voa costuma fazer pelo menos uma ida e volta, às vezes mais de uma viagem no ano."
+      },
+      {
+        "label": "Passageiros processados nos aeroportos por ano",
+        "value": "42.000.000 × 3 × 2 ≈ 252.000.000",
+        "note": "Cada trecho gera duas passagens pelo aeroporto: embarque e desembarque."
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "O fortalecimento do mercado aéreo brasileiro, com mais concorrência e rotas, tende a aumentar a fração da população que voa regularmente, hoje ainda pequena perto de países desenvolvidos.",
+    "strategicQuestion": "Se acordos de céu aberto ampliarem a concorrência entre companhias aéreas no Brasil, quanto a fração da população que voa por ano poderia crescer na próxima década?",
+    "opportunities": [
+      "Expansão de rotas regionais e aeroportos secundários",
+      "Companhias aéreas de baixo custo focadas em novas rotas domésticas",
+      "Serviços de logística e turismo que dependem do aumento do fluxo aéreo"
+    ],
+    "materiaisComplementares": [
+      {
+        "titulo": "Expansão do mercado aéreo do Brasil",
+        "url": "https://braziljournal.com/ceu-unico-brasil-da-passo-para-acordo-que-pode-mudar-o-mercado-aereo/"
+      }
+    ],
+    "whatIf": {
+      "premise": "…a fração da população que voa dobrasse na próxima década?",
+      "questions": [
+        "Que investimento em infraestrutura aeroportuária seria necessário para suportar isso?",
+        "Como isso mudaria a demanda por voos regionais versus rotas entre grandes capitais?"
+      ]
+    }
+  }
+}
