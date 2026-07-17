@@ -5,17 +5,17 @@
   "publishedAt": "2026-07-18",
   "title": "Arrecadação de ingressos numa Copa do Mundo com 64 seleções",
   "teaser": "Quanto a FIFA arrecadaria em ingressos numa Copa do Mundo com 64 seleções?",
-  "prompt": "Quanto a FIFA arrecadaria em ingressos numa Copa do Mundo com 64 seleções, o dobro do formato atual?",
+  "prompt": "Quanto a FIFA arrecadaria em ingressos numa Copa do Mundo com 64 seleções?",
   "unit": "no torneio",
   "currency": true,
   "hints": [
     {
       "label": "Encontre um ponto de partida",
-      "text": "Ancore no número de jogos: dobrar as seleções não dobra exatamente os jogos, mas aumenta bastante a fase de grupos e o mata-mata."
+      "text": "Ancore no número de jogos: quantos jogos teríamos considerando mais grupos e o mata-mata atual."
     },
     {
       "label": "Decomponha o problema",
-      "text": "Pense no público médio que cada jogo atrai e no preço médio do ingresso, considerando que preços dinâmicos deixam os jogos mais concorridos mais caros."
+      "text": "Pense no público médio que cada jogo atrai e no preço médio do ingresso (cerca de 300 dólares), considerando que preços dinâmicos deixam os jogos mais concorridos mais caros."
     },
     {
       "label": "Transforme em estimativa",
@@ -47,8 +47,8 @@
             "unit": "pessoas/jogo",
             "defaultMagnitude": "mil",
             "acceptableRange": {
-              "min": { "amount": 40, "magnitude": "mil" },
-              "max": { "amount": 55, "magnitude": "mil" }
+              "min": { "amount": 50, "magnitude": "mil" },
+              "max": { "amount": 80, "magnitude": "mil" }
             }
           },
           {
@@ -70,35 +70,35 @@
     }
   },
   "solution": {
-    "referenceValue": { "amount": 4.4, "magnitude": "bilhoes" },
+    "referenceValue": { "amount": 42, "magnitude": "bilhoes" },
     "referenceRange": {
-      "min": { "amount": 2.2, "magnitude": "bilhoes" },
-      "max": { "amount": 7.7, "magnitude": "bilhoes" }
+      "min": { "amount": 30, "magnitude": "bilhoes" },
+      "max": { "amount": 60, "magnitude": "bilhoes" }
     },
     "reasoning": [
       {
         "label": "Jogos na Copa com 64 seleções",
-        "value": "~130",
+        "value": "~128",
         "note": "Quase o dobro dos jogos do formato atual (48 seleções), somando fase de grupos e mata-mata."
       },
       {
         "label": "Público médio por jogo",
-        "value": "~45.000 pessoas",
+        "value": "~65.000 pessoas",
         "note": "Considerando os grandes estádios usados numa Copa do Mundo."
       },
       {
         "label": "Preço médio do ingresso",
-        "value": "~R$ 750",
+        "value": "~R$ 5000",
         "note": "Com preços dinâmicos, ingressos de jogos concorridos custam bem mais que os da fase de grupos."
       },
       {
         "label": "Arrecadação total em ingressos",
-        "value": "130 × 45.000 × R$ 750 ≈ R$ 4.387.500.000"
+        "value": "128 × 65.000 × R$ 5000 ≈ R$ 41.600.000.000"
       }
     ]
   },
   "goBeyond": {
-    "impact": "A receita de ingressos é só uma fatia do que a FIFA arrecada numa Copa — transmissão e patrocínio somam ainda mais —, mas o modelo de preços dinâmicos tem se mostrado uma forma eficaz de aumentar essa receita sem reduzir a ocupação dos estádios.",
+    "impact": "A receita de ingressos é só uma fatia do que a FIFA arrecada numa Copa. Transmissão e patrocínio somam ainda mais, mas o modelo de preços dinâmicos tem se mostrado uma forma eficaz de aumentar essa receita sem reduzir a ocupação dos estádios.",
     "strategicQuestion": "Se a FIFA aumentasse ainda mais a diferença de preço entre jogos concorridos e jogos de fase de grupos, até que ponto isso aumentaria a receita sem afastar torcedores?",
     "opportunities": [
       "Plataformas de revenda oficial de ingressos com preços dinâmicos",
@@ -112,7 +112,7 @@
       }
     ],
     "whatIf": {
-      "premise": "…a FIFA vendesse 20% dos ingressos por leilão, em vez de preço fixo dinâmico?",
+      "premise": "…a FIFA vendesse 20% dos ingressos por leilão, em vez de preço dinâmico?",
       "questions": [
         "Isso aumentaria ou diminuiria a receita total?",
         "Que efeito isso teria no acesso de torcedores de renda mais baixa aos jogos?"

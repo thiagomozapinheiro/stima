@@ -56,8 +56,8 @@
             "unit": "trechos/ano",
             "defaultMagnitude": "unidades",
             "acceptableRange": {
-              "min": { "amount": 2, "magnitude": "unidades" },
-              "max": { "amount": 5, "magnitude": "unidades" }
+              "min": { "amount": 1, "magnitude": "unidades" },
+              "max": { "amount": 2,5, "magnitude": "unidades" }
             }
           }
         ]
@@ -74,10 +74,10 @@
     }
   },
   "solution": {
-    "referenceValue": { "amount": 252, "magnitude": "milhoes" },
+    "referenceValue": { "amount": 126, "magnitude": "milhoes" },
     "referenceRange": {
-      "min": { "amount": 120, "magnitude": "milhoes" },
-      "max": { "amount": 550, "magnitude": "milhoes" }
+      "min": { "amount": 100, "magnitude": "milhoes" },
+      "max": { "amount": 180, "magnitude": "milhoes" }
     },
     "reasoning": [
       {
@@ -92,12 +92,12 @@
       },
       {
         "label": "Trechos de voo por ano, entre quem voa",
-        "value": "~3 trechos/ano",
+        "value": "~1,5 trechos/ano",
         "note": "Uma pessoa que voa costuma fazer pelo menos uma ida e volta, às vezes mais de uma viagem no ano."
       },
       {
         "label": "Passageiros processados nos aeroportos por ano",
-        "value": "42.000.000 × 3 × 2 ≈ 252.000.000",
+        "value": "42.000.000 × 1,5 × 2 ≈ 126.000.000",
         "note": "Cada trecho gera duas passagens pelo aeroporto: embarque e desembarque."
       }
     ]
