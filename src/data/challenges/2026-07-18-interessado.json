@@ -57,7 +57,7 @@
             "defaultMagnitude": "unidades",
             "acceptableRange": {
               "min": { "amount": 1, "magnitude": "unidades" },
-              "max": { "amount": 2,5, "magnitude": "unidades" }
+              "max": { "amount": 2.5, "magnitude": "unidades" }
             }
           }
         ]
