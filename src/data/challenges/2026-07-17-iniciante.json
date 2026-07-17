@@ -4,36 +4,36 @@
   "level": "Iniciante",
   "publishedAt": "2026-07-17",
   "title": "Sono perdido por causa do celular antes de dormir",
-  "teaser": "Quantas horas de sono são perdidas todos os dias por uso do celular antes de dormir?",
-  "prompt": "Quantas horas de sono são perdidas diariamente no mundo por causa do uso de celular antes de dormir?",
+  "teaser": "Quantas horas de sono uma pessoa perde anualmente por uso do celular antes de dormir?",
+  "prompt": "Quantas horas de sono uma pessoa perde anualmente por causa do uso de celular antes de dormir?",
   "unit": "horas/dia",
   "hints": [
     {
       "label": "Encontre um ponto de partida",
-      "text": "Ancore no número de pessoas com smartphone no mundo: a escala é de bilhões. Só lhar ao seu redor."
+      "text": "Pense no percentual de pessoas que usa o celular na cama (pode ser menor entre idosos e crianças pequenas, mas aumentar entre adultos e adolescentes)."
     },
     {
       "label": "Decomponha o problema",
-      "text": "Pense em quanto tempo cada pessoa passa no celular antes de dormir (redes sociais, jogos, e-mails), e quanto desse tempo realmente atrasa o sono dela (além do tempo no app, tem a demora em si para dormir)."
+      "text": "Pense em quanto tempo cada pessoa passa no celular antes de dormir (com redes sociais, jogos, e-mails), e quanto desse tempo realmente atrasa o sono dela (além do tempo no app, tem a demora em si para dormir)."
     },
     {
       "label": "Transforme em estimativa",
-      "text": "Multiplique pessoas pelo tempo no celular e pela fração que atrasa o sono, depois converta minutos em horas."
+      "text": "Multiplique o percentual de pessoas que usa o celular na hora de dormir pelo tempo no celular e pela fração que atrasa o sono, depois converta minutos em horas."
     }
   ],
   "guided": {
     "stages": [
       {
-        "title": "Etapa 1 — Quantas pessoas usam celular antes de dormir",
+        "title": "Etapa 1 — Percentual das pessoas que usam celular antes de dormir",
         "steps": [
           {
             "question": "Quantas pessoas no mundo usam celular na cama, antes de dormir, numa noite típica?",
             "explanation": "Pense na fatia dos bilhões de usuários de smartphone que faz isso e analise por púbico (crianças pequenas e idosos podem ser diferentes de jovens e adultos.",
-            "unit": "pessoas",
-            "defaultMagnitude": "bilhoes",
+            "unit": "%",
+            "defaultMagnitude": "unidades",
             "acceptableRange": {
-              "min": { "amount": 3, "magnitude": "bilhoes" },
-              "max": { "amount": 4.5, "magnitude": "bilhoes" }
+              "min": { "amount": 40, "magnitude": "unidades" },
+              "max": { "amount": 60, "magnitude": "unidades" }
             }
           }
         ]
@@ -62,22 +62,22 @@
     "formula": {
       "title": "Horas de sono perdidas por dia",
       "lines": [
-        { "operator": "", "text": "pessoas que usam celular antes de dormir" },
+        { "operator": "", "text": "% das pessoas usam celular antes de dormir" },
         { "operator": "×", "text": "minutos no celular por pessoa" },
         { "operator": "×", "text": "% desse tempo que realmente atrasa o sono" }
       ]
     }
   },
   "solution": {
-    "referenceValue": { "amount": 1.2, "magnitude": "bilhoes" },
+    "referenceValue": { "amount": 55, "magnitude": "unidades" },
     "referenceRange": {
-      "min": { "amount": 1, "magnitude": "milhoes" },
-      "max": { "amount": 1.5, "magnitude": "bilhoes" }
+      "min": { "amount": 35, "magnitude": "unidades" },
+      "max": { "amount": 75, "magnitude": "unidades" }
     },
     "reasoning": [
       {
         "label": "Pessoas que usam celular na cama antes de dormir",
-        "value": "~4.000.000.000",
+        "value": "~50%",
         "note": "Boa parte dos bilhões de usuários de smartphone no mundo mexe no celular na cama."
       },
       {
@@ -91,8 +91,8 @@
         "note": "Parte desse tempo a pessoa ficaria acordada de qualquer forma; o resto é atraso causado pelo celular."
       },
       {
-        "label": "Horas de sono perdidas por dia no mundo",
-        "value": "(4.000.000.000 × 30 × 0,6) ÷ 60 ≈ 1.200.000.000"
+        "label": "Horas de sono perdidas por pessoa no mundo",
+        "value": "(0,5 × 30 × 0,6) × 365 ÷ 60 ≈ 55"
       }
     ]
   },
@@ -111,7 +111,7 @@
       }
     ],
     "whatIf": {
-      "premise": "…10% desse tempo perdido fosse convertido de volta em sono?",
+      "premise": "…30% desse tempo perdido fosse convertido de volta em sono?",
       "questions": [
         "Qual seria o impacto na produtividade dos trabalhadores?",
         "Que efeito isso teria na saúde e no humor das pessoas em larga escala?"
