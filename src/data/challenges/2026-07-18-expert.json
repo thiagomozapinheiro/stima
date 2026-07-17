@@ -58,8 +58,8 @@
             "unit": "R$/dia",
             "defaultMagnitude": "unidades",
             "acceptableRange": {
-              "min": { "amount": 1000, "magnitude": "unidades" },
-              "max": { "amount": 2000, "magnitude": "unidades" }
+              "min": { "amount": 1, "magnitude": "mil" },
+              "max": { "amount": 2, "magnitude": "mil" }
             }
           }
         ]
