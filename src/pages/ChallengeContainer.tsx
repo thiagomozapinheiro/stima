@@ -6,7 +6,14 @@ import type { GuidedStageDisplay } from '../components/challenge/challengeUiType
 import type { GoBeyondPanelProps } from '../components/challenge/GoBeyondPanel'
 import { getChallengeById } from '../data'
 import type { Challenge, Magnitude } from '../types/challenge'
-import { isMagnitude, normalizeAmount, normalizeQuantity, parseAmountInput } from '../lib/numericInput'
+import {
+  denormalizeToQuantity,
+  isMagnitude,
+  normalizeAmount,
+  normalizeQuantity,
+  parseAmountInput,
+} from '../lib/numericInput'
+import { computeGuidedEstimate, toFormulaValue } from '../lib/guidedCalculation'
 import { compareToRange } from '../lib/rangeComparison'
 import {
   buildFinalVerdict,
@@ -75,6 +82,11 @@ function ChallengeView({ challenge }: { challenge: Challenge }) {
     isSolved(challenge.id) ? getLastGuess(challenge.id) : undefined,
   )
   const [checked, setChecked] = useState(() => resultGuessAbs !== undefined)
+  // Mensagem do botão "Calcular com minhas premissas" (ver `calculateFromPremises`
+  // abaixo). Só usada para o caso raro de divisão por zero depois de todas as
+  // premissas preenchidas — a mensagem de "faltam premissas" é derivada
+  // diretamente de `guidedFilled`/`guidedTotal`, não precisa de estado.
+  const [calcMessage, setCalcMessage] = useState<string | undefined>(undefined)
 
   // Sobe a página ao abrir um desafio (efeito colateral externo ao React,
   // não estado — por isso não entra em conflito com o remount via `key`).
@@ -103,6 +115,11 @@ function ChallengeView({ challenge }: { challenge: Challenge }) {
   // --- microetapas do modo guiado -------------------------------------
   let guidedFilled = 0
   let guidedTotal = 0
+  // Valores NORMALIZADOS de cada microetapa, na mesma ordem "achatada" em
+  // que aparecem em `stages[].steps[]` — é o que `computeGuidedEstimate`
+  // consome para o botão "Calcular" (ver mais abaixo). `undefined` = etapa
+  // ainda sem um número válido preenchido.
+  const guidedStepValues: Array<number | undefined> = []
   const guidedStages: GuidedStageDisplay[] | undefined = challenge.guided?.stages.map(
     (stage, stageIndex) => ({
       title: stage.title,
@@ -113,6 +130,11 @@ function ChallengeView({ challenge }: { challenge: Challenge }) {
 
         const parsed = parseAmountInput(input.raw)
         if (parsed.ok) guidedFilled += 1
+        guidedStepValues.push(
+          parsed.ok
+            ? toFormulaValue(normalizeAmount(parsed.value, input.magnitude), step.unit)
+            : undefined,
+        )
 
         const feedback =
           parsed.ok && step.acceptableRange
@@ -152,6 +174,40 @@ function ChallengeView({ challenge }: { challenge: Challenge }) {
     : hasGuidedMode
       ? 'Estruture o problema do seu jeito e registre apenas sua linha de raciocínio e a estimativa final.'
       : 'Estruture o problema do seu jeito e registre sua estimativa final. Este desafio ainda não tem roteiro guiado.'
+
+  // --- botão "Calcular com minhas premissas" ---------------------------
+  // Muita gente gosta de brincar de estimar mas trava na hora de montar a
+  // conta final a partir do que preencheu em cada etapa. Este botão resolve
+  // isso combinando as premissas já digitadas segundo a mesma fórmula
+  // mostrada em "Estrutura construída" (`computeGuidedEstimate`), incluindo
+  // conversões de unidade (ex.: premissa "por dia" → resposta "por ano")
+  // quando o desafio define um fator fixo (`FormulaLine.constant`) para
+  // isso — ver `src/lib/guidedCalculation.ts`.
+  const hasComputableFormula = !!challenge.guided?.formula?.lines.length
+  const allGuidedFilled = guidedTotal > 0 && guidedFilled === guidedTotal
+  const calculateDisabled = !allGuidedFilled
+  const calculateMessage = !allGuidedFilled
+    ? 'Preencha todas as premissas acima para calcular sua estimativa automaticamente.'
+    : calcMessage
+
+  function calculateFromPremises() {
+    if (!allGuidedFilled) return // o botão já fica desabilitado nesse caso; guarda defensiva.
+    const result = computeGuidedEstimate(challenge.guided?.formula?.lines, guidedStepValues)
+    if (result.status === 'ok') {
+      const quantity = denormalizeToQuantity(result.value)
+      setGuessRaw(String(quantity.amount).replace('.', ','))
+      setGuessMagnitude(quantity.magnitude)
+      setCalcMessage(undefined)
+    } else if (result.status === 'divisao_por_zero') {
+      setCalcMessage(
+        'Uma das premissas está zerada, o que impede dividir por ela. Ajuste o valor para calcular.',
+      )
+    }
+    // 'faltam_premissas' não deveria ocorrer aqui (já checamos allGuidedFilled
+    // acima) e 'sem_formula' não deveria ocorrer porque o botão só aparece
+    // quando `hasComputableFormula` é true — mantidos apenas como
+    // salvaguarda neutra em `computeGuidedEstimate`.
+  }
 
   // --- estimativa final -------------------------------------------------
   const parsedGuess = parseAmountInput(guessRaw)
@@ -239,6 +295,9 @@ function ChallengeView({ challenge }: { challenge: Challenge }) {
       guidedTotalCount={guidedTotal}
       guidedProgressPercent={guidedTotal ? Math.round((guidedFilled / guidedTotal) * 100) : 0}
       guidedFormula={challenge.guided?.formula}
+      onCalculateEstimate={hasComputableFormula ? calculateFromPremises : undefined}
+      calculateDisabled={calculateDisabled}
+      calculateMessage={calculateMessage}
       finalEstimateLabel={showGuided ? 'Sua estimativa final' : 'Sua estimativa'}
       guessNumberValue={guessRaw}
       onGuessNumberChange={setGuessRaw}

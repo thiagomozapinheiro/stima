@@ -128,10 +128,29 @@ O bloco **`guided`** existe só nos desafios que você quebrou em etapas.
     - `acceptableRange` (opcional): a **faixa aceitável** (mínimo e máximo) que
       você define para dar uma avaliação **amigável** ao usuário (nunca "errado").
       **Se aquela etapa não tem faixa definida, apague o `acceptableRange` dela.**
-- **`formula`** (opcional): a "estrutura construída" mostrada no fim. Tem:
+- **`formula`** (opcional): a "estrutura construída" mostrada no fim, e também
+  o que alimenta o botão **"Calcular com minhas premissas"** (que soma as
+  premissas da pessoa automaticamente, sem ela precisar fazer a conta na
+  mão). Tem:
   - `title`: o nome do resultado. Ex.: `"Corridas por dia"`.
-  - `lines`: as linhas da conta. Cada linha tem `operator` (ex.: `"×"`, `"÷"`;
-    a primeira linha usa `""`) e `text` (ex.: `"população da cidade"`).
+  - `lines`: as linhas da conta, **na mesma ordem em que as etapas
+    aparecem** em `stages[].steps[]` (isso é o que permite o botão
+    "Calcular" casar cada linha com a etapa certa). Cada linha tem:
+    - `operator`: use exatamente `"×"` ou `"÷"` para a linha realmente
+      entrar na conta do botão "Calcular" (a primeira linha usa `""`).
+      Qualquer outro valor (ex.: `"+"`) é só decoração visual — não conta.
+    - `text`: a descrição da grandeza. Ex.: `"população da cidade"`.
+    - `constant` (opcional): um número FIXO para linhas que representam uma
+      **conversão de unidade**, não uma etapa preenchida pela pessoa. Use
+      isso, por exemplo, quando as premissas são "por dia" mas a pergunta
+      final é "por ano": adicione uma linha com `"operator": "×"`,
+      `"text": "dias no ano"` e `"constant": 365`. Sem esse campo, o
+      "Calcular" espera que a linha venha do valor de uma etapa — **se você
+      adicionar uma linha de conversão sem `constant`, o botão vai achar
+      que falta preencher uma etapa e vai travar**, então não esqueça dele
+      nesses casos.
+      → Veja o exemplo em `challenges/2026-07-18-interessado.json` (linha
+      "2 passagens por trecho").
 
 ### Resposta oficial (sempre obrigatória)
 

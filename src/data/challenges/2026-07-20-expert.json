@@ -1,0 +1,137 @@
+{
+  "id": "2026-07-20-expert",
+  "theme": "Mobilidade e Infra",
+  "level": "Expert",
+  "publishedAt": "2026-07-20",
+  "title": "Energia dos passos: quantos celulares um aeroporto poderia carregar",
+  "teaser": "Quantos celulares poderiam ser carregados por dia com a energia dos passos dos passageiros de um aeroporto?",
+  "prompt": "Quantos celulares poderiam ser completamente carregados por dia usando apenas a eletricidade gerada pelos passos dos passageiros de um grande aeroporto brasileiro?",
+  "unit": "celulares/dia",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no fluxo de passageiros: um grande aeroporto brasileiro movimenta dezenas a centenas de milhares de pessoas por dia."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quantos passos cada passageiro dá dentro do aeroporto, e quanta energia um piso inteligente consegue captar de cada passo."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique passageiros, passos e energia por passo para achar o total em joules, converta para watts-hora, e divida pela energia necessária para carregar um celular."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Fluxo de passageiros e caminhada",
+        "steps": [
+          {
+            "question": "Quantos passageiros passam por um grande aeroporto brasileiro, por dia?",
+            "explanation": "Pense num aeroporto de grande porte, como Guarulhos.",
+            "unit": "passageiros/dia",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 80, "magnitude": "mil" },
+              "max": { "amount": 150, "magnitude": "mil" }
+            }
+          },
+          {
+            "question": "Quantos passos, em média, um passageiro dá dentro do aeroporto, do check-in ao embarque?",
+            "explanation": "Inclua deslocamentos até o portão e eventuais conexões.",
+            "unit": "passos",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 1.5, "magnitude": "mil" },
+              "max": { "amount": 3.5, "magnitude": "mil" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Energia gerada e necessária",
+        "steps": [
+          {
+            "question": "Quanta energia um piso inteligente piezoelétrico consegue captar de um único passo?",
+            "explanation": "Essa é uma tecnologia ainda emergente e a eficiência varia muito entre fabricantes. Esta etapa não tem faixa de referência definida.",
+            "unit": "joules/passo",
+            "defaultMagnitude": "unidades"
+          },
+          {
+            "question": "Quantos watts-hora (Wh) de energia são necessários para carregar completamente a bateria de um celular?",
+            "unit": "Wh",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 10, "magnitude": "unidades" },
+              "max": { "amount": 20, "magnitude": "unidades" }
+            }
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Celulares carregados por dia",
+      "lines": [
+        { "operator": "", "text": "passageiros por dia" },
+        { "operator": "×", "text": "passos por passageiro" },
+        { "operator": "×", "text": "energia captada por passo (joules)" },
+        { "operator": "÷", "text": "joules em 1 watt-hora", "constant": 3600 },
+        { "operator": "÷", "text": "energia para carregar um celular (Wh)" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 28, "magnitude": "mil" },
+    "referenceRange": {
+      "min": { "amount": 3, "magnitude": "mil" },
+      "max": { "amount": 120, "magnitude": "mil" }
+    },
+    "reasoning": [
+      {
+        "label": "Passageiros por dia num grande aeroporto brasileiro",
+        "value": "~120.000",
+        "note": "Um aeroporto de grande porte, como Guarulhos, em dia de movimento típico."
+      },
+      {
+        "label": "Passos por passageiro dentro do aeroporto",
+        "value": "~2.500",
+        "note": "Do check-in ao portão de embarque, incluindo conexões."
+      },
+      {
+        "label": "Energia captada por passo",
+        "value": "~5 joules",
+        "note": "Estimativa para pisos inteligentes piezoelétricos — tecnologia ainda em desenvolvimento."
+      },
+      {
+        "label": "Energia total captada por dia",
+        "value": "120.000 × 2.500 × 5 ÷ 3.600 ≈ 416.667 Wh"
+      },
+      {
+        "label": "Celulares carregados por dia",
+        "value": "416.667 ÷ 15 ≈ 27.778"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "Pisos inteligentes que captam energia de passos já são usados em estações de trem no Japão e em outros espaços de grande circulação — uma forma de gerar energia limpa aproveitando um movimento que já aconteceria de qualquer jeito.",
+    "strategicQuestion": "Vale mais a pena investir em pisos piezoelétricos em áreas de altíssimo fluxo, como aeroportos e estações, ou a energia gerada é pequena demais para justificar o investimento?",
+    "opportunities": [
+      "Fabricação e instalação de pisos piezoelétricos em espaços de alto fluxo",
+      "Integração dessa energia com sistemas de iluminação ou carregamento público",
+      "Parcerias entre aeroportos e startups de energia sustentável"
+    ],
+    "materiaisComplementares": [
+      {
+        "titulo": "Transformando passos em energia",
+        "url": "https://clickpetroleoegas.com.br/no-japao-estacao-de-shibuya-com-ate-24-milhoes-de-pedestres-por-dia-transforma-cada-passo-em-eletricidade-com-pisos-inteligentes-que-geram-energia-24-horas-por-dia-vml97/"
+      }
+    ],
+    "whatIf": {
+      "premise": "…todos os aeroportos brasileiros de grande porte instalassem esse tipo de piso?",
+      "questions": [
+        "Quanto isso representaria em energia limpa gerada por ano no país?",
+        "Esse investimento se pagaria mais rápido pela energia gerada ou pelo valor de marketing e sustentabilidade?"
+      ]
+    }
+  }
+}

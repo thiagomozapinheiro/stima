@@ -11,6 +11,21 @@ export interface GuidedScaffoldProps {
   progressPercent: number
   /** "Estrutura construída" — some quando o desafio não define fórmula visual. */
   formula?: FormulaDisplay
+  /**
+   * Presente apenas quando a fórmula do desafio é computável (ver
+   * `src/lib/guidedCalculation.ts`) — nesse caso mostramos o botão
+   * "Calcular". Ausente = o botão não aparece (desafio sem fórmula
+   * automática).
+   */
+  onCalculate?: () => void
+  /** Desabilita o botão "Calcular" (tipicamente enquanto faltam premissas). */
+  calculateDisabled?: boolean
+  /**
+   * Mensagem curta mostrada junto do botão "Calcular" — ex.: pedindo para
+   * preencher todas as premissas, ou avisando de uma divisão por zero.
+   * Ausente = nenhuma mensagem.
+   */
+  calculateMessage?: string
 }
 
 /**
@@ -24,6 +39,9 @@ export default function GuidedScaffold({
   totalCount,
   progressPercent,
   formula,
+  onCalculate,
+  calculateDisabled,
+  calculateMessage,
 }: GuidedScaffoldProps) {
   return (
     <div style={styles.wrap}>
@@ -91,6 +109,28 @@ export default function GuidedScaffold({
               </div>
             ))}
           </div>
+        </div>
+      )}
+
+      {formula && onCalculate && (
+        <div className="stima-scaffold-calc-row" style={styles.calcRow}>
+          <button
+            onClick={onCalculate}
+            disabled={calculateDisabled}
+            className="stima-scaffold-calc-btn"
+            style={{
+              ...styles.calcBtn,
+              opacity: calculateDisabled ? 0.5 : 1,
+              cursor: calculateDisabled ? 'not-allowed' : 'pointer',
+            }}
+          >
+            🧮 Calcular com minhas premissas
+          </button>
+          {calculateMessage && (
+            <span className="stima-scaffold-calc-message" style={styles.calcMessage}>
+              {calculateMessage}
+            </span>
+          )}
         </div>
       )}
     </div>
@@ -221,5 +261,28 @@ const styles: Record<string, CSSProperties> = {
   formulaText: {
     color: 'var(--text-2)',
     fontWeight: 500,
+  },
+  calcRow: {
+    marginTop: 12,
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: 12,
+  },
+  calcBtn: {
+    background: 'var(--card)',
+    border: '1px solid var(--border-2)',
+    borderRadius: 11,
+    padding: '10px 18px',
+    fontFamily: "'DM Sans', sans-serif",
+    fontSize: 14,
+    fontWeight: 600,
+    color: 'var(--text)',
+    transition: 'border-color .15s',
+  },
+  calcMessage: {
+    fontSize: 12.5,
+    color: 'var(--dim)',
+    lineHeight: 1.4,
   },
 }

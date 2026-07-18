@@ -61,7 +61,8 @@
       "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('src/data/challenges/2026-07-14-iniciante.json','utf8'\\)\\); console.log\\('JSON OK'\\)\")",
       "Bash(powershell -Command \"Get-Process -Id 11256 -ErrorAction SilentlyContinue | Select-Object Id,ProcessName,StartTime\")",
       "Bash(powershell -Command \"Stop-Process -Id 11256 -Force -ErrorAction SilentlyContinue\")",
-      "Bash(powershell -Command \"Get-Process -Id 11256 -ErrorAction SilentlyContinue\")"
+      "Bash(powershell -Command \"Get-Process -Id 11256 -ErrorAction SilentlyContinue\")",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('src/data/challenges/2026-07-05-interessado.json','utf8'\\)\\); console.log\\('JSON OK'\\)\")"
     ]
   }
 }

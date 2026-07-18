@@ -69,7 +69,11 @@
         { "operator": "", "text": "população do Brasil" },
         { "operator": "×", "text": "% que voa pelo menos uma vez ao ano" },
         { "operator": "×", "text": "trechos de voo por pessoa/ano" },
-        { "operator": "×", "text": "2 passagens por trecho (embarque e desembarque)" }
+        {
+          "operator": "×",
+          "text": "2 passagens por trecho (embarque e desembarque)",
+          "constant": 2
+        }
       ]
     }
   },

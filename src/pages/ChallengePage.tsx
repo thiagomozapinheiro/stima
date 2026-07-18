@@ -65,6 +65,10 @@ export interface ChallengePageProps {
   guidedTotalCount?: number
   guidedProgressPercent?: number
   guidedFormula?: FormulaDisplay
+  /** Presente apenas quando a fórmula do desafio é computável — ver `GuidedScaffoldProps`. */
+  onCalculateEstimate?: () => void
+  calculateDisabled?: boolean
+  calculateMessage?: string
 
   finalEstimateLabel: string
   guessNumberValue: string
@@ -107,6 +111,9 @@ export default function ChallengePage({
   guidedTotalCount,
   guidedProgressPercent,
   guidedFormula,
+  onCalculateEstimate,
+  calculateDisabled,
+  calculateMessage,
   finalEstimateLabel,
   guessNumberValue,
   onGuessNumberChange,
@@ -175,6 +182,9 @@ export default function ChallengePage({
               totalCount={guidedTotalCount ?? 0}
               progressPercent={guidedProgressPercent ?? 0}
               formula={guidedFormula}
+              onCalculate={onCalculateEstimate}
+              calculateDisabled={calculateDisabled}
+              calculateMessage={calculateMessage}
             />
           )}
 

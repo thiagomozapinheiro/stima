@@ -1,0 +1,123 @@
+{
+  "id": "2026-07-20-iniciante",
+  "theme": "Fora da Caixa",
+  "level": "Iniciante",
+  "publishedAt": "2026-07-20",
+  "title": "A luz contra os passos do mundo",
+  "teaser": "Quanto tempo a luz levaria para percorrer a distância de todos os passos dados no mundo em 1 dia?",
+  "prompt": "Quanto tempo a luz demoraria para percorrer a distância equivalente a todos os passos dados por todas as pessoas do mundo em 1 dia?",
+  "unit": "horas",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore na população mundial: quase todo mundo caminha algum tanto todos os dias."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quantos passos uma pessoa dá por dia e qual o comprimento médio de um passo, para chegar na distância total percorrida pela humanidade."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique pessoas, passos por dia e comprimento do passo para achar a distância total — a fórmula já converte isso em tempo usando a velocidade da luz."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Passos no mundo",
+        "steps": [
+          {
+            "question": "Quantas pessoas no mundo dão passos regularmente (basicamente, a população mundial)?",
+            "unit": "pessoas",
+            "defaultMagnitude": "bilhoes",
+            "acceptableRange": {
+              "min": { "amount": 7, "magnitude": "bilhoes" },
+              "max": { "amount": 8, "magnitude": "bilhoes" }
+            }
+          },
+          {
+            "question": "Quantos passos, em média, uma pessoa dá por dia?",
+            "explanation": "Pense numa média entre pessoas mais e menos ativas.",
+            "unit": "passos/dia",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 4, "magnitude": "mil" },
+              "max": { "amount": 8, "magnitude": "mil" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Convertendo em distância",
+        "steps": [
+          {
+            "question": "Qual o comprimento médio de um passo humano?",
+            "unit": "metros",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 0.6, "magnitude": "unidades" },
+              "max": { "amount": 0.8, "magnitude": "unidades" }
+            }
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Tempo que a luz levaria para percorrer essa distância",
+      "lines": [
+        { "operator": "", "text": "pessoas que caminham no mundo" },
+        { "operator": "×", "text": "passos por pessoa/dia" },
+        { "operator": "×", "text": "comprimento médio de um passo (m)" },
+        { "operator": "÷", "text": "velocidade da luz (m/s)", "constant": 299792458 },
+        { "operator": "÷", "text": "segundos em uma hora", "constant": 3600 }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 30, "magnitude": "unidades" },
+    "referenceRange": {
+      "min": { "amount": 15, "magnitude": "unidades" },
+      "max": { "amount": 48, "magnitude": "unidades" }
+    },
+    "reasoning": [
+      {
+        "label": "Pessoas que caminham no mundo",
+        "value": "~7.800.000.000",
+        "note": "Praticamente toda a população mundial caminha algum tanto todos os dias."
+      },
+      {
+        "label": "Passos por pessoa, por dia",
+        "value": "~6.000",
+        "note": "Média global entre pessoas mais e menos ativas."
+      },
+      {
+        "label": "Comprimento médio de um passo",
+        "value": "~0,7 m"
+      },
+      {
+        "label": "Distância total percorrida no mundo em 1 dia",
+        "value": "7.800.000.000 × 6.000 × 0,7 ≈ 32.760.000.000.000 m"
+      },
+      {
+        "label": "Tempo que a luz levaria para percorrer essa distância",
+        "value": "32.760.000.000.000 ÷ 299.792.458 ÷ 3.600 ≈ 30 horas"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "Esse tipo de comparação — atividade humana coletiva contra fenômenos físicos extremos — ajuda a dar escala intuitiva para números astronômicos como a velocidade da luz.",
+    "strategicQuestion": "Que outras atividades humanas cotidianas, somadas em escala global, resultariam em números comparáveis a fenômenos físicos extremos?",
+    "opportunities": [
+      "Conteúdo educativo de divulgação científica com comparações do dia a dia",
+      "Aplicativos de fitness que gamificam a distância coletiva percorrida por uma comunidade de usuários",
+      "Visualizações de dados que tornam números astronômicos mais intuitivos"
+    ],
+    "whatIf": {
+      "premise": "…toda essa distância percorrida em 1 dia fosse em linha reta, em vez de espalhada pelo mundo todo?",
+      "questions": [
+        "Quantas vezes isso daria a volta na Terra?",
+        "Quantas viagens de ida e volta à Lua isso representaria?"
+      ]
+    }
+  }
+}

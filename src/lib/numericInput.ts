@@ -184,3 +184,60 @@ export function normalizeAmount(amount: number, magnitude: Magnitude): number {
 export function normalizeQuantity(quantity: Quantity): number {
   return normalizeAmount(quantity.amount, quantity.magnitude)
 }
+
+/**
+ * Operação INVERSA de `normalizeAmount`/`normalizeQuantity`: dado um valor
+ * absoluto (ex.: resultado do botão "Calcular" do modo guiado, ver
+ * `src/lib/guidedCalculation.ts`), escolhe a ordem de grandeza que deixa o
+ * número mais legível no campo (amount entre 0,0 e 999,9).
+ *
+ * Ex.: denormalizeToQuantity(125_500_000) === { amount: 125.5, magnitude: 'milhoes' }
+ *
+ * Percorre as ordens de grandeza da maior (trilhões) para a menor
+ * (unidades) e usa a primeira em que o valor arredondado cabe no campo. Um
+ * valor menor que 1 unidade cai em 'unidades' mesmo (ex.: 0,4). Valores
+ * absurdamente grandes (acima de 999,9 trilhões, fora do que o produto
+ * suporta) são limitados a 999,9 trilhões em vez de gerar um número
+ * inválido para o campo.
+ */
+export function denormalizeToQuantity(value: number): Quantity {
+  if (!Number.isFinite(value) || value <= 0) {
+    return { amount: 0, magnitude: 'unidades' }
+  }
+
+  const largestToSmallest = [...MAGNITUDES].reverse()
+  for (let i = 0; i < largestToSmallest.length; i++) {
+    const magnitude = largestToSmallest[i]
+    const raw = value / MAGNITUDE_MULTIPLIERS[magnitude]
+    const isLastMagnitude = i === largestToSmallest.length - 1
+
+    // Decide pelo valor CRU (antes de arredondar): um raw como 0,9999 é
+    // pequeno demais nesta ordem e deve cair para a ordem menor seguinte,
+    // mesmo que arredondado vire 1,0 — senão "999.900" viraria "1 milhão"
+    // em vez de "999,9 mil" (perda de precisão evitável).
+    if (raw < 1 && !isLastMagnitude) {
+      continue
+    }
+
+    const rounded = Math.round(raw * 10) / 10
+    if (rounded <= MAX_AMOUNT) {
+      return { amount: rounded, magnitude }
+    }
+
+    // Arredondar estourou o campo (ex.: raw = 999,96 -> 1000,0). Não há
+    // como representar isso nesta ordem; a ordem MAIOR seguinte já é a
+    // resposta certa (ex.: "1 milhão" em vez de "1000,0 mil") — exceto se
+    // já estamos na maior ordem disponível (trilhões), quando só resta
+    // limitar ao máximo do campo.
+    if (i === 0) {
+      return { amount: MAX_AMOUNT, magnitude }
+    }
+    const biggerMagnitude = largestToSmallest[i - 1]
+    const biggerRaw = value / MAGNITUDE_MULTIPLIERS[biggerMagnitude]
+    return { amount: Math.round(biggerRaw * 10) / 10, magnitude: biggerMagnitude }
+  }
+
+  // Inatingível na prática (a última iteração sempre retorna acima), mas
+  // mantido para o TypeScript ver todos os caminhos cobertos.
+  return { amount: 0, magnitude: 'unidades' }
+}

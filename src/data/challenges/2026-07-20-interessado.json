@@ -1,0 +1,115 @@
+{
+  "id": "2026-07-20-interessado",
+  "theme": "Fora da Caixa",
+  "level": "Interessado",
+  "publishedAt": "2026-07-20",
+  "title": "O custo de construir um foguete",
+  "teaser": "Quanto custa para construir um foguete orbital de porte médio?",
+  "prompt": "Quanto custa para construir um foguete orbital de porte médio, como os usados para lançar satélites?",
+  "unit": "por foguete",
+  "currency": true,
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore na massa seca do foguete: dezenas de milhares de quilos de estrutura, sem contar o combustível."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quanto custa fabricar cada kg de estrutura básica, e quantas vezes mais isso fica quando você soma motores, testes e engenharia."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique a massa pelo custo por kg da estrutura básica e pelo fator que cobre motores, testes e integração."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Massa e custo básico de fabricação",
+        "steps": [
+          {
+            "question": "Qual a massa seca (sem combustível) de um foguete orbital de porte médio, como os usados para lançar satélites?",
+            "unit": "kg",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 20, "magnitude": "mil" },
+              "max": { "amount": 30, "magnitude": "mil" }
+            }
+          },
+          {
+            "question": "Quanto custa, em média, fabricar cada kg de estrutura básica (material e montagem), sem contar motores e testes?",
+            "unit": "R$/kg",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 3, "magnitude": "mil" },
+              "max": { "amount": 6, "magnitude": "mil" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Custos além da estrutura básica",
+        "steps": [
+          {
+            "question": "Quantas vezes o custo da estrutura básica soma tudo mais — motores, testes de qualificação, engenharia e integração final?",
+            "explanation": "Motores de foguete e testes são caríssimos comparados à estrutura em si; esse multiplicador é bem incerto. Esta etapa não tem faixa de referência definida.",
+            "unit": "×",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Custo total do foguete",
+      "lines": [
+        { "operator": "", "text": "massa seca do foguete (kg)" },
+        { "operator": "×", "text": "custo da estrutura básica por kg" },
+        { "operator": "×", "text": "fator para motores, testes e integração" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 225, "magnitude": "milhoes" },
+    "referenceRange": {
+      "min": { "amount": 90, "magnitude": "milhoes" },
+      "max": { "amount": 540, "magnitude": "milhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Massa seca do foguete",
+        "value": "~25.000 kg",
+        "note": "Massa estrutural de um foguete orbital de porte médio, sem combustível."
+      },
+      {
+        "label": "Custo da estrutura básica por kg",
+        "value": "~R$ 4.500/kg",
+        "note": "Material e montagem da estrutura, sem motores nem testes."
+      },
+      {
+        "label": "Fator para motores, testes e integração",
+        "value": "~2×",
+        "note": "Motores de foguete e testes de qualificação custam bem mais que a estrutura simples."
+      },
+      {
+        "label": "Custo total do foguete",
+        "value": "25.000 × R$ 4.500 × 2 ≈ R$ 225.000.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "O custo de construção de um foguete é um dos principais fatores que limitam o acesso ao espaço — reduzir esse custo é o que torna viável lançar mais satélites e até pensar em turismo espacial.",
+    "strategicQuestion": "Empresas como a SpaceX reduziram drasticamente o custo por lançamento reaproveitando foguetes. Até que ponto a reutilização consegue compensar o alto custo de construção?",
+    "opportunities": [
+      "Manufatura aditiva (impressão 3D) para reduzir custo de peças complexas",
+      "Reaproveitamento e recondicionamento de foguetes usados",
+      "Padronização de componentes entre diferentes modelos de foguete"
+    ],
+    "whatIf": {
+      "premise": "…fosse possível reaproveitar 90% da estrutura do foguete em 10 lançamentos?",
+      "questions": [
+        "Como isso mudaria o custo médio por lançamento ao longo do tempo?",
+        "Que novos modelos de negócio isso viabilizaria no setor espacial?"
+      ]
+    }
+  }
+}

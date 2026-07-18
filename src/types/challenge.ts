@@ -107,10 +107,29 @@ export interface GuidedStage {
 
 /** Uma linha da "estrutura construída" (fórmula visual) do modo guiado. */
 export interface FormulaLine {
-  /** Operador que liga esta linha à anterior. Ex.: "×", "÷", "+". A 1ª linha usa "". */
+  /**
+   * Operador que liga esta linha à anterior. A 1ª linha usa "". Para o
+   * botão "Calcular" (ver `src/lib/guidedCalculation.ts`) funcionar nesta
+   * linha, use exatamente "×" ou "÷" — qualquer outro valor (ex.: "+") é
+   * tratado como decoração puramente visual e a linha não entra na conta.
+   */
   operator: string
   /** Descrição da grandeza. Ex.: "população da cidade". */
   text: string
+  /**
+   * Fator FIXO desta linha, usado pelo botão "Calcular" quando o valor não
+   * vem de nenhuma microetapa preenchida pela pessoa — tipicamente uma
+   * conversão de unidade. Ex.: `365` para transformar uma premissa "por
+   * dia" numa resposta "por ano", ou `2` para "embarque e desembarque".
+   *
+   * OMITA este campo nas linhas normais (a grande maioria): nesse caso, o
+   * "Calcular" usa o valor que a pessoa preencheu na próxima microetapa
+   * ainda não consumida, seguindo a MESMA ORDEM em que as etapas aparecem
+   * em `stages[].steps[]`. Por isso a ordem das linhas aqui deve
+   * corresponder à ordem das etapas (com as linhas de `constant` intercaladas
+   * onde a conversão realmente entra na conta).
+   */
+  constant?: number
 }
 
 /** A "estrutura construída" mostrada ao final do roteiro guiado (opcional). */
