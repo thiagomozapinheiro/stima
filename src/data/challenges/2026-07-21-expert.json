@@ -1,0 +1,115 @@
+{
+  "id": "2026-07-21-expert",
+  "theme": "Educação",
+  "level": "Expert",
+  "publishedAt": "2026-07-21",
+  "title": "O mercado de aprofundamento escolar no Brasil",
+  "teaser": "Qual o tamanho do mercado brasileiro de aprofundamento escolar do 6º ano à 3ª série?",
+  "prompt": "Qual o tamanho (em reais) do mercado brasileiro de aprofundamento escolar para alunos do 6º ano do ensino fundamental à 3ª série do ensino médio?",
+  "unit": "por ano",
+  "currency": true,
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no total de alunos nessa faixa (6º ano ao 3º médio) no Brasil: dezenas de milhões, a maioria em escolas públicas."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em que fração dessas famílias paga por algum tipo de aprofundamento, e quanto gastam por ano com isso."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique o total de alunos pela fração que paga por aprofundamento e pelo gasto médio anual."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Público-alvo",
+        "steps": [
+          {
+            "question": "Quantos alunos estão matriculados do 6º ano do fundamental à 3ª série do ensino médio no Brasil, somando escolas públicas e privadas?",
+            "unit": "alunos",
+            "defaultMagnitude": "milhoes",
+            "acceptableRange": {
+              "min": { "amount": 25, "magnitude": "milhoes" },
+              "max": { "amount": 30, "magnitude": "milhoes" }
+            }
+          },
+          {
+            "question": "Que fração desses alunos faz algum tipo de aprofundamento escolar pago (cursinho, aula particular, plataforma online, etc.)?",
+            "unit": "%",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 8, "magnitude": "unidades" },
+              "max": { "amount": 15, "magnitude": "unidades" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Gasto por aluno",
+        "steps": [
+          {
+            "question": "Quanto uma família gasta, em média, por ano com esse aprofundamento escolar?",
+            "explanation": "O gasto varia muito — de plataformas online baratas a aulas particulares caras. Esta etapa não tem faixa de referência definida.",
+            "unit": "R$/ano",
+            "defaultMagnitude": "mil"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Tamanho do mercado",
+      "lines": [
+        { "operator": "", "text": "alunos do 6º ano ao 3º médio" },
+        { "operator": "×", "text": "% que faz aprofundamento pago" },
+        { "operator": "×", "text": "gasto médio anual por aluno" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 7.4, "magnitude": "bilhoes" },
+    "referenceRange": {
+      "min": { "amount": 3, "magnitude": "bilhoes" },
+      "max": { "amount": 18, "magnitude": "bilhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Alunos do 6º ano ao 3º médio no Brasil",
+        "value": "~27.000.000",
+        "note": "Somando escolas públicas e privadas, do 6º ano do fundamental à 3ª série do médio."
+      },
+      {
+        "label": "Fração que faz aprofundamento escolar pago",
+        "value": "~11% → 2.970.000 alunos",
+        "note": "Cursinhos, aulas particulares, plataformas online e afins."
+      },
+      {
+        "label": "Gasto médio anual por aluno",
+        "value": "~R$ 2.500/ano",
+        "note": "Varia muito, de plataformas baratas a aulas particulares caras."
+      },
+      {
+        "label": "Tamanho do mercado",
+        "value": "2.970.000 × R$ 2.500 ≈ R$ 7.425.000.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "O mercado de aprofundamento escolar cresce junto com a competição por vagas em universidades concorridas e o interesse das famílias em complementar o ensino regular, especialmente em redes públicas com menos recursos.",
+    "strategicQuestion": "Esse mercado tende a crescer mais rápido via plataformas digitais de baixo custo, democratizando o acesso, ou via aulas particulares premium, aprofundando a desigualdade entre quem pode pagar?",
+    "opportunities": [
+      "Plataformas de ensino adaptativo por assinatura",
+      "Redes de cursinhos preparatórios para o ensino fundamental e médio",
+      "Marketplaces de professores particulares"
+    ],
+    "whatIf": {
+      "premise": "…o governo passasse a oferecer aprofundamento gratuito para todos os alunos da rede pública?",
+      "questions": [
+        "Quanto desse mercado privado seria substituído?",
+        "Que segmento desse mercado sobreviveria mesmo com uma opção pública gratuita?"
+      ]
+    }
+  }
+}

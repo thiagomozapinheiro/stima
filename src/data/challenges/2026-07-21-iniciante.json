@@ -1,0 +1,123 @@
+{
+  "id": "2026-07-21-iniciante",
+  "theme": "Educação",
+  "level": "Iniciante",
+  "publishedAt": "2026-07-21",
+  "title": "O custo de manter nenhum aluno fora da escola por falta de renda",
+  "teaser": "Quanto dinheiro seria necessário para nenhum aluno da rede privada largar a escola por perda de renda da família?",
+  "prompt": "Quanto dinheiro seria necessário para garantir que nenhum estudante da rede privada de ensino no Brasil abandonasse a escola por perda de renda da família?",
+  "unit": "por ano",
+  "currency": true,
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no total de alunos da rede privada no Brasil: alguns milhões de estudantes."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em que fração desses alunos, num ano típico, corre risco de sair da escola por perda de renda da família, e quanto custa a mensalidade anual média."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique o total de alunos pela fração em risco e pela mensalidade anual média."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Tamanho do problema",
+        "steps": [
+          {
+            "question": "Quantos alunos estão matriculados na rede privada de ensino básico no Brasil?",
+            "unit": "alunos",
+            "defaultMagnitude": "milhoes",
+            "acceptableRange": {
+              "min": { "amount": 8, "magnitude": "milhoes" },
+              "max": { "amount": 10, "magnitude": "milhoes" }
+            }
+          },
+          {
+            "question": "Que fração desses alunos, em um ano típico, corre risco de abandonar a escola por perda de renda da família (desemprego, doença ou morte do responsável financeiro)?",
+            "unit": "%",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 3, "magnitude": "unidades" },
+              "max": { "amount": 8, "magnitude": "unidades" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Custo por aluno",
+        "steps": [
+          {
+            "question": "Qual o valor médio da mensalidade anual de uma escola privada no Brasil?",
+            "unit": "R$/ano",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 8, "magnitude": "mil" },
+              "max": { "amount": 15, "magnitude": "mil" }
+            }
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Valor total necessário",
+      "lines": [
+        { "operator": "", "text": "alunos matriculados na rede privada" },
+        { "operator": "×", "text": "% em risco de abandono por perda de renda" },
+        { "operator": "×", "text": "mensalidade anual média" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 5, "magnitude": "bilhoes" },
+    "referenceRange": {
+      "min": { "amount": 2, "magnitude": "bilhoes" },
+      "max": { "amount": 12, "magnitude": "bilhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Alunos matriculados na rede privada",
+        "value": "~9.000.000",
+        "note": "Alunos da educação básica em escolas privadas no Brasil."
+      },
+      {
+        "label": "Fração em risco de abandono por perda de renda",
+        "value": "~5% → 450.000 alunos",
+        "note": "Famílias que enfrentam desemprego, doença ou morte do responsável financeiro num ano típico."
+      },
+      {
+        "label": "Mensalidade anual média",
+        "value": "~R$ 11.000/ano"
+      },
+      {
+        "label": "Valor total necessário",
+        "value": "450.000 × R$ 11.000 ≈ R$ 4.950.000.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "Produtos que garantem a continuidade dos estudos mesmo diante de imprevistos financeiros da família ajudam a reduzir a evasão escolar e dão mais segurança às famílias que investem em educação privada.",
+    "strategicQuestion": "Faz mais sentido esse tipo de proteção ser oferecido pelas próprias escolas, por seguradoras, ou por um fundo público de garantia educacional?",
+    "opportunities": [
+      "Seguros educacionais vinculados à mensalidade escolar",
+      "Fundos de bolsas emergenciais mantidos por redes de ensino",
+      "Parcerias entre escolas e seguradoras para produtos de proteção de renda"
+    ],
+    "materiaisComplementares": [
+      {
+        "titulo": "Educação como cobertura de vida",
+        "url": "https://neofeed.com.br/negocios/bradesco-seguros-faz-da-educacao-uma-cobertura-de-vida/"
+      }
+    ],
+    "whatIf": {
+      "premise": "…esse tipo de proteção se tornasse obrigatório em todas as matrículas de escolas privadas?",
+      "questions": [
+        "Quanto isso encareceria a mensalidade média para todas as famílias?",
+        "Isso mudaria a decisão de matricular ou não um filho em escola privada?"
+      ]
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "id": "2026-07-21-interessado",
+  "theme": "Fora da Caixa",
+  "level": "Interessado",
+  "publishedAt": "2026-07-21",
+  "title": "A densidade do continente mais populoso",
+  "teaser": "Qual a densidade populacional do continente mais denso do mundo?",
+  "prompt": "Qual a densidade populacional do continente mais denso do mundo?",
+  "unit": "pessoas/km²",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Pense em qual continente concentra a maior fatia da população mundial — mais da metade das pessoas do planeta vive nele."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Densidade é população dividida por área. Pense na população total e na área territorial desse continente."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Divida a população total do continente pela sua área em km²."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — População do continente",
+        "steps": [
+          {
+            "question": "Qual a população do continente mais denso do mundo (a Ásia)?",
+            "unit": "pessoas",
+            "defaultMagnitude": "bilhoes",
+            "acceptableRange": {
+              "min": { "amount": 4.5, "magnitude": "bilhoes" },
+              "max": { "amount": 5, "magnitude": "bilhoes" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Área do continente",
+        "steps": [
+          {
+            "question": "Qual a área territorial da Ásia, em km²?",
+            "unit": "km²",
+            "defaultMagnitude": "milhoes",
+            "acceptableRange": {
+              "min": { "amount": 40, "magnitude": "milhoes" },
+              "max": { "amount": 45, "magnitude": "milhoes" }
+            }
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Densidade populacional",
+      "lines": [
+        { "operator": "", "text": "população da Ásia" },
+        { "operator": "÷", "text": "área territorial da Ásia (km²)" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 105, "magnitude": "unidades" },
+    "referenceRange": {
+      "min": { "amount": 90, "magnitude": "unidades" },
+      "max": { "amount": 140, "magnitude": "unidades" }
+    },
+    "reasoning": [
+      {
+        "label": "População da Ásia (o continente mais denso)",
+        "value": "~4.700.000.000",
+        "note": "Cerca de 60% da população mundial vive na Ásia."
+      },
+      {
+        "label": "Área territorial da Ásia",
+        "value": "~44.580.000 km²",
+        "note": "O maior continente em área, mas ainda assim o mais denso proporcionalmente."
+      },
+      {
+        "label": "Densidade populacional",
+        "value": "4.700.000.000 ÷ 44.580.000 ≈ 105 pessoas/km²"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "A altíssima densidade populacional da Ásia concentra desafios (moradia, infraestrutura, saneamento) e oportunidades (escala de mercado, urbanização) que moldam boa parte da economia mundial.",
+    "strategicQuestion": "Que diferenças de densidade dentro da própria Ásia — megacidades costeiras contra regiões rurais do interior — tornam essa média enganosa para decisões de negócio?",
+    "opportunities": [
+      "Soluções de moradia vertical e adensada para megacidades asiáticas",
+      "Infraestrutura de transporte de massa para áreas de altíssima densidade",
+      "Tecnologias de otimização de espaço urbano"
+    ],
+    "whatIf": {
+      "premise": "…toda a população mundial vivesse na mesma densidade da Ásia?",
+      "questions": [
+        "Que área do planeta seria suficiente para acomodar todo mundo?",
+        "Isso seria mais ou menos área do que os continentes habitados hoje somados?"
+      ]
+    }
+  }
+}
