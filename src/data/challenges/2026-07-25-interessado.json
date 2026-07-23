@@ -1,0 +1,122 @@
+{
+  "id": "2026-07-25-interessado",
+  "theme": "Mobilidade e Infra",
+  "level": "Interessado",
+  "publishedAt": "2026-07-25",
+  "title": "O mercado potencial de carros voadores no Brasil",
+  "teaser": "Qual o tamanho do mercado potencial de carros voadores no Brasil?",
+  "prompt": "Qual o tamanho, em receita, do mercado potencial de carros voadores no Brasil?",
+  "unit": "por ano",
+  "currency": true,
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Pense no público que hoje usa transporte premium, como helicóptero ou táxi executivo, em grandes centros urbanos."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quantas viagens por ano essas pessoas fariam, e quanto pagariam por viagem."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique o público-alvo pelas viagens por ano e pelo preço médio da viagem."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Público-alvo",
+        "steps": [
+          {
+            "question": "Quantas pessoas no Brasil poderiam pagar por viagens de carro voador?",
+            "explanation": "Pense num público de alta renda em grandes centros urbanos.",
+            "unit": "pessoas",
+            "defaultMagnitude": "milhoes",
+            "acceptableRange": {
+              "min": { "amount": 0.5, "magnitude": "milhoes" },
+              "max": { "amount": 1.5, "magnitude": "milhoes" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Frequência e preço",
+        "steps": [
+          {
+            "question": "Quantas viagens de carro voador, em média, essas pessoas fariam por ano?",
+            "unit": "viagens/ano",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 5, "magnitude": "unidades" },
+              "max": { "amount": 15, "magnitude": "unidades" }
+            }
+          },
+          {
+            "question": "Quanto custaria, em média, cada viagem de carro voador?",
+            "explanation": "O preço desse serviço ainda é incerto — depende muito da tecnologia, regulação e escala de operação. Esta etapa não tem faixa de referência definida.",
+            "unit": "R$/viagem",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Tamanho do mercado potencial",
+      "lines": [
+        { "operator": "", "text": "público-alvo de alta renda" },
+        { "operator": "×", "text": "viagens por ano, por pessoa" },
+        { "operator": "×", "text": "preço médio por viagem" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 5, "magnitude": "bilhoes" },
+    "referenceRange": {
+      "min": { "amount": 800, "magnitude": "milhoes" },
+      "max": { "amount": 18, "magnitude": "bilhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Público-alvo de alta renda",
+        "value": "~1.000.000",
+        "note": "Pessoas em grandes centros urbanos com renda compatível com transporte premium."
+      },
+      {
+        "label": "Viagens por ano, por pessoa",
+        "value": "~10",
+        "note": "Uso ocasional, para trajetos específicos como ida ao aeroporto ou eventos."
+      },
+      {
+        "label": "Preço médio por viagem",
+        "value": "~R$ 500",
+        "note": "Estimativa inicial, ainda incerta dada a novidade da tecnologia."
+      },
+      {
+        "label": "Tamanho do mercado potencial",
+        "value": "1.000.000 × 10 × R$ 500 ≈ R$ 5.000.000.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "Carros voadores (eVTOLs) competem diretamente com o mercado de helicópteros executivos, que já é bem estabelecido nas grandes cidades brasileiras.",
+    "strategicQuestion": "Carros voadores vão substituir o helicóptero executivo ou vão criar uma categoria de preço mais acessível, expandindo o mercado total de mobilidade aérea urbana?",
+    "opportunities": [
+      "Infraestrutura de vertiportos em áreas urbanas",
+      "Certificação e regulação de novos veículos aéreos",
+      "Serviços de manutenção e operação de frotas eVTOL"
+    ],
+    "materiaisComplementares": [
+      {
+        "titulo": "Carros voadores vão substituir o helicóptero?",
+        "url": "https://www.bloomberglinea.com.br/negocios/carro-voador-e-incognita-ate-2028-e-helicoptero-ganha-folego-segundo-o-jp-morgan/"
+      }
+    ],
+    "whatIf": {
+      "premise": "…o preço por viagem caísse para o mesmo nível de um Uber Black?",
+      "questions": [
+        "Quantas vezes maior ficaria o público disposto a usar esse serviço?",
+        "A infraestrutura urbana conseguiria suportar esse volume de voos?"
+      ]
+    }
+  }
+}

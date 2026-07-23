@@ -1,0 +1,121 @@
+{
+  "id": "2026-07-24-interessado",
+  "theme": "Lazer",
+  "level": "Interessado",
+  "publishedAt": "2026-07-24",
+  "title": "O mercado de experiências gourmetizadas de cinema",
+  "teaser": "Qual o tamanho do mercado potencial de experiências gourmetizadas de cinema no Brasil?",
+  "prompt": "Qual o tamanho, em receita, do mercado potencial de experiências gourmetizadas de cinema no Brasil?",
+  "unit": "por ano",
+  "currency": true,
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no público total de cinema no Brasil por ano: mais de cem milhões de espectadores."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em que fração desse público pagaria a mais por uma experiência premium, e quanto a mais isso representaria por ingresso."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique o público disposto a pagar pelo valor adicional médio de cada experiência."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Público de cinema",
+        "steps": [
+          {
+            "question": "Quantos espectadores de cinema o Brasil tem por ano?",
+            "unit": "espectadores/ano",
+            "defaultMagnitude": "milhoes",
+            "acceptableRange": {
+              "min": { "amount": 120, "magnitude": "milhoes" },
+              "max": { "amount": 160, "magnitude": "milhoes" }
+            }
+          },
+          {
+            "question": "Que fração desses espectadores estaria disposta a pagar por uma experiência premium/gourmetizada?",
+            "unit": "%",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 5, "magnitude": "unidades" },
+              "max": { "amount": 15, "magnitude": "unidades" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Valor adicional",
+        "steps": [
+          {
+            "question": "Quanto a mais, em média, uma pessoa pagaria por uma experiência gourmetizada em vez do ingresso comum?",
+            "explanation": "Esse valor varia bastante entre diferentes formatos de experiência premium. Esta etapa não tem faixa de referência definida.",
+            "unit": "R$",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Tamanho do mercado potencial",
+      "lines": [
+        { "operator": "", "text": "espectadores de cinema por ano" },
+        { "operator": "×", "text": "% disposta a pagar por experiência premium" },
+        { "operator": "×", "text": "valor adicional por experiência" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 700, "magnitude": "milhoes" },
+    "referenceRange": {
+      "min": { "amount": 180, "magnitude": "milhoes" },
+      "max": { "amount": 1.9, "magnitude": "bilhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Espectadores de cinema no Brasil por ano",
+        "value": "~140.000.000",
+        "note": "Público total de bilheteria nas salas de cinema do país."
+      },
+      {
+        "label": "Fração disposta a pagar por experiência premium",
+        "value": "~10% → 14.000.000 pessoas",
+        "note": "Parcela do público interessada em experiências gourmetizadas ou imersivas."
+      },
+      {
+        "label": "Valor adicional por experiência",
+        "value": "~R$ 50",
+        "note": "A mais, em relação ao ingresso comum."
+      },
+      {
+        "label": "Tamanho do mercado potencial",
+        "value": "14.000.000 × R$ 50 ≈ R$ 700.000.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "Experiências premium de cinema — IMAX, salas gourmet, formatos imersivos — são uma forma das redes aumentarem o ticket médio num momento em que a frequência ao cinema disputa espaço com o streaming.",
+    "strategicQuestion": "Vale mais a pena investir em poucas salas premium muito caras ou em uma experiência intermediária mais acessível para um público maior?",
+    "opportunities": [
+      "Salas gourmet com serviço de comida completo durante o filme",
+      "Formatos imersivos licenciados, como IMAX, 4DX e ScreenX",
+      "Parcerias com estúdios para experiências exclusivas de franquias"
+    ],
+    "materiaisComplementares": [
+      {
+        "titulo": "Uma nova experiência Disney no cinema",
+        "url": "https://www.b9.com.br/disney-infinity-vision-imax/"
+      }
+    ],
+    "whatIf": {
+      "premise": "…toda sala de cinema do Brasil virasse uma experiência premium?",
+      "questions": [
+        "O preço médio do ingresso subiria o suficiente para compensar a queda de frequência?",
+        "Que público ficaria de fora do cinema com esse aumento generalizado de preço?"
+      ]
+    }
+  }
+}

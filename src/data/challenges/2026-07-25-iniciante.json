@@ -1,0 +1,121 @@
+{
+  "id": "2026-07-25-iniciante",
+  "theme": "Mobilidade e Infra",
+  "level": "Iniciante",
+  "publishedAt": "2026-07-25",
+  "title": "O custo de recarregar um carro elétrico de Uber",
+  "teaser": "Qual o custo médio mensal com recargas de um carro elétrico usado no Uber?",
+  "prompt": "Qual o custo médio mensal com recargas de energia de um carro elétrico usado como carro de aplicativo (Uber)?",
+  "unit": "por mês",
+  "currency": true,
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore na quilometragem diária de um motorista de aplicativo em tempo integral: centenas de km por dia."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quanta energia o carro consome a cada 10 km rodados, e quanto custa cada kWh de recarga."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique km por dia, consumo por km e custo do kWh, depois multiplique pelos dias trabalhados no mês."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Quilometragem rodada",
+        "steps": [
+          {
+            "question": "Quantos km um motorista de Uber roda, em média, por dia?",
+            "unit": "km/dia",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 150, "magnitude": "unidades" },
+              "max": { "amount": 250, "magnitude": "unidades" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Consumo e custo de energia",
+        "steps": [
+          {
+            "question": "Quanto um carro elétrico consome de energia a cada 10 km rodados?",
+            "unit": "kWh/10km",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 1.5, "magnitude": "unidades" },
+              "max": { "amount": 2, "magnitude": "unidades" }
+            }
+          },
+          {
+            "question": "Quanto custa, em média, 1 kWh de energia para recarregar o carro?",
+            "explanation": "Considere uma média entre recarga residencial (mais barata) e pontos públicos (mais caros).",
+            "unit": "R$/kWh",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 0.7, "magnitude": "unidades" },
+              "max": { "amount": 1.2, "magnitude": "unidades" }
+            }
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Custo médio mensal",
+      "lines": [
+        { "operator": "", "text": "km rodados por dia" },
+        { "operator": "×", "text": "consumo de energia a cada 10 km" },
+        { "operator": "÷", "text": "conversão para consumo por km", "constant": 10 },
+        { "operator": "×", "text": "custo do kWh de recarga" },
+        { "operator": "×", "text": "dias trabalhados no mês", "constant": 25 }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 850, "magnitude": "unidades" },
+    "referenceRange": {
+      "min": { "amount": 400, "magnitude": "unidades" },
+      "max": { "amount": 1.5, "magnitude": "mil" }
+    },
+    "reasoning": [
+      {
+        "label": "Km rodados por dia",
+        "value": "~200 km",
+        "note": "Jornada típica de um motorista de aplicativo em tempo integral."
+      },
+      {
+        "label": "Consumo de energia a cada 10 km",
+        "value": "~1,7 kWh/10km",
+        "note": "Consumo médio de um carro elétrico compacto ou médio (equivale a 0,17 kWh por km)."
+      },
+      {
+        "label": "Custo do kWh de recarga",
+        "value": "~R$ 1,00/kWh",
+        "note": "Média entre recarga residencial (mais barata) e pontos públicos (mais caros)."
+      },
+      {
+        "label": "Custo médio mensal",
+        "value": "200 × 1,7 ÷ 10 × R$ 1,00 × 25 ≈ R$ 850"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "O custo de energia muito menor que o de combustível é um dos principais argumentos para motoristas de aplicativo migrarem para carros elétricos, mesmo com um investimento inicial maior.",
+    "strategicQuestion": "Quanto tempo leva para a economia mensal com energia compensar o preço mais alto de um carro elétrico frente a um carro a combustão equivalente?",
+    "opportunities": [
+      "Redes de recarga rápida voltadas a motoristas de aplicativo",
+      "Planos de energia com tarifa reduzida para recarga noturna",
+      "Parcerias entre montadoras de elétricos e plataformas de mobilidade"
+    ],
+    "whatIf": {
+      "premise": "…o motorista só recarregasse em pontos públicos rápidos, mais caros que a recarga residencial?",
+      "questions": [
+        "Quanto isso aumentaria o custo mensal?",
+        "Isso ainda compensaria frente a um carro a combustão?"
+      ]
+    }
+  }
+}

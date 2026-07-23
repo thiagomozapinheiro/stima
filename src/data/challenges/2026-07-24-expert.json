@@ -1,0 +1,115 @@
+{
+  "id": "2026-07-24-expert",
+  "theme": "Lazer",
+  "level": "Expert",
+  "publishedAt": "2026-07-24",
+  "title": "O potencial de um parque temático de Senhor dos Anéis",
+  "teaser": "Qual o potencial anual de receita com o lançamento de uma atração de Senhor dos Anéis na Disney?",
+  "prompt": "Qual o potencial anual de geração de receita com o lançamento de um parque temático de Senhor dos Anéis na Disney?",
+  "unit": "por ano",
+  "currency": true,
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Pense no impacto de outras grandes atrações licenciadas em parques temáticos — elas costumam atrair milhões de visitantes extras por ano."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quanto cada visitante gasta na visita, e que fração desse gasto pode ser atribuída à nova atração, e não ao resort inteiro."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique os visitantes extras pelo gasto médio e pelo fator de atribuição à nova atração."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Visitantes atraídos pela nova atração",
+        "steps": [
+          {
+            "question": "Quantos visitantes extras por ano um novo parque temático desse porte atrairia para o resort?",
+            "unit": "visitantes/ano",
+            "defaultMagnitude": "milhoes",
+            "acceptableRange": {
+              "min": { "amount": 3, "magnitude": "milhoes" },
+              "max": { "amount": 6, "magnitude": "milhoes" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Gasto por visitante e atribuição",
+        "steps": [
+          {
+            "question": "Quanto cada visitante gasta, em média, por visita (ingresso, alimentação e produtos)?",
+            "unit": "R$/visitante",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 0.8, "magnitude": "mil" },
+              "max": { "amount": 1.5, "magnitude": "mil" }
+            }
+          },
+          {
+            "question": "Que fração desse gasto deve ser atribuída especificamente à nova atração, e não ao resort como um todo?",
+            "explanation": "Visitantes costumam vir pelo resort inteiro, não só por uma atração — esse fator de atribuição é difícil de definir com precisão. Esta etapa não tem faixa de referência definida.",
+            "unit": "%",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Receita anual atribuída à nova atração",
+      "lines": [
+        { "operator": "", "text": "visitantes extras por ano" },
+        { "operator": "×", "text": "gasto médio por visitante" },
+        { "operator": "×", "text": "% de atribuição à nova atração" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 3, "magnitude": "bilhoes" },
+    "referenceRange": {
+      "min": { "amount": 1, "magnitude": "bilhoes" },
+      "max": { "amount": 7, "magnitude": "bilhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Visitantes extras atraídos pela nova atração",
+        "value": "~4.500.000",
+        "note": "Comparável ao impacto de outras grandes atrações licenciadas em parques temáticos."
+      },
+      {
+        "label": "Gasto médio por visitante",
+        "value": "~R$ 1.100",
+        "note": "Ingresso, alimentação e produtos, somados."
+      },
+      {
+        "label": "Fator de atribuição à nova atração",
+        "value": "~60%",
+        "note": "Parte do gasto que pode ser razoavelmente atribuída à nova atração, e não ao resort como um todo."
+      },
+      {
+        "label": "Receita anual atribuída à nova atração",
+        "value": "4.500.000 × R$ 1.100 × 0,60 ≈ R$ 2.970.000.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "Áreas temáticas licenciadas de franquias populares são uma das principais formas de parques temáticos renovarem o interesse do público e justificarem aumentos de preço do ingresso.",
+    "strategicQuestion": "Vale mais a pena para a Disney desenvolver uma atração própria original ou licenciar uma franquia de terceiros como Senhor dos Anéis, dividindo a receita com os detentores dos direitos?",
+    "opportunities": [
+      "Hotéis temáticos vinculados à nova atração",
+      "Linhas de produtos e merchandising exclusivos",
+      "Experiências pagas à parte, como passes VIP e tours guiados, dentro da nova área"
+    ],
+    "whatIf": {
+      "premise": "…a atração fosse tão popular que dobrasse o número de visitantes extras estimado?",
+      "questions": [
+        "A infraestrutura do resort conseguiria absorver esse aumento de público?",
+        "Isso justificaria expandir a área temática nos anos seguintes?"
+      ]
+    }
+  }
+}

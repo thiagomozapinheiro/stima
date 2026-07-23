@@ -1,0 +1,104 @@
+{
+  "id": "2026-07-24-iniciante",
+  "theme": "Lazer",
+  "level": "Iniciante",
+  "publishedAt": "2026-07-24",
+  "title": "Sessões de cinema no Brasil",
+  "teaser": "Quantas sessões de cinema acontecem no Brasil todos os anos?",
+  "prompt": "Quantas sessões de cinema acontecem no Brasil todos os anos?",
+  "unit": "por ano",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no número de salas de cinema no Brasil: alguns milhares, espalhadas por shoppings e centros urbanos."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em quantas sessões cada sala exibe por dia, e multiplique pelos dias do ano."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique salas pelas sessões diárias — a fórmula já converte isso para o total anual."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Tamanho do parque de cinemas",
+        "steps": [
+          {
+            "question": "Quantas salas de cinema existem no Brasil?",
+            "unit": "salas",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 3, "magnitude": "mil" },
+              "max": { "amount": 3.5, "magnitude": "mil" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Sessões por sala",
+        "steps": [
+          {
+            "question": "Quantas sessões, em média, uma sala de cinema exibe por dia?",
+            "explanation": "Considere uma média entre dias de semana e fins de semana.",
+            "unit": "sessões/dia",
+            "defaultMagnitude": "unidades",
+            "acceptableRange": {
+              "min": { "amount": 4, "magnitude": "unidades" },
+              "max": { "amount": 6, "magnitude": "unidades" }
+            }
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Sessões por ano",
+      "lines": [
+        { "operator": "", "text": "salas de cinema no Brasil" },
+        { "operator": "×", "text": "sessões por sala/dia" },
+        { "operator": "×", "text": "dias no ano", "constant": 365 }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 5.8, "magnitude": "milhoes" },
+    "referenceRange": {
+      "min": { "amount": 4.4, "magnitude": "milhoes" },
+      "max": { "amount": 7.7, "magnitude": "milhoes" }
+    },
+    "reasoning": [
+      {
+        "label": "Salas de cinema no Brasil",
+        "value": "~3.200",
+        "note": "Total de salas de exibição comercial em funcionamento no país."
+      },
+      {
+        "label": "Sessões por sala, por dia",
+        "value": "~5",
+        "note": "Em média, considerando dias de semana e fins de semana."
+      },
+      {
+        "label": "Sessões por ano",
+        "value": "3.200 × 5 × 365 ≈ 5.840.000"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "O cinema segue sendo um dos formatos de entretenimento fora de casa mais consolidados no Brasil, mesmo com a concorrência do streaming.",
+    "strategicQuestion": "Como as redes de cinema podem aumentar a ocupação média das sessões sem depender só de grandes blockbusters?",
+    "opportunities": [
+      "Programação de nicho fora do horário nobre, como cineclubes e reprises",
+      "Parcerias com estúdios para pré-estreias exclusivas",
+      "Modelos de assinatura mensal para frequência de cinema"
+    ],
+    "whatIf": {
+      "premise": "…metade das sessões vazias fosse preenchida com preços dinâmicos mais baixos?",
+      "questions": [
+        "Quanto isso aumentaria a receita total das redes de cinema?",
+        "Isso mudaria o hábito de quando as pessoas vão ao cinema?"
+      ]
+    }
+  }
+}

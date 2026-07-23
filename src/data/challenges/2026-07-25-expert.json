@@ -1,0 +1,99 @@
+{
+  "id": "2026-07-25-expert",
+  "theme": "Mobilidade e Infra",
+  "level": "Expert",
+  "publishedAt": "2026-07-25",
+  "title": "Navios de carga navegando neste momento",
+  "teaser": "Quantos navios de carga estão navegando no oceano neste momento?",
+  "prompt": "Quantos navios de carga estão navegando no oceano neste momento?",
+  "unit": "navios",
+  "hints": [
+    {
+      "label": "Encontre um ponto de partida",
+      "text": "Ancore no tamanho da frota mercante mundial: dezenas de milhares de navios de carga."
+    },
+    {
+      "label": "Decomponha o problema",
+      "text": "Pense em que fração dessa frota está navegando em alto-mar neste exato momento, e não atracada em algum porto."
+    },
+    {
+      "label": "Transforme em estimativa",
+      "text": "Multiplique o total da frota pela fração que está em trânsito neste momento."
+    }
+  ],
+  "guided": {
+    "stages": [
+      {
+        "title": "Etapa 1 — Tamanho da frota mundial",
+        "steps": [
+          {
+            "question": "Quantos navios de carga existem na frota mercante mundial (contêineres, graneleiros, petroleiros, etc.)?",
+            "unit": "navios",
+            "defaultMagnitude": "mil",
+            "acceptableRange": {
+              "min": { "amount": 50, "magnitude": "mil" },
+              "max": { "amount": 60, "magnitude": "mil" }
+            }
+          }
+        ]
+      },
+      {
+        "title": "Etapa 2 — Fração em trânsito",
+        "steps": [
+          {
+            "question": "Que fração dessa frota está navegando em alto-mar neste exato momento, em vez de atracada em porto ou em manutenção?",
+            "explanation": "Isso varia bastante ao longo do dia e por tipo de navio — é uma fração difícil de cravar com precisão. Esta etapa não tem faixa de referência definida.",
+            "unit": "%",
+            "defaultMagnitude": "unidades"
+          }
+        ]
+      }
+    ],
+    "formula": {
+      "title": "Navios navegando agora",
+      "lines": [
+        { "operator": "", "text": "frota mercante mundial" },
+        { "operator": "×", "text": "% em trânsito neste momento" }
+      ]
+    }
+  },
+  "solution": {
+    "referenceValue": { "amount": 36, "magnitude": "mil" },
+    "referenceRange": {
+      "min": { "amount": 27, "magnitude": "mil" },
+      "max": { "amount": 48, "magnitude": "mil" }
+    },
+    "reasoning": [
+      {
+        "label": "Navios na frota mercante mundial",
+        "value": "~55.000",
+        "note": "Somando contêineres, graneleiros, petroleiros e outros tipos de carga."
+      },
+      {
+        "label": "Fração em trânsito neste momento",
+        "value": "~65%",
+        "note": "O restante está atracado em portos, carregando, descarregando ou em manutenção."
+      },
+      {
+        "label": "Navios navegando agora",
+        "value": "55.000 × 0,65 ≈ 35.750"
+      }
+    ]
+  },
+  "goBeyond": {
+    "impact": "O transporte marítimo move mais de 80% do comércio mundial em volume, e a movimentação constante dessa frota é o que sustenta cadeias de suprimento globais.",
+    "strategicQuestion": "Como interrupções em rotas marítimas críticas, como o Canal de Suez ou o Canal do Panamá, afetam essa frota em trânsito e o comércio global?",
+    "opportunities": [
+      "Softwares de otimização de rotas marítimas",
+      "Combustíveis alternativos para reduzir emissões da frota mercante",
+      "Sistemas de rastreamento e previsão de tráfego marítimo"
+    ],
+    "whatIf": {
+      "premise": "…metade dessa frota precisasse desviar de uma rota principal por semanas?",
+      "questions": [
+        "Quanto isso atrasaria cadeias de suprimento globais?",
+        "Que setores da economia seriam mais afetados primeiro?"
+      ]
+    }
+  }
+}
